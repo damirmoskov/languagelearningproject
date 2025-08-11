@@ -1,0 +1,54 @@
+{
+  "lang": "French",
+  "level": "A2",
+  "wordlist": [
+    {
+      "id": "w001",
+      "word": "chat",
+      "pos": "noun",
+      "translation": "cat",
+      "image": "images/cat.jpg",
+      "audio": "audio/chat.mp3"
+    },
+    {
+      "id": "w002",
+      "word": "chien",
+      "pos": "noun",
+      "translation": "dog",
+      "image": "images/dog.jpg",
+      "audio": "audio/chien.mp3"
+    },
+    {
+      "id": "w003",
+      "word": "maison",
+      "pos": "noun",
+      "translation": "house",
+      "image": "images/house.jpg",
+      "audio": "audio/maison.mp3"
+    },
+    {
+      "id": "w004",
+      "word": "livre",
+      "pos": "noun",
+      "translation": "book",
+      "image": "images/book.jpg",
+      "audio": "audio/livre.mp3"
+    },
+    {
+      "id": "w005",
+      "word": "manger",
+      "pos": "verb",
+      "translation": "to eat",
+      "image": "images/eat.jpg",
+      "audio": "audio/manger.mp3"
+    },
+    {
+      "id": "w006",
+      "word": "boire",
+      "pos": "verb",
+      "translation": "to drink",
+      "image": "images/drink.jpg",
+      "audio": "audio/boire.mp3"
+    }
+  ]
+}
