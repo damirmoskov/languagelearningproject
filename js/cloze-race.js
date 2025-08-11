@@ -1,16 +1,14 @@
-let clozeData = [];
-let currentClozeIndex = 0;
-let clozeScore = 0;
-let clozeTimer = 60;
-let clozeTimerId = null;
-let currentLanguage_cr;
+let clozeData = [], currentClozeIndex = 0, clozeScore = 0, clozeTimer = 60, clozeTimerId = null, currentLanguage_cr;
 let clozeTimerSpan, clozeScoreSpan, clozeSentenceEl, clozeOptionsContainer, clozeNextBtn, deckTitle;
 
 function handleAnswerClick(selectedAnswer, correctAnswer, button) {
+    console.log(`Handling answer. Selected: "${selectedAnswer}", Correct: "${correctAnswer}"`);
     const optionButtons = clozeOptionsContainer.querySelectorAll('button');
     optionButtons.forEach(btn => btn.disabled = true);
     if (selectedAnswer === correctAnswer) {
+        console.log(`Correct answer! Score was: ${clozeScore}`);
         clozeScore++;
+        console.log(`Score is now: ${clozeScore}`);
         clozeScoreSpan.textContent = clozeScore;
         button.style.backgroundColor = 'lightgreen';
     } else {

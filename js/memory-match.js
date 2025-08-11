@@ -7,7 +7,6 @@ let cardData = [];
 let matchedIDs = [];
 let currentLanguage_mm;
 let gameBoard, matchesCountSpan, attemptsCountSpan, deckTitle;
-
 function handleCardClick(event) {
     if (lockBoard) return;
     const clickedCard = event.currentTarget;
@@ -70,15 +69,17 @@ function createBoard() {
     let gameCards = [];
     cardData.forEach(item => {
         gameCards.push({ type: 'word', value: item.word, id: item.id });
-        gameCards.push({ type: 'translation', value: item.translation, id: item.id });
+        gameCards.push({ type: 'image', value: item.image, id: item.id });
     });
     gameCards.sort(() => 0.5 - Math.random());
     gameCards.forEach(cardInfo => {
         const cardElement = document.createElement('div');
         cardElement.classList.add('card');
         cardElement.dataset.id = cardInfo.id;
-        cardElement.dataset.value = cardInfo.value;
-        cardElement.innerHTML = `<div class="card-face card-front">?</div><div class="card-face card-back">${cardInfo.value}</div>`;
+        cardElement.dataset.type = cardInfo.type;
+        const cardBackClass = cardInfo.type === 'image' ? 'card-back card-back-image' : 'card-back';
+        const cardBackContent = cardInfo.type === 'image' ? `<img src="${cardInfo.value}" alt="Match Image" style="width: 100%; height: 100%; object-fit: cover;">` : cardInfo.value;
+        cardElement.innerHTML = `<div class="card-face card-front">?</div><div class="card-face ${cardBackClass}">${cardBackContent}</div>`;
         if (matchedIDs.includes(cardInfo.id)) {
             cardElement.classList.add('matched');
         } else {
