@@ -5,22 +5,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const matchesCountSpan = document.getElementById('matches-count');
     const attemptsCountSpan = document.getElementById('attempts-count');
     const resetButton = document.getElementById('reset-button');
+    const languageSelector = document.getElementById('language-selector');
+    const deckTitle = document.getElementById('deck-title');
 
+    let currentLanguage = 'french_a2';
     let cards = [];
     let flippedCards = [];
     let matches = 0;
     let attempts = 0;
     let lockBoard = false;
 
-    const progressKey = 'cosy_progress_french_a2';
     let cardData = [];
     let matchedIDs = [];
 
     async function loadGame() {
         try {
-            const response = await fetch('data/french_a2.json');
+            const response = await fetch(`data/${currentLanguage}.json`);
             const data = await response.json();
             cardData = data.wordlist;
+            deckTitle.textContent = `${data.lang} ${data.level}`;
             loadProgress();
             resetGame(false); // don't clear progress on initial load
         } catch (error) {
@@ -113,6 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function saveProgress() {
+        const progressKey = `cosy_progress_${currentLanguage}`;
         const progress = {
             attempts: attempts,
             matchedIDs: matchedIDs
@@ -121,16 +125,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function loadProgress() {
+        const progressKey = `cosy_progress_${currentLanguage}`;
         const savedProgress = JSON.parse(localStorage.getItem(progressKey));
         if (savedProgress) {
             attempts = savedProgress.attempts || 0;
             matchedIDs = savedProgress.matchedIDs || [];
             matches = matchedIDs.length;
+        } else {
+            [matches, attempts, matchedIDs] = [0, 0, []];
         }
     }
 
     function resetGame(clearProgress = true) {
         if (clearProgress) {
+            const progressKey = `cosy_progress_${currentLanguage}`;
             localStorage.removeItem(progressKey);
             [matches, attempts, matchedIDs] = [0, 0, []];
         }
@@ -142,7 +150,13 @@ document.addEventListener('DOMContentLoaded', () => {
         createBoard();
     }
 
-    resetButton.addEventListener('click', resetGame);
+    function changeLanguage() {
+        currentLanguage = languageSelector.value;
+        loadGame();
+    }
+
+    resetButton.addEventListener('click', () => resetGame(true));
+    languageSelector.addEventListener('change', changeLanguage);
 
     // Initial game load
     loadGame();

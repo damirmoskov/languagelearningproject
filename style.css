@@ -12,6 +12,10 @@ header {
     margin-bottom: 20px;
 }
 
+.language-selector-container {
+    margin: 10px 0;
+}
+
 #game-board {
     display: grid;
     grid-template-columns: repeat(4, 100px);
