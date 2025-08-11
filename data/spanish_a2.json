@@ -2,53 +2,11 @@
   "lang": "Spanish",
   "level": "A2",
   "wordlist": [
-    {
-      "id": "w001",
-      "word": "gato",
-      "pos": "noun",
-      "translation": "cat",
-      "image": "images/cat.jpg",
-      "audio": "audio/gato.mp3"
-    },
-    {
-      "id": "w002",
-      "word": "perro",
-      "pos": "noun",
-      "translation": "dog",
-      "image": "images/dog.jpg",
-      "audio": "audio/perro.mp3"
-    },
-    {
-      "id": "w003",
-      "word": "casa",
-      "pos": "noun",
-      "translation": "house",
-      "image": "images/house.jpg",
-      "audio": "audio/casa.mp3"
-    },
-    {
-      "id": "w004",
-      "word": "libro",
-      "pos": "noun",
-      "translation": "book",
-      "image": "images/book.jpg",
-      "audio": "audio/libro.mp3"
-    },
-    {
-      "id": "w005",
-      "word": "comer",
-      "pos": "verb",
-      "translation": "to eat",
-      "image": "images/eat.jpg",
-      "audio": "audio/comer.mp3"
-    },
-    {
-      "id": "w006",
-      "word": "beber",
-      "pos": "verb",
-      "translation": "to drink",
-      "image": "images/drink.jpg",
-      "audio": "audio/beber.mp3"
-    }
+    {"id": "w001", "word": "gato", "pos": "noun", "translation": "cat", "image": "images/cat.jpg", "audio": "audio/gato.mp3"},
+    {"id": "w002", "word": "perro", "pos": "noun", "translation": "dog", "image": "images/dog.jpg", "audio": "audio/perro.mp3"},
+    {"id": "w003", "word": "casa", "pos": "noun", "translation": "house", "image": "images/house.jpg", "audio": "audio/casa.mp3"},
+    {"id": "w004", "word": "libro", "pos": "noun", "translation": "book", "image": "images/book.jpg", "audio": "audio/libro.mp3"},
+    {"id": "w005", "word": "comer", "pos": "verb", "translation": "to eat", "image": "images/eat.jpg", "audio": "audio/comer.mp3"},
+    {"id": "w006", "word": "beber", "pos": "verb", "translation": "to drink", "image": "images/drink.jpg", "audio": "audio/beber.mp3"}
   ]
 }

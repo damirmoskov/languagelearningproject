@@ -3,12 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>COSYlanguages - Memory Match</title>
+    <title>COSYlanguages - Games</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Memory Match</h1>
+        <h1>COSYlanguages</h1>
+        <div id="game-selector">
+            <button id="select-memory-match" class="game-selector-btn active">Memory Match</button>
+            <button id="select-cloze-race" class="game-selector-btn">Cloze Race</button>
+        </div>
         <div class="language-selector-container">
             <label for="language-selector">Language:</label>
             <select id="language-selector">
@@ -19,14 +23,30 @@
         <p id="deck-title">French A2</p>
     </header>
     <main>
-        <div id="game-board"></div>
-        <div id="progress-container">
-            <h2>Progress</h2>
-            <p>Matches: <span id="matches-count">0</span></p>
-            <p>Attempts: <span id="attempts-count">0</span></p>
-            <button id="reset-button">Reset Game</button>
+        <div id="memory-match-container" class="game-container active">
+            <div id="game-board"></div>
+            <div id="progress-container">
+                <h2>Progress</h2>
+                <p>Matches: <span id="matches-count">0</span></p>
+                <p>Attempts: <span id="attempts-count">0</span></p>
+                <button id="reset-button">Reset Game</button>
+            </div>
+        </div>
+
+        <div id="cloze-race-container" class="game-container">
+            <div id="cloze-stats">
+                <p>Time: <span id="cloze-timer">60</span>s</p>
+                <p>Score: <span id="cloze-score">0</span></p>
+            </div>
+            <div id="cloze-sentence-container">
+                <p id="cloze-sentence">Click "Start" to begin the race!</p>
+            </div>
+            <div id="cloze-options-container">
+                <!-- Options will be populated by JS -->
+            </div>
+            <button id="cloze-next-btn">Start</button>
         </div>
     </main>
-    <script src="script.js"></script>
+    <script type="module" src="js/main.js"></script>
 </body>
 </html>
