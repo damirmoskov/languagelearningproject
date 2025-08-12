@@ -1,0 +1,8 @@
+{
+  "lang": "Greek",
+  "level": "A2",
+  "wordlist": [
+    {"id": "w001", "word": "word1", "translation": "translation1", "image": "https://placehold.co/100x100/EFEFEF/AAAAAA&text=image1"},
+    {"id": "w002", "word": "word2", "translation": "translation2", "image": "https://placehold.co/100x100/EFEFEF/AAAAAA&text=image2"}
+  ]
+}

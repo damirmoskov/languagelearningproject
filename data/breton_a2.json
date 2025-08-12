@@ -1,0 +1,12 @@
+{
+  "lang": "Breton",
+  "level": "A2",
+  "wordlist": [
+    {"id": "w001", "word": "word1", "translation": "translation1", "image": "https://placehold.co/100x100/EFEFEF/AAAAAA&text=image1"},
+    {"id": "w002", "word": "word2", "translation": "translation2", "image": "https://placehold.co/100x100/EFEFEF/AAAAAA&text=image2"},
+    {"id": "w003", "word": "word3", "translation": "translation3", "image": "https://placehold.co/100x100/EFEFEF/AAAAAA&text=image3"},
+    {"id": "w004", "word": "word4", "translation": "translation4", "image": "https://placehold.co/100x100/EFEFEF/AAAAAA&text=image4"},
+    {"id": "w005", "word": "word5", "translation": "translation5", "image": "https://placehold.co/100x100/EFEFEF/AAAAAA&text=image5"},
+    {"id": "w006", "word": "word6", "translation": "translation6", "image": "https://placehold.co/100x100/EFEFEF/AAAAAA&text=image6"}
+  ]
+}

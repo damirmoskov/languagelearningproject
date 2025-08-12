@@ -12,12 +12,26 @@
         <div id="game-selector">
             <button id="select-memory-match" class="game-selector-btn active">Memory Match</button>
             <button id="select-cloze-race" class="game-selector-btn">Cloze Race</button>
+            <button id="select-spot-mistake" class="game-selector-btn">Spot the Mistake</button>
+            <button id="select-picture-bingo" class="game-selector-btn">Picture Bingo</button>
         </div>
         <div class="language-selector-container">
             <label for="language-selector">Language:</label>
             <select id="language-selector">
+                <option value="english_a2">English</option>
                 <option value="french_a2">French</option>
                 <option value="spanish_a2">Spanish</option>
+                <option value="italian_a2">Italian</option>
+                <option value="german_a2">German</option>
+                <option value="russian_a2">Russian</option>
+                <option value="portuguese_a2">Portuguese</option>
+                <option value="breton_a2">Breton</option>
+                <option value="armenian_a2">Armenian</option>
+                <option value="georgian_a2">Georgian</option>
+                <option value="tatar_a2">Tatar</option>
+                <option value="bachkir_a2">Bachkir</option>
+                <option value="tchuvash_a2">Tchuvash</option>
+                <option value="greek_a2">Greek</option>
             </select>
         </div>
         <p id="deck-title">French A2</p>
@@ -42,6 +56,27 @@
             </div>
             <div id="cloze-options-container"></div>
             <button id="cloze-next-btn">Start</button>
+        </div>
+
+        <div id="spot-mistake-container" class="game-container">
+            <div id="spot-mistake-stats">
+                <p>Mistakes Found: <span id="spot-mistake-found">0</span> / <span id="spot-mistake-total">0</span></p>
+            </div>
+            <div id="spot-mistake-text-container">
+                <!-- Text with mistakes will be rendered here by JS -->
+            </div>
+            <button id="spot-mistake-next-btn">Next Text</button>
+        </div>
+
+        <div id="picture-bingo-container" class="game-container">
+            <div id="bingo-controls">
+                <button id="bingo-new-card-btn">New Card</button>
+                <button id="bingo-next-clue-btn">Call Next Clue</button>
+            </div>
+            <p id="bingo-clue-display">Click "Call Next Clue" to start.</p>
+            <div id="bingo-card-grid">
+                <!-- 3x3 grid will be populated by JS -->
+            </div>
         </div>
     </main>
     <script type="module" src="js/main.js"></script>

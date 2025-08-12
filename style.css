@@ -21,3 +21,103 @@ header { text-align: center; margin-bottom: 20px; }
 #cloze-options-container button { padding: 15px; font-size: 1em; cursor: pointer; }
 #cloze-next-btn { padding: 10px 20px; border: none; background-color: #4a90e2; color: white; border-radius: 5px; cursor: pointer; font-size: 1em; }
 .card-back-image { padding: 5px; display: block; }
+
+/* Spot the Mistake Styles */
+#spot-mistake-stats {
+    margin-bottom: 20px;
+}
+
+#spot-mistake-text-container {
+    line-height: 2;
+    font-size: 1.2em;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+#spot-mistake-text-container .word {
+    cursor: pointer;
+    padding: 2px 0;
+    border-bottom: 1px solid transparent;
+}
+
+#spot-mistake-text-container .word:hover {
+    background-color: #dbeafe;
+}
+
+#spot-mistake-text-container .word.correct {
+    background-color: lightgreen;
+    cursor: default;
+}
+
+#spot-mistake-text-container .word.incorrect {
+    background-color: lightcoral;
+    text-decoration: line-through;
+    cursor: default;
+}
+
+#spot-mistake-next-btn {
+    padding: 10px 20px;
+    border: none;
+    background-color: #4a90e2;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+/* Picture Bingo Styles */
+#bingo-controls {
+    margin-bottom: 15px;
+    display: flex;
+    gap: 10px;
+}
+
+#bingo-clue-display {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    font-style: italic;
+    color: #555;
+}
+
+#bingo-card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 120px);
+    gap: 10px;
+}
+
+.bingo-cell {
+    width: 120px;
+    height: 120px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background-color: #fff;
+    position: relative;
+}
+
+.bingo-cell img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.bingo-cell.marked::after {
+    content: 'X';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 80px;
+    color: rgba(255, 0, 0, 0.7);
+    font-weight: bold;
+}

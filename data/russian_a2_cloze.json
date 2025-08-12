@@ -1,0 +1,30 @@
+{
+  "lang": "Russian",
+  "level": "A2",
+  "cloze_sentences": [
+    {
+      "id": "c001",
+      "sentence_template": "Это ___ собака.",
+      "correct_answer": "моя",
+      "options": ["мой", "моё", "мои"]
+    },
+    {
+      "id": "c002",
+      "sentence_template": "У него ___ шоколад.",
+      "correct_answer": "есть",
+      "options": ["быть", "любит", "хочет"]
+    },
+    {
+      "id": "c003",
+      "sentence_template": "Мы идём ___ парк.",
+      "correct_answer": "в",
+      "options": ["на", "к", "из"]
+    },
+    {
+      "id": "c004",
+      "sentence_template": "Книга лежит ___ столе.",
+      "correct_answer": "на",
+      "options": ["в", "под", "о"]
+    }
+  ]
+}
