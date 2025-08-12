@@ -14,6 +14,7 @@ import { initSynonymChain } from './synonym-chain.js';
 import { initWrongEndingDetective } from './wrong-ending-detective.js';
 import { initPictureDebate } from './picture-debate.js';
 import { initWhatHappensNext } from './what-happens-next.js';
+import { initWordDetective } from './word-detective.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     let activeGame = localStorage.getItem('cosy_activeGame') || 'memory-match';
@@ -38,6 +39,7 @@ document.addEventListener('DOMContentLoaded', () => {
         wrongEndingDetectiveContainer: document.getElementById('wrong-ending-detective-container'),
         pictureDebateContainer: document.getElementById('picture-debate-container'),
         whatHappensNextContainer: document.getElementById('what-happens-next-container'),
+        wordDetectiveContainer: document.getElementById('word-detective-container'),
         selectMemoryMatchBtn: document.getElementById('select-memory-match'),
         selectClozeRaceBtn: document.getElementById('select-cloze-race'),
         selectSpotMistakeBtn: document.getElementById('select-spot-mistake'),
@@ -54,6 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
         selectWrongEndingDetectiveBtn: document.getElementById('select-wrong-ending-detective'),
         selectPictureDebateBtn: document.getElementById('select-picture-debate'),
         selectWhatHappensNextBtn: document.getElementById('select-what-happens-next'),
+        selectWordDetectiveBtn: document.getElementById('select-word-detective'),
         memoryMatchElements: {
             gameBoard: document.getElementById('game-board'),
             matchesCountSpan: document.getElementById('matches-count'),
@@ -189,6 +192,16 @@ document.addEventListener('DOMContentLoaded', () => {
             modelContinuationsEl: document.getElementById('whn-model-continuations'),
             nextBtn: document.getElementById('whn-next-btn'),
             deckTitle: document.getElementById('deck-title')
+        },
+        wordDetectiveElements: {
+            paragraphEl: document.getElementById('wd-paragraph'),
+            userInputEl: document.getElementById('wd-user-input'),
+            submitBtn: document.getElementById('wd-submit-btn'),
+            definitionContainerEl: document.getElementById('wd-definition-container'),
+            mcqContainerEl: document.getElementById('wd-mcq-container'),
+            nextBtn: document.getElementById('wd-next-btn'),
+            scoreEl: document.getElementById('wd-score'),
+            deckTitle: document.getElementById('deck-title')
         }
     };
 
@@ -225,6 +238,8 @@ document.addEventListener('DOMContentLoaded', () => {
             initPictureDebate(currentLanguage, dom.pictureDebateElements);
         } else if (activeGame === 'what-happens-next') {
             initWhatHappensNext(currentLanguage, dom.whatHappensNextElements);
+        } else if (activeGame === 'word-detective') {
+            initWordDetective(currentLanguage, dom.wordDetectiveElements);
         }
     }
 
@@ -247,6 +262,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.selectWrongEndingDetectiveBtn.classList.toggle('active', gameName === 'wrong-ending-detective');
         dom.selectPictureDebateBtn.classList.toggle('active', gameName === 'picture-debate');
         dom.selectWhatHappensNextBtn.classList.toggle('active', gameName === 'what-happens-next');
+        dom.selectWordDetectiveBtn.classList.toggle('active', gameName === 'word-detective');
 
         dom.memoryMatchContainer.classList.toggle('active', gameName === 'memory-match');
         dom.clozeRaceContainer.classList.toggle('active', gameName === 'cloze-race');
@@ -264,6 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.wrongEndingDetectiveContainer.classList.toggle('active', gameName === 'wrong-ending-detective');
         dom.pictureDebateContainer.classList.toggle('active', gameName === 'picture-debate');
         dom.whatHappensNextContainer.classList.toggle('active', gameName === 'what-happens-next');
+        dom.wordDetectiveContainer.classList.toggle('active', gameName === 'word-detective');
 
         initializeGame();
     }
@@ -292,6 +309,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dom.selectWrongEndingDetectiveBtn.addEventListener('click', () => switchGame('wrong-ending-detective'));
     dom.selectPictureDebateBtn.addEventListener('click', () => switchGame('picture-debate'));
     dom.selectWhatHappensNextBtn.addEventListener('click', () => switchGame('what-happens-next'));
+    dom.selectWordDetectiveBtn.addEventListener('click', () => switchGame('word-detective'));
 
     // Initialize the game based on the loaded state
     switchGame(activeGame);

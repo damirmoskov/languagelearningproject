@@ -26,6 +26,7 @@
             <button id="select-wrong-ending-detective" class="game-selector-btn">Wrong Ending Detective</button>
             <button id="select-picture-debate" class="game-selector-btn">Picture Debate</button>
             <button id="select-what-happens-next" class="game-selector-btn">What Happens Next?</button>
+            <button id="select-word-detective" class="game-selector-btn">Word Detective</button>
         </div>
         <div class="language-selector-container">
             <label for="language-selector">Language:</label>
@@ -251,6 +252,17 @@
             <button id="whn-submit-btn">Submit</button>
             <div id="whn-model-continuations" style="display: none;"></div>
             <button id="whn-next-btn" style="display: none;">Next Story</button>
+        </div>
+
+        <div id="word-detective-container" class="game-container">
+            <h2>Word Detective</h2>
+            <p>Score: <span id="wd-score">0</span></p>
+            <div id="wd-paragraph" class="paragraph-text"></div>
+            <textarea id="wd-user-input" rows="3" placeholder="What do you think the highlighted word means?"></textarea>
+            <button id="wd-submit-btn">Submit Definition</button>
+            <div id="wd-definition-container" style="display: none;"></div>
+            <div id="wd-mcq-container" style="display: none;"></div>
+            <button id="wd-next-btn" style="display: none;">Next Word</button>
         </div>
     </main>
     <script type="module" src="js/main.js"></script>

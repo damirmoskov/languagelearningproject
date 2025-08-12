@@ -1,0 +1,45 @@
+{
+  "lang": "English",
+  "level": "A2",
+  "challenges": [
+    {
+      "id": "wd001",
+      "paragraph": "The desert is a vast and {arid} place. There is very little water, and not many plants can grow in the dry soil.",
+      "target_word": "arid",
+      "definition": "Having little or no rain; too dry or barren to support vegetation.",
+      "synonyms": ["dry", "barren", "parched"],
+      "antonyms": ["wet", "fertile", "damp"],
+      "mcq_synonym": {
+        "question": "Which word is a synonym for arid?",
+        "options": ["wet", "dry", "cold", "green"],
+        "correct_answer": "dry"
+      }
+    },
+    {
+      "id": "wd002",
+      "paragraph": "After running the marathon, the athlete was completely {exhausted}. He could barely stand up and needed to rest for a long time.",
+      "target_word": "exhausted",
+      "definition": "Extremely tired.",
+      "synonyms": ["tired", "weary", "fatigued"],
+      "antonyms": ["energetic", "rested", "active"],
+      "mcq_synonym": {
+        "question": "Which word means the same as exhausted?",
+        "options": ["happy", "sad", "very tired", "excited"],
+        "correct_answer": "very tired"
+      }
+    },
+    {
+      "id": "wd003",
+      "paragraph": "The old library was full of {ancient} books. Some of them were hundreds of years old and had to be handled very carefully.",
+      "target_word": "ancient",
+      "definition": "Belonging to the very distant past and no longer in existence.",
+      "synonyms": ["old", "antique", "historic"],
+      "antonyms": ["new", "modern", "recent"],
+      "mcq_synonym": {
+        "question": "Which word is a synonym for ancient?",
+        "options": ["new", "very old", "interesting", "big"],
+        "correct_answer": "very old"
+      }
+    }
+  ]
+}
