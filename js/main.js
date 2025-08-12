@@ -7,6 +7,8 @@ import { initAdaptiveFlashcards } from './adaptive-flashcards.js';
 import { initStoryBuilder } from './story-builder.js';
 import { initRoleplaySimulator } from './roleplay-simulator.js';
 import { initSynonymSwap } from './synonym-swap.js';
+import { initMysteryGame } from './mystery-game.js';
+import { initReverseTranslation } from './reverse-translation.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     let activeGame = localStorage.getItem('cosy_activeGame') || 'memory-match';
@@ -24,6 +26,8 @@ document.addEventListener('DOMContentLoaded', () => {
         storyBuilderContainer: document.getElementById('story-builder-container'),
         roleplaySimulatorContainer: document.getElementById('roleplay-simulator-container'),
         synonymSwapContainer: document.getElementById('synonym-swap-container'),
+        mysteryGameContainer: document.getElementById('mystery-game-container'),
+        reverseTranslationContainer: document.getElementById('reverse-translation-container'),
         selectMemoryMatchBtn: document.getElementById('select-memory-match'),
         selectClozeRaceBtn: document.getElementById('select-cloze-race'),
         selectSpotMistakeBtn: document.getElementById('select-spot-mistake'),
@@ -33,6 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
         selectStoryBuilderBtn: document.getElementById('select-story-builder'),
         selectRoleplaySimulatorBtn: document.getElementById('select-roleplay-simulator'),
         selectSynonymSwapBtn: document.getElementById('select-synonym-swap'),
+        selectMysteryGameBtn: document.getElementById('select-mystery-game'),
+        selectReverseTranslationBtn: document.getElementById('select-reverse-translation'),
         memoryMatchElements: {
             gameBoard: document.getElementById('game-board'),
             matchesCountSpan: document.getElementById('matches-count'),
@@ -102,6 +108,24 @@ document.addEventListener('DOMContentLoaded', () => {
             scoreSpan: document.getElementById('ss-score'),
             nextBtn: document.getElementById('ss-next-btn'),
             deckTitle: document.getElementById('deck-title')
+        },
+        mysteryGameElements: {
+            cluesListEl: document.getElementById('mg-clues-list'),
+            guessInput: document.getElementById('mg-guess-input'),
+            guessBtn: document.getElementById('mg-guess-btn'),
+            nextClueBtn: document.getElementById('mg-next-clue-btn'),
+            feedbackEl: document.getElementById('mg-feedback'),
+            scoreEl: document.getElementById('mg-score'),
+            deckTitle: document.getElementById('deck-title')
+        },
+        reverseTranslationElements: {
+            challengePromptEl: document.getElementById('rt-challenge-prompt'),
+            userInputEl: document.getElementById('rt-user-input'),
+            submitBtn: document.getElementById('rt-submit-btn'),
+            modelAnswerEl: document.getElementById('rt-model-answer-container'),
+            feedbackEl: document.getElementById('rt-feedback'),
+            nextBtn: document.getElementById('rt-next-btn'),
+            deckTitle: document.getElementById('deck-title')
         }
     };
 
@@ -124,6 +148,10 @@ document.addEventListener('DOMContentLoaded', () => {
             initRoleplaySimulator(currentLanguage, dom.roleplaySimulatorElements);
         } else if (activeGame === 'synonym-swap') {
             initSynonymSwap(currentLanguage, dom.synonymSwapElements);
+        } else if (activeGame === 'mystery-game') {
+            initMysteryGame(currentLanguage, dom.mysteryGameElements);
+        } else if (activeGame === 'reverse-translation') {
+            initReverseTranslation(currentLanguage, dom.reverseTranslationElements);
         }
     }
 
@@ -139,6 +167,8 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.selectStoryBuilderBtn.classList.toggle('active', gameName === 'story-builder');
         dom.selectRoleplaySimulatorBtn.classList.toggle('active', gameName === 'roleplay-simulator');
         dom.selectSynonymSwapBtn.classList.toggle('active', gameName === 'synonym-swap');
+        dom.selectMysteryGameBtn.classList.toggle('active', gameName === 'mystery-game');
+        dom.selectReverseTranslationBtn.classList.toggle('active', gameName === 'reverse-translation');
 
         dom.memoryMatchContainer.classList.toggle('active', gameName === 'memory-match');
         dom.clozeRaceContainer.classList.toggle('active', gameName === 'cloze-race');
@@ -149,6 +179,8 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.storyBuilderContainer.classList.toggle('active', gameName === 'story-builder');
         dom.roleplaySimulatorContainer.classList.toggle('active', gameName === 'roleplay-simulator');
         dom.synonymSwapContainer.classList.toggle('active', gameName === 'synonym-swap');
+        dom.mysteryGameContainer.classList.toggle('active', gameName === 'mystery-game');
+        dom.reverseTranslationContainer.classList.toggle('active', gameName === 'reverse-translation');
 
         initializeGame();
     }
@@ -170,6 +202,8 @@ document.addEventListener('DOMContentLoaded', () => {
     dom.selectStoryBuilderBtn.addEventListener('click', () => switchGame('story-builder'));
     dom.selectRoleplaySimulatorBtn.addEventListener('click', () => switchGame('roleplay-simulator'));
     dom.selectSynonymSwapBtn.addEventListener('click', () => switchGame('synonym-swap'));
+    dom.selectMysteryGameBtn.addEventListener('click', () => switchGame('mystery-game'));
+    dom.selectReverseTranslationBtn.addEventListener('click', () => switchGame('reverse-translation'));
 
     // Initialize the game based on the loaded state
     switchGame(activeGame);

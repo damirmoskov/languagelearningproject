@@ -19,6 +19,8 @@
             <button id="select-story-builder" class="game-selector-btn">Story Builder</button>
             <button id="select-roleplay-simulator" class="game-selector-btn">Roleplay Simulator</button>
             <button id="select-synonym-swap" class="game-selector-btn">Synonym Swap</button>
+            <button id="select-mystery-game" class="game-selector-btn">5 Clues Mystery</button>
+            <button id="select-reverse-translation" class="game-selector-btn">Reverse Translation</button>
         </div>
         <div class="language-selector-container">
             <label for="language-selector">Language:</label>
@@ -154,6 +156,33 @@
             </div>
             <div id="ss-options-container"></div>
             <button id="ss-next-btn">Next</button>
+        </div>
+
+        <div id="mystery-game-container" class="game-container">
+            <h2>5 Clues Mystery</h2>
+            <p>Score: <span id="mg-score">0</span></p>
+            <ul id="mg-clues-list">
+                <!-- Clues will be populated by JS -->
+            </ul>
+            <div id="mg-input-container">
+                <input type="text" id="mg-guess-input" placeholder="What is it?">
+                <button id="mg-guess-btn">Guess</button>
+            </div>
+            <button id="mg-next-clue-btn">Next Clue</button>
+            <p id="mg-feedback"></p>
+        </div>
+
+        <div id="reverse-translation-container" class="game-container">
+            <h2>Reverse Translation</h2>
+            <p id="rt-challenge-prompt">Loading challenge...</p>
+            <textarea id="rt-user-input" rows="4" placeholder="Write your definition here..."></textarea>
+            <button id="rt-submit-btn">Submit Definition</button>
+            <div id="rt-model-answer-container" style="display: none;">
+                <h3>Model Definition:</h3>
+                <p></p>
+            </div>
+            <p id="rt-feedback"></p>
+            <button id="rt-next-btn" style="display: none;">Next Challenge</button>
         </div>
     </main>
     <script type="module" src="js/main.js"></script>
