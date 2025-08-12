@@ -1,0 +1,12 @@
+{
+  "lang": "Italian",
+  "level": "A2",
+  "wordlist": [
+    {"id": "w001", "word": "gatto", "translation": "cat", "image": "https://placehold.co/100x100/EFEFEF/AAAAAA&text=cat"},
+    {"id": "w002", "word": "cane", "translation": "dog", "image": "https://placehold.co/100x100/EFEFEF/AAAAAA&text=dog"},
+    {"id": "w003", "word": "casa", "translation": "house", "image": "https://placehold.co/100x100/EFEFEF/AAAAAA&text=house"},
+    {"id": "w004", "word": "libro", "translation": "book", "image": "https://placehold.co/100x100/EFEFEF/AAAAAA&text=book"},
+    {"id": "w005", "word": "mangiare", "translation": "to eat", "image": "https://placehold.co/100x100/EFEFEF/AAAAAA&text=eat"},
+    {"id": "w006", "word": "bere", "translation": "to drink", "image": "https://placehold.co/100x100/EFEFEF/AAAAAA&text=drink"}
+  ]
+}

@@ -11,6 +11,8 @@ let gameBoard, matchesCountSpan, attemptsCountSpan, deckTitle;
 const langCodeMap = {
     french: 'fr-FR',
     spanish: 'es-ES',
+    italian: 'it-IT',
+    german: 'de-DE',
 };
 
 function speak(text, lang) {
