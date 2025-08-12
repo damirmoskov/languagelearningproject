@@ -15,6 +15,7 @@ import { initWrongEndingDetective } from './wrong-ending-detective.js';
 import { initPictureDebate } from './picture-debate.js';
 import { initWhatHappensNext } from './what-happens-next.js';
 import { initWordDetective } from './word-detective.js';
+import { initMetaphorMatch } from './metaphor-match.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     let activeGame = localStorage.getItem('cosy_activeGame') || 'memory-match';
@@ -40,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         pictureDebateContainer: document.getElementById('picture-debate-container'),
         whatHappensNextContainer: document.getElementById('what-happens-next-container'),
         wordDetectiveContainer: document.getElementById('word-detective-container'),
+        metaphorMatchContainer: document.getElementById('metaphor-match-container'),
         selectMemoryMatchBtn: document.getElementById('select-memory-match'),
         selectClozeRaceBtn: document.getElementById('select-cloze-race'),
         selectSpotMistakeBtn: document.getElementById('select-spot-mistake'),
@@ -57,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         selectPictureDebateBtn: document.getElementById('select-picture-debate'),
         selectWhatHappensNextBtn: document.getElementById('select-what-happens-next'),
         selectWordDetectiveBtn: document.getElementById('select-word-detective'),
+        selectMetaphorMatchBtn: document.getElementById('select-metaphor-match'),
         memoryMatchElements: {
             gameBoard: document.getElementById('game-board'),
             matchesCountSpan: document.getElementById('matches-count'),
@@ -202,6 +205,14 @@ document.addEventListener('DOMContentLoaded', () => {
             nextBtn: document.getElementById('wd-next-btn'),
             scoreEl: document.getElementById('wd-score'),
             deckTitle: document.getElementById('deck-title')
+        },
+        metaphorMatchElements: {
+            metaphorEl: document.getElementById('mm-metaphor'),
+            optionsContainerEl: document.getElementById('mm-options-container'),
+            explanationEl: document.getElementById('mm-explanation'),
+            nextBtn: document.getElementById('mm-next-btn'),
+            scoreEl: document.getElementById('mm-score'),
+            deckTitle: document.getElementById('deck-title')
         }
     };
 
@@ -240,6 +251,8 @@ document.addEventListener('DOMContentLoaded', () => {
             initWhatHappensNext(currentLanguage, dom.whatHappensNextElements);
         } else if (activeGame === 'word-detective') {
             initWordDetective(currentLanguage, dom.wordDetectiveElements);
+        } else if (activeGame === 'metaphor-match') {
+            initMetaphorMatch(currentLanguage, dom.metaphorMatchElements);
         }
     }
 
@@ -263,6 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.selectPictureDebateBtn.classList.toggle('active', gameName === 'picture-debate');
         dom.selectWhatHappensNextBtn.classList.toggle('active', gameName === 'what-happens-next');
         dom.selectWordDetectiveBtn.classList.toggle('active', gameName === 'word-detective');
+        dom.selectMetaphorMatchBtn.classList.toggle('active', gameName === 'metaphor-match');
 
         dom.memoryMatchContainer.classList.toggle('active', gameName === 'memory-match');
         dom.clozeRaceContainer.classList.toggle('active', gameName === 'cloze-race');
@@ -281,6 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.pictureDebateContainer.classList.toggle('active', gameName === 'picture-debate');
         dom.whatHappensNextContainer.classList.toggle('active', gameName === 'what-happens-next');
         dom.wordDetectiveContainer.classList.toggle('active', gameName === 'word-detective');
+        dom.metaphorMatchContainer.classList.toggle('active', gameName === 'metaphor-match');
 
         initializeGame();
     }
@@ -310,6 +325,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dom.selectPictureDebateBtn.addEventListener('click', () => switchGame('picture-debate'));
     dom.selectWhatHappensNextBtn.addEventListener('click', () => switchGame('what-happens-next'));
     dom.selectWordDetectiveBtn.addEventListener('click', () => switchGame('word-detective'));
+    dom.selectMetaphorMatchBtn.addEventListener('click', () => switchGame('metaphor-match'));
 
     // Initialize the game based on the loaded state
     switchGame(activeGame);

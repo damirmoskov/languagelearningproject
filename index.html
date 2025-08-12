@@ -27,6 +27,7 @@
             <button id="select-picture-debate" class="game-selector-btn">Picture Debate</button>
             <button id="select-what-happens-next" class="game-selector-btn">What Happens Next?</button>
             <button id="select-word-detective" class="game-selector-btn">Word Detective</button>
+            <button id="select-metaphor-match" class="game-selector-btn">Metaphor Match</button>
         </div>
         <div class="language-selector-container">
             <label for="language-selector">Language:</label>
@@ -263,6 +264,15 @@
             <div id="wd-definition-container" style="display: none;"></div>
             <div id="wd-mcq-container" style="display: none;"></div>
             <button id="wd-next-btn" style="display: none;">Next Word</button>
+        </div>
+
+        <div id="metaphor-match-container" class="game-container">
+            <h2>Metaphor Match</h2>
+            <p>Score: <span id="mm-score">0</span></p>
+            <p id="mm-metaphor" class="metaphor-quote"></p>
+            <div id="mm-options-container"></div>
+            <div id="mm-explanation" style="display: none;"></div>
+            <button id="mm-next-btn" style="display: none;">Next Metaphor</button>
         </div>
     </main>
     <script type="module" src="js/main.js"></script>
