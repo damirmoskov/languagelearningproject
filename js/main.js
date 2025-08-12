@@ -5,10 +5,11 @@ import { initPictureBingo } from './picture-bingo.js';
 import { initPronunciationSprint } from './pronunciation-sprint.js';
 import { initAdaptiveFlashcards } from './adaptive-flashcards.js';
 import { initStoryBuilder } from './story-builder.js';
+import { initRoleplaySimulator } from './roleplay-simulator.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    let activeGame = 'memory-match';
-    let currentLanguage = 'french_a2';
+    let activeGame = localStorage.getItem('cosy_activeGame') || 'memory-match';
+    let currentLanguage = localStorage.getItem('cosy_currentLanguage') || 'french_a2';
 
     const dom = {
         languageSelector: document.getElementById('language-selector'),
@@ -20,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
         pronunciationSprintContainer: document.getElementById('pronunciation-sprint-container'),
         adaptiveFlashcardsContainer: document.getElementById('adaptive-flashcards-container'),
         storyBuilderContainer: document.getElementById('story-builder-container'),
+        roleplaySimulatorContainer: document.getElementById('roleplay-simulator-container'),
         selectMemoryMatchBtn: document.getElementById('select-memory-match'),
         selectClozeRaceBtn: document.getElementById('select-cloze-race'),
         selectSpotMistakeBtn: document.getElementById('select-spot-mistake'),
@@ -27,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         selectPronunciationSprintBtn: document.getElementById('select-pronunciation-sprint'),
         selectAdaptiveFlashcardsBtn: document.getElementById('select-adaptive-flashcards'),
         selectStoryBuilderBtn: document.getElementById('select-story-builder'),
+        selectRoleplaySimulatorBtn: document.getElementById('select-roleplay-simulator'),
         memoryMatchElements: {
             gameBoard: document.getElementById('game-board'),
             matchesCountSpan: document.getElementById('matches-count'),
@@ -83,6 +86,12 @@ document.addEventListener('DOMContentLoaded', () => {
             nextBtn: document.getElementById('sb-next-btn'),
             feedback: document.getElementById('sb-feedback'),
             deckTitle: document.getElementById('sb-deck-title')
+        },
+        roleplaySimulatorElements: {
+            scenarioTitle: document.getElementById('rs-scenario-title'),
+            conversationLog: document.getElementById('rs-conversation-log'),
+            npcPrompt: document.getElementById('rs-npc-prompt'),
+            userChoices: document.getElementById('rs-user-choices')
         }
     };
 
@@ -101,11 +110,14 @@ document.addEventListener('DOMContentLoaded', () => {
             initAdaptiveFlashcards(currentLanguage, dom.adaptiveFlashcardsElements);
         } else if (activeGame === 'story-builder') {
             initStoryBuilder(currentLanguage, dom.storyBuilderElements);
+        } else if (activeGame === 'roleplay-simulator') {
+            initRoleplaySimulator(currentLanguage, dom.roleplaySimulatorElements);
         }
     }
 
     function switchGame(gameName) {
         activeGame = gameName;
+        localStorage.setItem('cosy_activeGame', gameName);
         dom.selectMemoryMatchBtn.classList.toggle('active', gameName === 'memory-match');
         dom.selectClozeRaceBtn.classList.toggle('active', gameName === 'cloze-race');
         dom.selectSpotMistakeBtn.classList.toggle('active', gameName === 'spot-the-mistake');
@@ -113,6 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.selectPronunciationSprintBtn.classList.toggle('active', gameName === 'pronunciation-sprint');
         dom.selectAdaptiveFlashcardsBtn.classList.toggle('active', gameName === 'adaptive-flashcards');
         dom.selectStoryBuilderBtn.classList.toggle('active', gameName === 'story-builder');
+        dom.selectRoleplaySimulatorBtn.classList.toggle('active', gameName === 'roleplay-simulator');
 
         dom.memoryMatchContainer.classList.toggle('active', gameName === 'memory-match');
         dom.clozeRaceContainer.classList.toggle('active', gameName === 'cloze-race');
@@ -121,15 +134,18 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.pronunciationSprintContainer.classList.toggle('active', gameName === 'pronunciation-sprint');
         dom.adaptiveFlashcardsContainer.classList.toggle('active', gameName === 'adaptive-flashcards');
         dom.storyBuilderContainer.classList.toggle('active', gameName === 'story-builder');
+        dom.roleplaySimulatorContainer.classList.toggle('active', gameName === 'roleplay-simulator');
 
         initializeGame();
     }
 
     function changeLanguage() {
         currentLanguage = dom.languageSelector.value;
+        localStorage.setItem('cosy_currentLanguage', currentLanguage);
         initializeGame();
     }
 
+    dom.languageSelector.value = currentLanguage;
     dom.languageSelector.addEventListener('change', changeLanguage);
     dom.selectMemoryMatchBtn.addEventListener('click', () => switchGame('memory-match'));
     dom.selectClozeRaceBtn.addEventListener('click', () => switchGame('cloze-race'));
@@ -138,6 +154,8 @@ document.addEventListener('DOMContentLoaded', () => {
     dom.selectPronunciationSprintBtn.addEventListener('click', () => switchGame('pronunciation-sprint'));
     dom.selectAdaptiveFlashcardsBtn.addEventListener('click', () => switchGame('adaptive-flashcards'));
     dom.selectStoryBuilderBtn.addEventListener('click', () => switchGame('story-builder'));
+    dom.selectRoleplaySimulatorBtn.addEventListener('click', () => switchGame('roleplay-simulator'));
 
-    initializeGame();
+    // Initialize the game based on the loaded state
+    switchGame(activeGame);
 });

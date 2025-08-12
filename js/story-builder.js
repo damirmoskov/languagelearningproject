@@ -6,7 +6,24 @@ let currentLanguage_sb;
 let allSentences = [];
 let availableSentences = [];
 let currentSentence = null;
-let draggedChunk = null; // To keep track of the element being dragged
+let draggedChunk = null; // For drag-and-drop
+let heldChunk = null; // For keyboard accessibility
+
+// --- Helper for localStorage ---
+const getStorageKey = () => `cosy_sb_progress_${currentLanguage_sb}`;
+
+function saveState(state) {
+    localStorage.setItem(getStorageKey(), JSON.stringify(state));
+}
+
+function loadState() {
+    const savedState = localStorage.getItem(getStorageKey());
+    return savedState ? JSON.parse(savedState) : { completedIds: [], puzzle: null };
+}
+
+function clearState() {
+    localStorage.removeItem(getStorageKey());
+}
 
 /**
  * Loads sentence data for the game.
@@ -17,8 +34,12 @@ async function loadSentences() {
         if (!response.ok) throw new Error(`Data file not found for ${currentLanguage_sb}`);
         const data = await response.json();
         allSentences = data.sentences;
-        availableSentences = [...allSentences]; // Create a copy to modify during the session
         deckTitleEl.textContent = `${data.lang} ${data.level} - Story Builder`;
+
+        // Filter out completed sentences
+        const { completedIds } = loadState();
+        availableSentences = allSentences.filter(s => !completedIds.includes(s.id));
+
     } catch (error) {
         console.error("Could not load story builder data:", error);
         deckTitleEl.textContent = "Error loading data";
@@ -30,14 +51,15 @@ async function loadSentences() {
 /**
  * Displays the next sentence for the user to build.
  */
-function displayNextSentence() {
-    if (availableSentences.length === 0) {
+function displayNextSentence(puzzleState = null) {
+    if (availableSentences.length === 0 && !puzzleState) {
         targetSentenceEl.innerHTML = "";
         sourceChunksEl.innerHTML = "You've completed all the sentences!";
         feedbackEl.textContent = "Great job! 🎉";
         checkBtn.disabled = true;
-        nextBtn.textContent = "Play Again"; // Allow restarting
+        nextBtn.textContent = "Play Again";
         nextBtn.onclick = () => {
+            clearState();
             availableSentences = [...allSentences];
             nextBtn.textContent = "Next Sentence";
             displayNextSentence();
@@ -45,30 +67,65 @@ function displayNextSentence() {
         return;
     }
 
-    const sentenceIndex = Math.floor(Math.random() * availableSentences.length);
-    currentSentence = availableSentences.splice(sentenceIndex, 1)[0];
+    if (!puzzleState) {
+        const sentenceIndex = Math.floor(Math.random() * availableSentences.length);
+        currentSentence = availableSentences.splice(sentenceIndex, 1)[0];
+    } else {
+        currentSentence = allSentences.find(s => s.id === puzzleState.id);
+    }
 
     targetSentenceEl.innerHTML = "";
     sourceChunksEl.innerHTML = "";
     feedbackEl.textContent = "";
     checkBtn.disabled = false;
 
-    const shuffledChunks = [...currentSentence.chunks].sort(() => Math.random() - 0.5);
-    shuffledChunks.forEach(chunk => {
-        const chunkEl = document.createElement('div');
-        chunkEl.textContent = chunk.text;
-        chunkEl.className = 'sb-chunk';
-        chunkEl.draggable = true;
-        chunkEl.dataset.id = chunk.id;
-        chunkEl.addEventListener('dragstart', handleDragStart);
-        chunkEl.addEventListener('dragend', handleDragEnd);
+    const chunksToDisplay = puzzleState ? puzzleState.source : [...currentSentence.chunks].sort(() => Math.random() - 0.5);
+
+    chunksToDisplay.forEach(chunkData => {
+        const chunk = currentSentence.chunks.find(c => c.id === (chunkData.id || chunkData));
+        if (!chunk) return;
+        const chunkEl = createChunkElement(chunk);
         sourceChunksEl.appendChild(chunkEl);
     });
+
+    if (puzzleState) {
+        puzzleState.target.forEach(chunkId => {
+            const chunk = currentSentence.chunks.find(c => c.id === chunkId);
+            if (!chunk) return;
+            const chunkEl = createChunkElement(chunk);
+            targetSentenceEl.appendChild(chunkEl);
+        });
+    }
+
+    if (!puzzleState) {
+        savePuzzleState();
+    }
 }
 
 /**
  * Checks if the user's constructed sentence is correct.
  */
+function createChunkElement(chunk) {
+    const chunkEl = document.createElement('div');
+    chunkEl.textContent = chunk.text;
+    chunkEl.className = 'sb-chunk';
+    chunkEl.draggable = true;
+    chunkEl.dataset.id = chunk.id;
+    chunkEl.tabIndex = 0;
+    chunkEl.addEventListener('dragstart', handleDragStart);
+    chunkEl.addEventListener('dragend', handleDragEnd);
+    chunkEl.addEventListener('keydown', handleChunkKeyDown);
+    return chunkEl;
+}
+
+function savePuzzleState() {
+    const state = loadState();
+    const sourceIds = [...sourceChunksEl.children].map(c => c.dataset.id);
+    const targetIds = [...targetSentenceEl.children].map(c => c.dataset.id);
+    state.puzzle = { id: currentSentence.id, source: sourceIds, target: targetIds };
+    saveState(state);
+}
+
 function checkAnswer() {
     const droppedChunks = [...targetSentenceEl.children];
     const droppedIds = droppedChunks.map(chunk => chunk.dataset.id);
@@ -79,6 +136,11 @@ function checkAnswer() {
         feedbackEl.textContent = "Correct! Well done!";
         feedbackEl.style.color = 'green';
         checkBtn.disabled = true;
+
+        const state = loadState();
+        state.completedIds.push(currentSentence.id);
+        state.puzzle = null; // Clear puzzle state after completion
+        saveState(state);
     } else {
         feedbackEl.textContent = "Not quite right. Try rearranging the words.";
         feedbackEl.style.color = 'red';
@@ -107,7 +169,6 @@ function handleDrop(e) {
     e.preventDefault();
     const dropzone = e.target.closest('.dropzone, .source-zone');
     if (dropzone) {
-        // Find the element being dragged over to insert before it
         const afterElement = getDragAfterElement(dropzone, e.clientY);
         if (afterElement == null) {
             dropzone.appendChild(draggedChunk);
@@ -115,6 +176,7 @@ function handleDrop(e) {
             dropzone.insertBefore(draggedChunk, afterElement);
         }
     }
+    savePuzzleState();
 }
 
 function getDragAfterElement(container, y) {
@@ -129,6 +191,37 @@ function getDragAfterElement(container, y) {
             return closest;
         }
     }, { offset: Number.NEGATIVE_INFINITY }).element;
+}
+
+// --- Keyboard Accessibility Handlers ---
+
+function handleChunkKeyDown(e) {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    e.preventDefault();
+
+    if (heldChunk) {
+        const dropTarget = e.currentTarget;
+        if (dropTarget.classList.contains('sb-chunk')) {
+            dropTarget.parentNode.insertBefore(heldChunk, dropTarget);
+        }
+        heldChunk.classList.remove('held');
+        heldChunk = null;
+    } else {
+        heldChunk = e.currentTarget;
+        heldChunk.classList.add('held');
+    }
+}
+
+function handleZoneKeyDown(e) {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    if (!heldChunk) return;
+    e.preventDefault();
+
+    const dropzone = e.currentTarget;
+    dropzone.appendChild(heldChunk);
+    heldChunk.classList.remove('held');
+    heldChunk = null;
+    savePuzzleState();
 }
 
 
@@ -146,14 +239,25 @@ export async function initStoryBuilder(lang, elements) {
     deckTitleEl = elements.deckTitle;
 
     checkBtn.onclick = checkAnswer;
-    nextBtn.onclick = displayNextSentence;
+    nextBtn.onclick = () => displayNextSentence();
 
-    // Setup dropzone listeners
+    // Make zones focusable and add keyboard listeners
+    targetSentenceEl.tabIndex = 0;
+    sourceChunksEl.tabIndex = 0;
+    targetSentenceEl.addEventListener('keydown', handleZoneKeyDown);
+    sourceChunksEl.addEventListener('keydown', handleZoneKeyDown);
+
+    // Setup dropzone listeners for mouse
     targetSentenceEl.addEventListener('dragover', handleDragOver);
     targetSentenceEl.addEventListener('drop', handleDrop);
     sourceChunksEl.addEventListener('dragover', handleDragOver);
     sourceChunksEl.addEventListener('drop', handleDrop);
 
     await loadSentences();
-    displayNextSentence();
+    const { puzzle } = loadState();
+    if (puzzle) {
+        displayNextSentence(puzzle);
+    } else {
+        displayNextSentence();
+    }
 }
