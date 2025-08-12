@@ -23,6 +23,7 @@
             <button id="select-reverse-translation" class="game-selector-btn">Reverse Translation</button>
             <button id="select-find-the-liar" class="game-selector-btn">Find the Liar</button>
             <button id="select-synonym-chain" class="game-selector-btn">Synonym Chain</button>
+            <button id="select-wrong-ending-detective" class="game-selector-btn">Wrong Ending Detective</button>
         </div>
         <div class="language-selector-container">
             <label for="language-selector">Language:</label>
@@ -216,6 +217,15 @@
             </div>
             <p id="sc-feedback"></p>
             <button id="sc-new-chain-btn" style="display: none;">Start New Chain</button>
+        </div>
+
+        <div id="wrong-ending-detective-container" class="game-container">
+            <h2>Wrong Ending Detective</h2>
+            <p>Score: <span id="wed-score">0</span></p>
+            <div id="wed-sentence-container" class="sentence"></div>
+            <div id="wed-explanation-container" class="explanation-options"></div>
+            <p id="wed-feedback"></p>
+            <button id="wed-next-btn" style="display: none;">Next Challenge</button>
         </div>
     </main>
     <script type="module" src="js/main.js"></script>

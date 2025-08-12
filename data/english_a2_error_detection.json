@@ -1,0 +1,58 @@
+{
+  "lang": "English",
+  "level": "A2",
+  "challenges": [
+    {
+      "id": "err001",
+      "sentence_with_error": "Yesterday she go to the shops.",
+      "error_word": "go",
+      "correct_word": "went",
+      "explanation": "The adverb 'Yesterday' indicates a past action, so the verb must be in the simple past tense.",
+      "explanation_options": [
+        "The verb should be past tense because of 'Yesterday'.",
+        "The verb needs an '-s' for the subject 'she'.",
+        "The preposition 'to' is wrong."
+      ],
+      "correct_explanation_index": 0
+    },
+    {
+      "id": "err002",
+      "sentence_with_error": "He don't like coffee.",
+      "error_word": "don't",
+      "correct_word": "doesn't",
+      "explanation": "For third-person singular subjects (he, she, it), the auxiliary verb in the present tense is 'does', not 'do'.",
+      "explanation_options": [
+        "The subject is 'he', so the verb needs to agree.",
+        "The word 'like' is spelled wrong.",
+        "This sentence is correct."
+      ],
+      "correct_explanation_index": 0
+    },
+    {
+      "id": "err003",
+      "sentence_with_error": "I am good on playing tennis.",
+      "error_word": "on",
+      "correct_word": "at",
+      "explanation": "To describe a skill or ability, we use the preposition 'at' after 'good'. For example, 'good at math' or 'good at speaking English'.",
+      "explanation_options": [
+        "The preposition is wrong for expressing skill.",
+        "The verb 'am' is incorrect.",
+        "The verb 'playing' should be 'play'."
+      ],
+      "correct_explanation_index": 0
+    },
+    {
+      "id": "err004",
+      "sentence_with_error": "They is happy.",
+      "error_word": "is",
+      "correct_word": "are",
+      "explanation": "The subject 'They' is plural, so it requires the plural form of the verb 'to be', which is 'are'.",
+      "explanation_options": [
+        "The verb does not agree with the plural subject 'They'.",
+        "The word 'happy' should be 'happily'.",
+        "The sentence needs a different subject."
+      ],
+      "correct_explanation_index": 0
+    }
+  ]
+}
