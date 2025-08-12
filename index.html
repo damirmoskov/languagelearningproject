@@ -29,6 +29,7 @@
             <button id="select-word-detective" class="game-selector-btn">Word Detective</button>
             <button id="select-metaphor-match" class="game-selector-btn">Metaphor Match</button>
             <button id="select-problem-solvers" class="game-selector-btn">Problem Solvers</button>
+            <button id="select-diagnosis-game" class="game-selector-btn">Diagnosis Game</button>
         </div>
         <div class="language-selector-container">
             <label for="language-selector">Language:</label>
@@ -287,6 +288,16 @@
                 <div id="ps-useful-vocab"></div>
             </div>
             <button id="ps-next-btn" style="display: none;">Next Problem</button>
+        </div>
+
+        <div id="diagnosis-game-container" class="game-container">
+            <h2>Diagnosis Game</h2>
+            <p>Score: <span id="dg-score">0</span></p>
+            <p id="dg-scene" class="scene-text"></p>
+            <p id="dg-context" class="context-text"></p>
+            <div id="dg-options-container"></div>
+            <div id="dg-justification" style="display: none;"></div>
+            <button id="dg-next-btn" style="display: none;">Next Challenge</button>
         </div>
     </main>
     <script type="module" src="js/main.js"></script>
