@@ -18,6 +18,7 @@
             <button id="select-adaptive-flashcards" class="game-selector-btn">Adaptive Flashcards</button>
             <button id="select-story-builder" class="game-selector-btn">Story Builder</button>
             <button id="select-roleplay-simulator" class="game-selector-btn">Roleplay Simulator</button>
+            <button id="select-synonym-swap" class="game-selector-btn">Synonym Swap</button>
         </div>
         <div class="language-selector-container">
             <label for="language-selector">Language:</label>
@@ -142,6 +143,17 @@
             <div id="rs-conversation-log"></div>
             <div id="rs-npc-prompt"></div>
             <div id="rs-user-choices"></div>
+        </div>
+
+        <div id="synonym-swap-container" class="game-container">
+            <div id="ss-stats">
+                <p>Score: <span id="ss-score">0</span></p>
+            </div>
+            <div id="ss-sentence-container">
+                <p id="ss-sentence">Loading...</p>
+            </div>
+            <div id="ss-options-container"></div>
+            <button id="ss-next-btn">Next</button>
         </div>
     </main>
     <script type="module" src="js/main.js"></script>

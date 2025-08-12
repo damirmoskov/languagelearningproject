@@ -6,6 +6,7 @@ import { initPronunciationSprint } from './pronunciation-sprint.js';
 import { initAdaptiveFlashcards } from './adaptive-flashcards.js';
 import { initStoryBuilder } from './story-builder.js';
 import { initRoleplaySimulator } from './roleplay-simulator.js';
+import { initSynonymSwap } from './synonym-swap.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     let activeGame = localStorage.getItem('cosy_activeGame') || 'memory-match';
@@ -22,6 +23,7 @@ document.addEventListener('DOMContentLoaded', () => {
         adaptiveFlashcardsContainer: document.getElementById('adaptive-flashcards-container'),
         storyBuilderContainer: document.getElementById('story-builder-container'),
         roleplaySimulatorContainer: document.getElementById('roleplay-simulator-container'),
+        synonymSwapContainer: document.getElementById('synonym-swap-container'),
         selectMemoryMatchBtn: document.getElementById('select-memory-match'),
         selectClozeRaceBtn: document.getElementById('select-cloze-race'),
         selectSpotMistakeBtn: document.getElementById('select-spot-mistake'),
@@ -30,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
         selectAdaptiveFlashcardsBtn: document.getElementById('select-adaptive-flashcards'),
         selectStoryBuilderBtn: document.getElementById('select-story-builder'),
         selectRoleplaySimulatorBtn: document.getElementById('select-roleplay-simulator'),
+        selectSynonymSwapBtn: document.getElementById('select-synonym-swap'),
         memoryMatchElements: {
             gameBoard: document.getElementById('game-board'),
             matchesCountSpan: document.getElementById('matches-count'),
@@ -92,6 +95,13 @@ document.addEventListener('DOMContentLoaded', () => {
             conversationLog: document.getElementById('rs-conversation-log'),
             npcPrompt: document.getElementById('rs-npc-prompt'),
             userChoices: document.getElementById('rs-user-choices')
+        },
+        synonymSwapElements: {
+            sentenceEl: document.getElementById('ss-sentence'),
+            optionsContainer: document.getElementById('ss-options-container'),
+            scoreSpan: document.getElementById('ss-score'),
+            nextBtn: document.getElementById('ss-next-btn'),
+            deckTitle: document.getElementById('deck-title')
         }
     };
 
@@ -112,6 +122,8 @@ document.addEventListener('DOMContentLoaded', () => {
             initStoryBuilder(currentLanguage, dom.storyBuilderElements);
         } else if (activeGame === 'roleplay-simulator') {
             initRoleplaySimulator(currentLanguage, dom.roleplaySimulatorElements);
+        } else if (activeGame === 'synonym-swap') {
+            initSynonymSwap(currentLanguage, dom.synonymSwapElements);
         }
     }
 
@@ -126,6 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.selectAdaptiveFlashcardsBtn.classList.toggle('active', gameName === 'adaptive-flashcards');
         dom.selectStoryBuilderBtn.classList.toggle('active', gameName === 'story-builder');
         dom.selectRoleplaySimulatorBtn.classList.toggle('active', gameName === 'roleplay-simulator');
+        dom.selectSynonymSwapBtn.classList.toggle('active', gameName === 'synonym-swap');
 
         dom.memoryMatchContainer.classList.toggle('active', gameName === 'memory-match');
         dom.clozeRaceContainer.classList.toggle('active', gameName === 'cloze-race');
@@ -135,6 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.adaptiveFlashcardsContainer.classList.toggle('active', gameName === 'adaptive-flashcards');
         dom.storyBuilderContainer.classList.toggle('active', gameName === 'story-builder');
         dom.roleplaySimulatorContainer.classList.toggle('active', gameName === 'roleplay-simulator');
+        dom.synonymSwapContainer.classList.toggle('active', gameName === 'synonym-swap');
 
         initializeGame();
     }
@@ -155,6 +169,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dom.selectAdaptiveFlashcardsBtn.addEventListener('click', () => switchGame('adaptive-flashcards'));
     dom.selectStoryBuilderBtn.addEventListener('click', () => switchGame('story-builder'));
     dom.selectRoleplaySimulatorBtn.addEventListener('click', () => switchGame('roleplay-simulator'));
+    dom.selectSynonymSwapBtn.addEventListener('click', () => switchGame('synonym-swap'));
 
     // Initialize the game based on the loaded state
     switchGame(activeGame);
