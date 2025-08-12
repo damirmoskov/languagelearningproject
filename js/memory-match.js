@@ -16,6 +16,7 @@ const langCodeMap = {
     german: 'de-DE',
     russian: 'ru-RU',
     portuguese: 'pt-BR',
+    greek: 'el-GR',
 };
 
 function speak(text, lang) {
