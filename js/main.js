@@ -12,6 +12,7 @@ import { initReverseTranslation } from './reverse-translation.js';
 import { initFindTheLiar } from './find-the-liar.js';
 import { initSynonymChain } from './synonym-chain.js';
 import { initWrongEndingDetective } from './wrong-ending-detective.js';
+import { initPictureDebate } from './picture-debate.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     let activeGame = localStorage.getItem('cosy_activeGame') || 'memory-match';
@@ -34,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         findTheLiarContainer: document.getElementById('find-the-liar-container'),
         synonymChainContainer: document.getElementById('synonym-chain-container'),
         wrongEndingDetectiveContainer: document.getElementById('wrong-ending-detective-container'),
+        pictureDebateContainer: document.getElementById('picture-debate-container'),
         selectMemoryMatchBtn: document.getElementById('select-memory-match'),
         selectClozeRaceBtn: document.getElementById('select-cloze-race'),
         selectSpotMistakeBtn: document.getElementById('select-spot-mistake'),
@@ -48,6 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         selectFindTheLiarBtn: document.getElementById('select-find-the-liar'),
         selectSynonymChainBtn: document.getElementById('select-synonym-chain'),
         selectWrongEndingDetectiveBtn: document.getElementById('select-wrong-ending-detective'),
+        selectPictureDebateBtn: document.getElementById('select-picture-debate'),
         memoryMatchElements: {
             gameBoard: document.getElementById('game-board'),
             matchesCountSpan: document.getElementById('matches-count'),
@@ -163,6 +166,18 @@ document.addEventListener('DOMContentLoaded', () => {
             nextBtn: document.getElementById('wed-next-btn'),
             scoreEl: document.getElementById('wed-score'),
             deckTitle: document.getElementById('deck-title')
+        },
+        pictureDebateElements: {
+            imageEl: document.getElementById('pd-image'),
+            topicEl: document.getElementById('pd-topic'),
+            promptEl: document.getElementById('pd-prompt'),
+            userInputEl: document.getElementById('pd-user-input'),
+            submitBtn: document.getElementById('pd-submit-btn'),
+            reviewSectionEl: document.getElementById('pd-review-section'),
+            modelAnswersContainerEl: document.getElementById('pd-model-answers'),
+            usefulPhrasesEl: document.getElementById('pd-useful-phrases'),
+            nextDebateBtn: document.getElementById('pd-next-debate-btn'),
+            deckTitle: document.getElementById('deck-title')
         }
     };
 
@@ -195,6 +210,8 @@ document.addEventListener('DOMContentLoaded', () => {
             initSynonymChain(currentLanguage, dom.synonymChainElements);
         } else if (activeGame === 'wrong-ending-detective') {
             initWrongEndingDetective(currentLanguage, dom.wrongEndingDetectiveElements);
+        } else if (activeGame === 'picture-debate') {
+            initPictureDebate(currentLanguage, dom.pictureDebateElements);
         }
     }
 
@@ -215,6 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.selectFindTheLiarBtn.classList.toggle('active', gameName === 'find-the-liar');
         dom.selectSynonymChainBtn.classList.toggle('active', gameName === 'synonym-chain');
         dom.selectWrongEndingDetectiveBtn.classList.toggle('active', gameName === 'wrong-ending-detective');
+        dom.selectPictureDebateBtn.classList.toggle('active', gameName === 'picture-debate');
 
         dom.memoryMatchContainer.classList.toggle('active', gameName === 'memory-match');
         dom.clozeRaceContainer.classList.toggle('active', gameName === 'cloze-race');
@@ -230,6 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.findTheLiarContainer.classList.toggle('active', gameName === 'find-the-liar');
         dom.synonymChainContainer.classList.toggle('active', gameName === 'synonym-chain');
         dom.wrongEndingDetectiveContainer.classList.toggle('active', gameName === 'wrong-ending-detective');
+        dom.pictureDebateContainer.classList.toggle('active', gameName === 'picture-debate');
 
         initializeGame();
     }
@@ -256,6 +275,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dom.selectFindTheLiarBtn.addEventListener('click', () => switchGame('find-the-liar'));
     dom.selectSynonymChainBtn.addEventListener('click', () => switchGame('synonym-chain'));
     dom.selectWrongEndingDetectiveBtn.addEventListener('click', () => switchGame('wrong-ending-detective'));
+    dom.selectPictureDebateBtn.addEventListener('click', () => switchGame('picture-debate'));
 
     // Initialize the game based on the loaded state
     switchGame(activeGame);

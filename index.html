@@ -24,6 +24,7 @@
             <button id="select-find-the-liar" class="game-selector-btn">Find the Liar</button>
             <button id="select-synonym-chain" class="game-selector-btn">Synonym Chain</button>
             <button id="select-wrong-ending-detective" class="game-selector-btn">Wrong Ending Detective</button>
+            <button id="select-picture-debate" class="game-selector-btn">Picture Debate</button>
         </div>
         <div class="language-selector-container">
             <label for="language-selector">Language:</label>
@@ -226,6 +227,20 @@
             <div id="wed-explanation-container" class="explanation-options"></div>
             <p id="wed-feedback"></p>
             <button id="wed-next-btn" style="display: none;">Next Challenge</button>
+        </div>
+
+        <div id="picture-debate-container" class="game-container">
+            <h2>Picture Prompt Debate</h2>
+            <img id="pd-image" src="" alt="Debate prompt image" style="max-width: 100%; height: auto;">
+            <h3 id="pd-topic"></h3>
+            <p id="pd-prompt"></p>
+            <textarea id="pd-user-input" rows="5" placeholder="Write your thoughts here..."></textarea>
+            <button id="pd-submit-btn">Submit</button>
+            <div id="pd-review-section" style="display: none;">
+                <div id="pd-model-answers"></div>
+                <div id="pd-useful-phrases"></div>
+            </div>
+            <button id="pd-next-debate-btn" style="display: none;">Next Debate</button>
         </div>
     </main>
     <script type="module" src="js/main.js"></script>
