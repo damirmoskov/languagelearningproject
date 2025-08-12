@@ -1,1 +1,34 @@
-{ "lang": "French", "level": "A2", "cloze_sentences": [ {"id": "c001", "sentence_template": "Je ___ un étudiant.", "correct_answer": "suis", "options": ["ai", "vais", "peux"]}, {"id": "c002", "sentence_template": "Elle aime ___ chocolat.", "correct_answer": "le", "options": ["la", "les", "un"]}, {"id": "c003", "sentence_template": "Nous allons ___ parc.", "correct_answer": "au", "options": ["à la", "en", "chez"]}, {"id": "c004", "sentence_template": "Le livre est ___ la table.", "correct_answer": "sur", "options": ["sous", "dans", "vers"]} ] }
+{
+  "lang": "French",
+  "level": "A2",
+  "cloze_sentences": [
+    {
+      "id": "c001",
+      "sentence_template": "Je ___ un étudiant.",
+      "correct_answer": "suis",
+      "options": ["ai", "vais", "peux"],
+      "translation": "I am a student."
+    },
+    {
+      "id": "c002",
+      "sentence_template": "Elle aime ___ chocolat.",
+      "correct_answer": "le",
+      "options": ["la", "les", "un"],
+      "translation": "She likes chocolate."
+    },
+    {
+      "id": "c003",
+      "sentence_template": "Nous allons ___ parc.",
+      "correct_answer": "au",
+      "options": ["à la", "en", "chez"],
+      "translation": "We are going to the park."
+    },
+    {
+      "id": "c004",
+      "sentence_template": "Le livre est ___ la table.",
+      "correct_answer": "sur",
+      "options": ["sous", "dans", "vers"],
+      "translation": "The book is on the table."
+    }
+  ]
+}

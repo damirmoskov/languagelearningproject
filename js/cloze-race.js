@@ -2,13 +2,10 @@ let clozeData = [], currentClozeIndex = 0, clozeScore = 0, clozeTimer = 60, cloz
 let clozeTimerSpan, clozeScoreSpan, clozeSentenceEl, clozeOptionsContainer, clozeNextBtn, deckTitle;
 
 function handleAnswerClick(selectedAnswer, correctAnswer, button) {
-    console.log(`Handling answer. Selected: "${selectedAnswer}", Correct: "${correctAnswer}"`);
     const optionButtons = clozeOptionsContainer.querySelectorAll('button');
     optionButtons.forEach(btn => btn.disabled = true);
     if (selectedAnswer === correctAnswer) {
-        console.log(`Correct answer! Score was: ${clozeScore}`);
         clozeScore++;
-        console.log(`Score is now: ${clozeScore}`);
         clozeScoreSpan.textContent = clozeScore;
         button.style.backgroundColor = 'lightgreen';
     } else {
@@ -25,25 +22,28 @@ function handleAnswerClick(selectedAnswer, correctAnswer, button) {
     clozeNextBtn.removeEventListener('click', startClozeRace);
     clozeNextBtn.addEventListener('click', displayNextSentence, { once: true });
 }
+
 function displayNextSentence() {
     if (currentClozeIndex >= clozeData.length) {
         endClozeRace('You completed all sentences!');
         return;
     }
-    const sentenceData = clozeData[currentClozeIndex];
-    const sentenceText = sentenceData.sentence_template.replace('___', '______');
+    const sentenceObject = clozeData[currentClozeIndex]; // Use a non-conflicting name
+    const sentenceText = sentenceObject.sentence_template.replace('___', '______');
     clozeSentenceEl.textContent = sentenceText;
-    const options = [...sentenceData.options, sentenceData.correct_answer];
+    const options = [...sentenceObject.options, sentenceObject.correct_answer];
     options.sort(() => 0.5 - Math.random());
     clozeOptionsContainer.innerHTML = '';
-    options.forEach(option => {
+    options.forEach(optionText => {
         const button = document.createElement('button');
-        button.textContent = option;
-        button.addEventListener('click', () => handleAnswerClick(option, sentenceData.correct_answer, button));
+        button.textContent = optionText;
+        // Pass the correct answer from the sentenceObject
+        button.addEventListener('click', () => handleAnswerClick(optionText, sentenceObject.correct_answer, button));
         clozeOptionsContainer.appendChild(button);
     });
     clozeNextBtn.style.display = 'none';
 }
+
 function endClozeRace(message) {
     clearInterval(clozeTimerId);
     clozeSentenceEl.textContent = `${message} Final Score: ${clozeScore}`;
@@ -52,6 +52,7 @@ function endClozeRace(message) {
     clozeNextBtn.removeEventListener('click', displayNextSentence);
     clozeNextBtn.addEventListener('click', resetClozeRace, { once: true });
 }
+
 function startClozeRace() {
     clozeTimerId = setInterval(() => {
         clozeTimer--;
@@ -62,6 +63,7 @@ function startClozeRace() {
     }, 1000);
     displayNextSentence();
 }
+
 function resetClozeRace() {
     clearInterval(clozeTimerId);
     clozeScore = 0;
@@ -75,6 +77,7 @@ function resetClozeRace() {
     clozeNextBtn.removeEventListener('click', displayNextSentence);
     clozeNextBtn.addEventListener('click', startClozeRace, { once: true });
 }
+
 async function loadClozeRace(language) {
     currentLanguage_cr = language;
     try {
@@ -88,6 +91,7 @@ async function loadClozeRace(language) {
         clozeSentenceEl.textContent = 'Error loading game data. Please try another language.';
     }
 }
+
 export function initClozeRace(lang, elements) {
     clozeTimerSpan = elements.clozeTimerSpan;
     clozeScoreSpan = elements.clozeScoreSpan;

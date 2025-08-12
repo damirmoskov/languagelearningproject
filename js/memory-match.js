@@ -7,6 +7,25 @@ let cardData = [];
 let matchedIDs = [];
 let currentLanguage_mm;
 let gameBoard, matchesCountSpan, attemptsCountSpan, deckTitle;
+
+const langCodeMap = {
+    french: 'fr-FR',
+    spanish: 'es-ES',
+};
+
+function speak(text, lang) {
+    if (!window.speechSynthesis) {
+        console.warn("Browser does not support speech synthesis.");
+        return;
+    }
+    const utterance = new SpeechSynthesisUtterance(text);
+    const langCode = langCodeMap[lang.split('_')[0]];
+    if (langCode) {
+        utterance.lang = langCode;
+    }
+    window.speechSynthesis.speak(utterance);
+}
+
 function handleCardClick(event) {
     if (lockBoard) return;
     const clickedCard = event.currentTarget;
@@ -20,16 +39,22 @@ function handleCardClick(event) {
         checkForMatch();
     }
 }
+
 function checkForMatch() {
     const [card1, card2] = flippedCards;
     const isMatch = card1.dataset.id === card2.dataset.id;
     isMatch ? disableCards() : unflipCards();
 }
+
 function disableCards() {
     matches++;
     matchesCountSpan.textContent = matches;
     const matchedId = flippedCards[0].dataset.id;
     matchedIDs.push(matchedId);
+    const matchedItem = cardData.find(item => item.id === matchedId);
+    if (matchedItem) {
+        speak(matchedItem.word, currentLanguage_mm);
+    }
     flippedCards.forEach(card => {
         card.removeEventListener('click', handleCardClick);
         card.classList.add('matched');
@@ -41,6 +66,7 @@ function disableCards() {
         setTimeout(() => alert('You won! Congratulations!'), 500);
     }
 }
+
 function unflipCards() {
     setTimeout(() => {
         flippedCards.forEach(card => card.classList.remove('flipped'));
@@ -48,11 +74,13 @@ function unflipCards() {
         lockBoard = false;
     }, 1000);
 }
+
 function saveProgress() {
     const progressKey = `cosy_progress_${currentLanguage_mm}`;
     const progress = { attempts: attempts, matchedIDs: matchedIDs };
     localStorage.setItem(progressKey, JSON.stringify(progress));
 }
+
 function loadProgress() {
     const progressKey = `cosy_progress_${currentLanguage_mm}`;
     const savedProgress = JSON.parse(localStorage.getItem(progressKey));
@@ -64,6 +92,7 @@ function loadProgress() {
         [matches, attempts, matchedIDs] = [0, 0, []];
     }
 }
+
 function createBoard() {
     gameBoard.innerHTML = '';
     let gameCards = [];
@@ -88,6 +117,7 @@ function createBoard() {
         gameBoard.appendChild(cardElement);
     });
 }
+
 function resetGame(clearProgress = true) {
     if (clearProgress) {
         const progressKey = `cosy_progress_${currentLanguage_mm}`;
@@ -100,6 +130,7 @@ function resetGame(clearProgress = true) {
     attemptsCountSpan.textContent = attempts;
     createBoard();
 }
+
 async function loadMemoryMatch(language) {
     currentLanguage_mm = language;
     try {
@@ -114,6 +145,7 @@ async function loadMemoryMatch(language) {
         gameBoard.innerHTML = '<p>Error loading game data. Please try again later.</p>';
     }
 }
+
 export function initMemoryMatch(lang, elements) {
     gameBoard = elements.gameBoard;
     matchesCountSpan = elements.matchesCountSpan;
