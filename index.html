@@ -21,6 +21,7 @@
             <button id="select-synonym-swap" class="game-selector-btn">Synonym Swap</button>
             <button id="select-mystery-game" class="game-selector-btn">5 Clues Mystery</button>
             <button id="select-reverse-translation" class="game-selector-btn">Reverse Translation</button>
+            <button id="select-find-the-liar" class="game-selector-btn">Find the Liar</button>
         </div>
         <div class="language-selector-container">
             <label for="language-selector">Language:</label>
@@ -183,6 +184,24 @@
             </div>
             <p id="rt-feedback"></p>
             <button id="rt-next-btn" style="display: none;">Next Challenge</button>
+        </div>
+
+        <div id="find-the-liar-container" class="game-container">
+            <h2>Find the Liar</h2>
+            <p>Score: <span id="ftl-score">0</span></p>
+            <h3 id="ftl-topic">Loading scenario...</h3>
+            <ul id="ftl-statements-list" class="statements">
+                <!-- Statements will be populated by JS -->
+            </ul>
+            <button id="ftl-reveal-clue-btn">Reveal a Clue</button>
+            <div class="clues-section">
+                <h4>Clues:</h4>
+                <ul id="ftl-clues-list">
+                    <!-- Clues will be populated by JS -->
+                </ul>
+            </div>
+            <p id="ftl-feedback"></p>
+            <button id="ftl-next-scenario-btn" style="display: none;">Next Scenario</button>
         </div>
     </main>
     <script type="module" src="js/main.js"></script>

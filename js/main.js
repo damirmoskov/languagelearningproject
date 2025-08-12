@@ -9,6 +9,7 @@ import { initRoleplaySimulator } from './roleplay-simulator.js';
 import { initSynonymSwap } from './synonym-swap.js';
 import { initMysteryGame } from './mystery-game.js';
 import { initReverseTranslation } from './reverse-translation.js';
+import { initFindTheLiar } from './find-the-liar.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     let activeGame = localStorage.getItem('cosy_activeGame') || 'memory-match';
@@ -28,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
         synonymSwapContainer: document.getElementById('synonym-swap-container'),
         mysteryGameContainer: document.getElementById('mystery-game-container'),
         reverseTranslationContainer: document.getElementById('reverse-translation-container'),
+        findTheLiarContainer: document.getElementById('find-the-liar-container'),
         selectMemoryMatchBtn: document.getElementById('select-memory-match'),
         selectClozeRaceBtn: document.getElementById('select-cloze-race'),
         selectSpotMistakeBtn: document.getElementById('select-spot-mistake'),
@@ -39,6 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
         selectSynonymSwapBtn: document.getElementById('select-synonym-swap'),
         selectMysteryGameBtn: document.getElementById('select-mystery-game'),
         selectReverseTranslationBtn: document.getElementById('select-reverse-translation'),
+        selectFindTheLiarBtn: document.getElementById('select-find-the-liar'),
         memoryMatchElements: {
             gameBoard: document.getElementById('game-board'),
             matchesCountSpan: document.getElementById('matches-count'),
@@ -126,6 +129,16 @@ document.addEventListener('DOMContentLoaded', () => {
             feedbackEl: document.getElementById('rt-feedback'),
             nextBtn: document.getElementById('rt-next-btn'),
             deckTitle: document.getElementById('deck-title')
+        },
+        findTheLiarElements: {
+            topicEl: document.getElementById('ftl-topic'),
+            statementsListEl: document.getElementById('ftl-statements-list'),
+            cluesListEl: document.getElementById('ftl-clues-list'),
+            revealClueBtn: document.getElementById('ftl-reveal-clue-btn'),
+            feedbackEl: document.getElementById('ftl-feedback'),
+            nextScenarioBtn: document.getElementById('ftl-next-scenario-btn'),
+            scoreEl: document.getElementById('ftl-score'),
+            deckTitle: document.getElementById('deck-title')
         }
     };
 
@@ -152,6 +165,8 @@ document.addEventListener('DOMContentLoaded', () => {
             initMysteryGame(currentLanguage, dom.mysteryGameElements);
         } else if (activeGame === 'reverse-translation') {
             initReverseTranslation(currentLanguage, dom.reverseTranslationElements);
+        } else if (activeGame === 'find-the-liar') {
+            initFindTheLiar(currentLanguage, dom.findTheLiarElements);
         }
     }
 
@@ -169,6 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.selectSynonymSwapBtn.classList.toggle('active', gameName === 'synonym-swap');
         dom.selectMysteryGameBtn.classList.toggle('active', gameName === 'mystery-game');
         dom.selectReverseTranslationBtn.classList.toggle('active', gameName === 'reverse-translation');
+        dom.selectFindTheLiarBtn.classList.toggle('active', gameName === 'find-the-liar');
 
         dom.memoryMatchContainer.classList.toggle('active', gameName === 'memory-match');
         dom.clozeRaceContainer.classList.toggle('active', gameName === 'cloze-race');
@@ -181,6 +197,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.synonymSwapContainer.classList.toggle('active', gameName === 'synonym-swap');
         dom.mysteryGameContainer.classList.toggle('active', gameName === 'mystery-game');
         dom.reverseTranslationContainer.classList.toggle('active', gameName === 'reverse-translation');
+        dom.findTheLiarContainer.classList.toggle('active', gameName === 'find-the-liar');
 
         initializeGame();
     }
@@ -204,6 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dom.selectSynonymSwapBtn.addEventListener('click', () => switchGame('synonym-swap'));
     dom.selectMysteryGameBtn.addEventListener('click', () => switchGame('mystery-game'));
     dom.selectReverseTranslationBtn.addEventListener('click', () => switchGame('reverse-translation'));
+    dom.selectFindTheLiarBtn.addEventListener('click', () => switchGame('find-the-liar'));
 
     // Initialize the game based on the loaded state
     switchGame(activeGame);
