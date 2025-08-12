@@ -1,0 +1,11 @@
+{
+    "lang": "English",
+    "level": "A2",
+    "prompts": [
+        { "id": "ps001", "prompt": "Hello, how are you?" },
+        { "id": "ps002", "prompt": "What is your name?" },
+        { "id": "ps003", "prompt": "The weather is nice today." },
+        { "id": "ps004", "prompt": "I am learning a new language." },
+        { "id": "ps005", "prompt": "Where is the nearest station?" }
+    ]
+}

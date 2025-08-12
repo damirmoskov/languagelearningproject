@@ -1,0 +1,34 @@
+{
+  "lang": "English",
+  "level": "A2",
+  "sentences": [
+    {
+      "id": "s001",
+      "chunks": [
+        { "id": "s001_c1", "text": "I" },
+        { "id": "s001_c2", "text": "like to" },
+        { "id": "s001_c3", "text": "learn" },
+        { "id": "s001_c4", "text": "new languages." }
+      ],
+      "correctOrder": ["s001_c1", "s001_c2", "s001_c3", "s001_c4"]
+    },
+    {
+      "id": "s002",
+      "chunks": [
+        { "id": "s002_c1", "text": "The cat" },
+        { "id": "s002_c2", "text": "sat on" },
+        { "id": "s002_c3", "text": "the mat." }
+      ],
+      "correctOrder": ["s002_c1", "s002_c2", "s002_c3"]
+    },
+    {
+      "id": "s003",
+      "chunks": [
+        { "id": "s003_c1", "text": "She" },
+        { "id": "s003_c2", "text": "is reading" },
+        { "id": "s003_c3", "text": "a book." }
+      ],
+      "correctOrder": ["s003_c1", "s003_c2", "s003_c3"]
+    }
+  ]
+}
