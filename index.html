@@ -25,6 +25,7 @@
             <button id="select-synonym-chain" class="game-selector-btn">Synonym Chain</button>
             <button id="select-wrong-ending-detective" class="game-selector-btn">Wrong Ending Detective</button>
             <button id="select-picture-debate" class="game-selector-btn">Picture Debate</button>
+            <button id="select-what-happens-next" class="game-selector-btn">What Happens Next?</button>
         </div>
         <div class="language-selector-container">
             <label for="language-selector">Language:</label>
@@ -241,6 +242,15 @@
                 <div id="pd-useful-phrases"></div>
             </div>
             <button id="pd-next-debate-btn" style="display: none;">Next Debate</button>
+        </div>
+
+        <div id="what-happens-next-container" class="game-container">
+            <h2>What Happens Next?</h2>
+            <p id="whn-story-starter"></p>
+            <textarea id="whn-user-input" rows="5" placeholder="Write your continuation here..."></textarea>
+            <button id="whn-submit-btn">Submit</button>
+            <div id="whn-model-continuations" style="display: none;"></div>
+            <button id="whn-next-btn" style="display: none;">Next Story</button>
         </div>
     </main>
     <script type="module" src="js/main.js"></script>
