@@ -3,6 +3,7 @@ import { initClozeRace } from './cloze-race.js';
 import { initSpotTheMistake } from './spot-the-mistake.js';
 import { initPictureBingo } from './picture-bingo.js';
 import { initPronunciationSprint } from './pronunciation-sprint.js';
+import { initAdaptiveFlashcards } from './adaptive-flashcards.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     let activeGame = 'memory-match';
@@ -16,11 +17,13 @@ document.addEventListener('DOMContentLoaded', () => {
         spotMistakeContainer: document.getElementById('spot-mistake-container'),
         pictureBingoContainer: document.getElementById('picture-bingo-container'),
         pronunciationSprintContainer: document.getElementById('pronunciation-sprint-container'),
+        adaptiveFlashcardsContainer: document.getElementById('adaptive-flashcards-container'),
         selectMemoryMatchBtn: document.getElementById('select-memory-match'),
         selectClozeRaceBtn: document.getElementById('select-cloze-race'),
         selectSpotMistakeBtn: document.getElementById('select-spot-mistake'),
         selectPictureBingoBtn: document.getElementById('select-picture-bingo'),
         selectPronunciationSprintBtn: document.getElementById('select-pronunciation-sprint'),
+        selectAdaptiveFlashcardsBtn: document.getElementById('select-adaptive-flashcards'),
         memoryMatchElements: {
             gameBoard: document.getElementById('game-board'),
             matchesCountSpan: document.getElementById('matches-count'),
@@ -58,7 +61,17 @@ document.addEventListener('DOMContentLoaded', () => {
             startBtn: document.getElementById('ps-start-btn'),
             listenBtn: document.getElementById('ps-listen-btn'),
             recordBtn: document.getElementById('ps-record-btn'),
-            deckTitle: document.getElementById('deck-title')
+            deckTitle: document.getElementById('ps-deck-title')
+        },
+        adaptiveFlashcardsElements: {
+            cardFront: document.getElementById('flashcard-front'),
+            cardBack: document.getElementById('flashcard-back'),
+            flipBtn: document.getElementById('flashcard-flip-btn'),
+            recallButtonsContainer: document.getElementById('recall-buttons-container'),
+            statsNew: document.getElementById('srs-stats-new'),
+            statsLearning: document.getElementById('srs-stats-learning'),
+            statsReview: document.getElementById('srs-stats-review'),
+            deckTitle: document.getElementById('af-deck-title')
         }
     };
 
@@ -73,6 +86,8 @@ document.addEventListener('DOMContentLoaded', () => {
             initPictureBingo(currentLanguage, dom.pictureBingoElements);
         } else if (activeGame === 'pronunciation-sprint') {
             initPronunciationSprint(currentLanguage, dom.pronunciationSprintElements);
+        } else if (activeGame === 'adaptive-flashcards') {
+            initAdaptiveFlashcards(currentLanguage, dom.adaptiveFlashcardsElements);
         }
     }
 
@@ -83,12 +98,14 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.selectSpotMistakeBtn.classList.toggle('active', gameName === 'spot-the-mistake');
         dom.selectPictureBingoBtn.classList.toggle('active', gameName === 'picture-bingo');
         dom.selectPronunciationSprintBtn.classList.toggle('active', gameName === 'pronunciation-sprint');
+        dom.selectAdaptiveFlashcardsBtn.classList.toggle('active', gameName === 'adaptive-flashcards');
 
         dom.memoryMatchContainer.classList.toggle('active', gameName === 'memory-match');
         dom.clozeRaceContainer.classList.toggle('active', gameName === 'cloze-race');
         dom.spotMistakeContainer.classList.toggle('active', gameName === 'spot-the-mistake');
         dom.pictureBingoContainer.classList.toggle('active', gameName === 'picture-bingo');
         dom.pronunciationSprintContainer.classList.toggle('active', gameName === 'pronunciation-sprint');
+        dom.adaptiveFlashcardsContainer.classList.toggle('active', gameName === 'adaptive-flashcards');
 
         initializeGame();
     }
@@ -104,6 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dom.selectSpotMistakeBtn.addEventListener('click', () => switchGame('spot-the-mistake'));
     dom.selectPictureBingoBtn.addEventListener('click', () => switchGame('picture-bingo'));
     dom.selectPronunciationSprintBtn.addEventListener('click', () => switchGame('pronunciation-sprint'));
+    dom.selectAdaptiveFlashcardsBtn.addEventListener('click', () => switchGame('adaptive-flashcards'));
 
     initializeGame();
 });
