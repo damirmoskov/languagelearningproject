@@ -1,128 +1,23 @@
-body {
-    font-family: sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #f0f8ff;
-    color: #333;
-}
-header {
-    text-align: center;
-    margin-bottom: 20px;
-}
-.language-selector-container {
-    margin: 10px 0;
-}
-#game-board {
-    display: grid;
-    grid-template-columns: repeat(4, 100px);
-    gap: 10px;
-    perspective: 1000px;
-}
-.card {
-    width: 100px;
-    height: 100px;
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.6s;
-    cursor: pointer;
-}
-.card.flipped, .card.matched {
-    transform: rotateY(180deg);
-}
-.card-face {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-}
-.card-front {
-    background-color: #4a90e2;
-    color: white;
-    font-size: 24px;
-}
-.card-back {
-    background-color: #ffffff;
-    transform: rotateY(180deg);
-    font-size: 16px;
-    text-align: center;
-}
-#progress-container {
-    margin-top: 20px;
-    text-align: center;
-}
-#reset-button {
-    margin-top: 10px;
-    padding: 10px 20px;
-    border: none;
-    background-color: #4a90e2;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-}
-#reset-button:hover {
-    background-color: #357abd;
-}
-#game-selector {
-    margin-bottom: 20px;
-}
-.game-selector-btn {
-    padding: 10px 15px;
-    border: 1px solid #ccc;
-    background-color: #f0f0f0;
-    cursor: pointer;
-}
-.game-selector-btn.active {
-    background-color: #4a90e2;
-    color: white;
-    border-color: #4a90e2;
-}
-.game-container {
-    display: none;
-    width: 420px;
-    flex-direction: column;
-    align-items: center;
-}
-.game-container.active {
-    display: flex;
-}
-#cloze-stats {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-bottom: 20px;
-}
-#cloze-sentence-container {
-    margin-bottom: 20px;
-    font-size: 1.2em;
-}
-#cloze-options-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-    width: 100%;
-    margin-bottom: 20px;
-}
-#cloze-options-container button {
-    padding: 15px;
-    font-size: 1em;
-    cursor: pointer;
-}
-#cloze-next-btn {
-    padding: 10px 20px;
-    border: none;
-    background-color: #4a90e2;
-    color: white;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1em;
-}
-.card-back-image {
-    padding: 5px;
-    display: block;
-}
+body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; background-color: #f0f8ff; color: #333; }
+header { text-align: center; margin-bottom: 20px; }
+.language-selector-container { margin: 10px 0; }
+#game-board { display: grid; grid-template-columns: repeat(4, 100px); gap: 10px; perspective: 1000px; }
+.card { width: 100px; height: 100px; position: relative; transform-style: preserve-3d; transition: transform 0.6s; cursor: pointer; }
+.card.flipped, .card.matched { transform: rotateY(180deg); }
+.card-face { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; display: flex; justify-content: center; align-items: center; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+.card-front { background-color: #4a90e2; color: white; font-size: 24px; }
+.card-back { background-color: #ffffff; transform: rotateY(180deg); font-size: 16px; text-align: center; }
+#progress-container { margin-top: 20px; text-align: center; }
+#reset-button { margin-top: 10px; padding: 10px 20px; border: none; background-color: #4a90e2; color: white; border-radius: 5px; cursor: pointer; }
+#reset-button:hover { background-color: #357abd; }
+#game-selector { margin-bottom: 20px; }
+.game-selector-btn { padding: 10px 15px; border: 1px solid #ccc; background-color: #f0f0f0; cursor: pointer; }
+.game-selector-btn.active { background-color: #4a90e2; color: white; border-color: #4a90e2; }
+.game-container { display: none; width: 420px; flex-direction: column; align-items: center; }
+.game-container.active { display: flex; }
+#cloze-stats { display: flex; justify-content: space-between; width: 100%; margin-bottom: 20px; }
+#cloze-sentence-container { margin-bottom: 20px; font-size: 1.2em; }
+#cloze-options-container { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; width: 100%; margin-bottom: 20px; }
+#cloze-options-container button { padding: 15px; font-size: 1em; cursor: pointer; }
+#cloze-next-btn { padding: 10px 20px; border: none; background-color: #4a90e2; color: white; border-radius: 5px; cursor: pointer; font-size: 1em; }
+.card-back-image { padding: 5px; display: block; }

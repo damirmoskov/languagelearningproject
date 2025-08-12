@@ -26,12 +26,21 @@ function speak(text, lang) {
     window.speechSynthesis.speak(utterance);
 }
 
+function handleCardKeyPress(event) {
+    if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault(); // Prevent space from scrolling
+        handleCardClick(event);
+    }
+}
+
 function handleCardClick(event) {
     if (lockBoard) return;
     const clickedCard = event.currentTarget;
-    if (clickedCard === flippedCards[0]) return;
+    if (clickedCard === flippedCards[0] || clickedCard.classList.contains('flipped')) return;
+
     clickedCard.classList.add('flipped');
     flippedCards.push(clickedCard);
+
     if (flippedCards.length === 2) {
         lockBoard = true;
         attempts++;
@@ -51,13 +60,16 @@ function disableCards() {
     matchesCountSpan.textContent = matches;
     const matchedId = flippedCards[0].dataset.id;
     matchedIDs.push(matchedId);
+
     const matchedItem = cardData.find(item => item.id === matchedId);
     if (matchedItem) {
         speak(matchedItem.word, currentLanguage_mm);
     }
+
     flippedCards.forEach(card => {
         card.removeEventListener('click', handleCardClick);
-        card.classList.add('matched');
+        card.removeEventListener('keydown', handleCardKeyPress);
+        card.setAttribute('aria-label', `Matched: ${card.dataset.type === 'word' ? card.innerText : matchedItem.word}`);
     });
     flippedCards = [];
     lockBoard = false;
@@ -106,13 +118,22 @@ function createBoard() {
         cardElement.classList.add('card');
         cardElement.dataset.id = cardInfo.id;
         cardElement.dataset.type = cardInfo.type;
+
+        cardElement.setAttribute('role', 'button');
+        cardElement.setAttribute('tabindex', '0');
+        cardElement.setAttribute('aria-label', 'Memory card');
+
         const cardBackClass = cardInfo.type === 'image' ? 'card-back card-back-image' : 'card-back';
-        const cardBackContent = cardInfo.type === 'image' ? `<img src="${cardInfo.value}" alt="Match Image" style="width: 100%; height: 100%; object-fit: cover;">` : cardInfo.value;
+        const cardBackContent = cardInfo.type === 'image' ? `<img src="${cardInfo.value}" alt="Image for ${cardInfo.id}" style="width: 100%; height: 100%; object-fit: cover;">` : cardInfo.value;
         cardElement.innerHTML = `<div class="card-face card-front">?</div><div class="card-face ${cardBackClass}">${cardBackContent}</div>`;
+
         if (matchedIDs.includes(cardInfo.id)) {
             cardElement.classList.add('matched');
+            const matchedItem = cardData.find(item => item.id === cardInfo.id);
+            cardElement.setAttribute('aria-label', `Matched: ${cardInfo.type === 'word' ? cardInfo.value : matchedItem.word}`);
         } else {
             cardElement.addEventListener('click', handleCardClick);
+            cardElement.addEventListener('keydown', handleCardKeyPress);
         }
         gameBoard.appendChild(cardElement);
     });

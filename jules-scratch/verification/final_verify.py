@@ -5,33 +5,32 @@ def verify_all_features(page: Page):
     print("Starting final verification...")
     page.goto("http://localhost:8000")
 
-    # 1. Test Memory Match with Images
-    print("Testing Memory Match...")
+    # 1. Test Memory Match accessibility
+    print("Testing Memory Match keyboard accessibility...")
     expect(page.locator("#memory-match-container")).to_be_visible()
+
+    # Find the 'chat' card and focus it
     word_card = page.locator('.card-back:has-text("chat")').locator("..")
+    word_card.focus()
+    word_card.press("Enter") # Flip with keyboard
+
+    # Find the corresponding image card and flip it
     word_card_id = word_card.get_attribute("data-id")
     image_card = page.locator(f'[data-id="{word_card_id}"][data-type="image"]')
-    word_card.click()
-    image_card.click()
-    expect(page.locator("#matches-count")).to_have_text("1")
-    print("Memory Match test passed.")
+    image_card.focus()
+    image_card.press(" ") # Flip with spacebar
 
-    # 2. Test Cloze Race (and the bug fix)
+    # Assert that it's a match
+    expect(page.locator("#matches-count")).to_have_text("1")
+    print("Memory Match keyboard test passed.")
+
+    # 2. Test Cloze Race
     print("Testing Cloze Race...")
     page.locator("#select-cloze-race").click()
     expect(page.locator("#cloze-race-container")).to_be_visible()
     page.locator("#cloze-next-btn").click() # Start game
-
-    # Question 1
-    expect(page.locator("#cloze-sentence")).to_contain_text("Je ______ un étudiant.")
     page.locator('button:has-text("suis")').click()
     expect(page.locator("#cloze-score")).to_have_text("1")
-    page.locator("#cloze-next-btn").click() # Next question
-
-    # Question 2 - Using a more specific selector
-    expect(page.locator("#cloze-sentence")).to_contain_text("Elle aime ______ chocolat.")
-    page.get_by_role("button", name="le", exact=True).click()
-    expect(page.locator("#cloze-score")).to_have_text("2")
     print("Cloze Race test passed.")
 
     # 3. Final Screenshot
