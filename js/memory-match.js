@@ -9,10 +9,13 @@ let currentLanguage_mm;
 let gameBoard, matchesCountSpan, attemptsCountSpan, deckTitle;
 
 const langCodeMap = {
+    english: 'en-US',
     french: 'fr-FR',
     spanish: 'es-ES',
     italian: 'it-IT',
     german: 'de-DE',
+    russian: 'ru-RU',
+    portuguese: 'pt-BR',
 };
 
 function speak(text, lang) {

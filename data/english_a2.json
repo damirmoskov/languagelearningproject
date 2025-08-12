@@ -1,0 +1,12 @@
+{
+  "lang": "English",
+  "level": "A2",
+  "wordlist": [
+    {"id": "w001", "word": "cat", "translation": "cat", "image": "https://placehold.co/100x100/EFEFEF/AAAAAA&text=cat"},
+    {"id": "w002", "word": "dog", "translation": "dog", "image": "https://placehold.co/100x100/EFEFEF/AAAAAA&text=dog"},
+    {"id": "w003", "word": "house", "translation": "house", "image": "https://placehold.co/100x100/EFEFEF/AAAAAA&text=house"},
+    {"id": "w004", "word": "book", "translation": "book", "image": "https://placehold.co/100x100/EFEFEF/AAAAAA&text=book"},
+    {"id": "w005", "word": "eat", "translation": "to eat", "image": "https://placehold.co/100x100/EFEFEF/AAAAAA&text=eat"},
+    {"id": "w006", "word": "drink", "translation": "to drink", "image": "https://placehold.co/100x100/EFEFEF/AAAAAA&text=drink"}
+  ]
+}

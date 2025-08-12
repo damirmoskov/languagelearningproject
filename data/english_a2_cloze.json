@@ -1,0 +1,30 @@
+{
+  "lang": "English",
+  "level": "A2",
+  "cloze_sentences": [
+    {
+      "id": "c001",
+      "sentence_template": "I ___ a student.",
+      "correct_answer": "am",
+      "options": ["is", "are", "be"]
+    },
+    {
+      "id": "c002",
+      "sentence_template": "She likes ___ chocolate.",
+      "correct_answer": "the",
+      "options": ["a", "an", "some"]
+    },
+    {
+      "id": "c003",
+      "sentence_template": "We are going to ___ park.",
+      "correct_answer": "the",
+      "options": ["a", "at", "in"]
+    },
+    {
+      "id": "c004",
+      "sentence_template": "The book is on ___ table.",
+      "correct_answer": "the",
+      "options": ["a", "under", "of"]
+    }
+  ]
+}
