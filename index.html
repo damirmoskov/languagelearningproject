@@ -14,6 +14,7 @@
             <button id="select-cloze-race" class="game-selector-btn">Cloze Race</button>
             <button id="select-spot-mistake" class="game-selector-btn">Spot the Mistake</button>
             <button id="select-picture-bingo" class="game-selector-btn">Picture Bingo</button>
+            <button id="select-pronunciation-sprint" class="game-selector-btn">Pronunciation Sprint</button>
         </div>
         <div class="language-selector-container">
             <label for="language-selector">Language:</label>
@@ -76,6 +77,23 @@
             <p id="bingo-clue-display">Click "Call Next Clue" to start.</p>
             <div id="bingo-card-grid">
                 <!-- 3x3 grid will be populated by JS -->
+            </div>
+        </div>
+
+        <div id="pronunciation-sprint-container" class="game-container">
+            <h2>Pronunciation Sprint</h2>
+            <div id="pronunciation-sprint-controls">
+                <button id="ps-start-btn">Start Game</button>
+                <button id="ps-listen-btn" disabled>Listen to Prompt</button>
+                <button id="ps-record-btn" disabled>Record Answer</button>
+            </div>
+            <div id="pronunciation-sprint-game-area">
+                <p><strong>Prompt:</strong> <span id="ps-prompt-text">Press "Start Game" to get a prompt.</span></p>
+                <p><strong>Your attempt:</strong> <span id="ps-user-speech">...</span></p>
+                <p><strong>Feedback:</strong> <span id="ps-feedback"></span></p>
+            </div>
+            <div id="pronunciation-sprint-stats">
+                <p>Score: <span id="ps-score">0</span></p>
             </div>
         </div>
     </main>

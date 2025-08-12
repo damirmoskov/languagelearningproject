@@ -2,6 +2,7 @@ import { initMemoryMatch } from './memory-match.js';
 import { initClozeRace } from './cloze-race.js';
 import { initSpotTheMistake } from './spot-the-mistake.js';
 import { initPictureBingo } from './picture-bingo.js';
+import { initPronunciationSprint } from './pronunciation-sprint.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     let activeGame = 'memory-match';
@@ -14,10 +15,12 @@ document.addEventListener('DOMContentLoaded', () => {
         clozeRaceContainer: document.getElementById('cloze-race-container'),
         spotMistakeContainer: document.getElementById('spot-mistake-container'),
         pictureBingoContainer: document.getElementById('picture-bingo-container'),
+        pronunciationSprintContainer: document.getElementById('pronunciation-sprint-container'),
         selectMemoryMatchBtn: document.getElementById('select-memory-match'),
         selectClozeRaceBtn: document.getElementById('select-cloze-race'),
         selectSpotMistakeBtn: document.getElementById('select-spot-mistake'),
         selectPictureBingoBtn: document.getElementById('select-picture-bingo'),
+        selectPronunciationSprintBtn: document.getElementById('select-pronunciation-sprint'),
         memoryMatchElements: {
             gameBoard: document.getElementById('game-board'),
             matchesCountSpan: document.getElementById('matches-count'),
@@ -46,6 +49,16 @@ document.addEventListener('DOMContentLoaded', () => {
             clueDisplay: document.getElementById('bingo-clue-display'),
             bingoGrid: document.getElementById('bingo-card-grid'),
             deckTitle: document.getElementById('deck-title')
+        },
+        pronunciationSprintElements: {
+            promptText: document.getElementById('ps-prompt-text'),
+            userSpeech: document.getElementById('ps-user-speech'),
+            feedback: document.getElementById('ps-feedback'),
+            score: document.getElementById('ps-score'),
+            startBtn: document.getElementById('ps-start-btn'),
+            listenBtn: document.getElementById('ps-listen-btn'),
+            recordBtn: document.getElementById('ps-record-btn'),
+            deckTitle: document.getElementById('deck-title')
         }
     };
 
@@ -58,6 +71,8 @@ document.addEventListener('DOMContentLoaded', () => {
             initSpotTheMistake(currentLanguage, dom.spotMistakeElements);
         } else if (activeGame === 'picture-bingo') {
             initPictureBingo(currentLanguage, dom.pictureBingoElements);
+        } else if (activeGame === 'pronunciation-sprint') {
+            initPronunciationSprint(currentLanguage, dom.pronunciationSprintElements);
         }
     }
 
@@ -67,11 +82,13 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.selectClozeRaceBtn.classList.toggle('active', gameName === 'cloze-race');
         dom.selectSpotMistakeBtn.classList.toggle('active', gameName === 'spot-the-mistake');
         dom.selectPictureBingoBtn.classList.toggle('active', gameName === 'picture-bingo');
+        dom.selectPronunciationSprintBtn.classList.toggle('active', gameName === 'pronunciation-sprint');
 
         dom.memoryMatchContainer.classList.toggle('active', gameName === 'memory-match');
         dom.clozeRaceContainer.classList.toggle('active', gameName === 'cloze-race');
         dom.spotMistakeContainer.classList.toggle('active', gameName === 'spot-the-mistake');
         dom.pictureBingoContainer.classList.toggle('active', gameName === 'picture-bingo');
+        dom.pronunciationSprintContainer.classList.toggle('active', gameName === 'pronunciation-sprint');
 
         initializeGame();
     }
@@ -86,6 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dom.selectClozeRaceBtn.addEventListener('click', () => switchGame('cloze-race'));
     dom.selectSpotMistakeBtn.addEventListener('click', () => switchGame('spot-the-mistake'));
     dom.selectPictureBingoBtn.addEventListener('click', () => switchGame('picture-bingo'));
+    dom.selectPronunciationSprintBtn.addEventListener('click', () => switchGame('pronunciation-sprint'));
 
     initializeGame();
 });
