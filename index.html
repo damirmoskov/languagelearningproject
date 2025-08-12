@@ -12,6 +12,7 @@
         <div id="game-selector">
             <button id="select-memory-match" class="game-selector-btn active">Memory Match</button>
             <button id="select-cloze-race" class="game-selector-btn">Cloze Race</button>
+            <button id="select-spot-mistake" class="game-selector-btn">Spot the Mistake</button>
         </div>
         <div class="language-selector-container">
             <label for="language-selector">Language:</label>
@@ -54,6 +55,16 @@
             </div>
             <div id="cloze-options-container"></div>
             <button id="cloze-next-btn">Start</button>
+        </div>
+
+        <div id="spot-mistake-container" class="game-container">
+            <div id="spot-mistake-stats">
+                <p>Mistakes Found: <span id="spot-mistake-found">0</span> / <span id="spot-mistake-total">0</span></p>
+            </div>
+            <div id="spot-mistake-text-container">
+                <!-- Text with mistakes will be rendered here by JS -->
+            </div>
+            <button id="spot-mistake-next-btn">Next Text</button>
         </div>
     </main>
     <script type="module" src="js/main.js"></script>
