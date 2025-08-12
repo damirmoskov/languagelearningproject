@@ -13,6 +13,7 @@
             <button id="select-memory-match" class="game-selector-btn active">Memory Match</button>
             <button id="select-cloze-race" class="game-selector-btn">Cloze Race</button>
             <button id="select-spot-mistake" class="game-selector-btn">Spot the Mistake</button>
+            <button id="select-picture-bingo" class="game-selector-btn">Picture Bingo</button>
         </div>
         <div class="language-selector-container">
             <label for="language-selector">Language:</label>
@@ -65,6 +66,17 @@
                 <!-- Text with mistakes will be rendered here by JS -->
             </div>
             <button id="spot-mistake-next-btn">Next Text</button>
+        </div>
+
+        <div id="picture-bingo-container" class="game-container">
+            <div id="bingo-controls">
+                <button id="bingo-new-card-btn">New Card</button>
+                <button id="bingo-next-clue-btn">Call Next Clue</button>
+            </div>
+            <p id="bingo-clue-display">Click "Call Next Clue" to start.</p>
+            <div id="bingo-card-grid">
+                <!-- 3x3 grid will be populated by JS -->
+            </div>
         </div>
     </main>
     <script type="module" src="js/main.js"></script>
