@@ -121,3 +121,45 @@ header { text-align: center; margin-bottom: 20px; }
     color: rgba(255, 0, 0, 0.7);
     font-weight: bold;
 }
+
+/* Story Builder Styles */
+#sb-target-sentence {
+    border: 2px dashed #ccc;
+    min-height: 50px;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+#sb-source-chunks {
+    margin-bottom: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.sb-chunk {
+    padding: 10px 15px;
+    background-color: #e0e0e0;
+    border-radius: 5px;
+    cursor: grab;
+    user-select: none; /* Prevents text selection during drag */
+}
+
+.sb-chunk.dragging {
+    opacity: 0.5;
+}
+
+#sb-controls {
+    margin-top: 10px;
+}
+
+#sb-feedback {
+    margin-top: 15px;
+    font-size: 1.1em;
+    font-weight: bold;
+}

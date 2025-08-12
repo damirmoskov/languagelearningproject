@@ -16,6 +16,7 @@
             <button id="select-picture-bingo" class="game-selector-btn">Picture Bingo</button>
             <button id="select-pronunciation-sprint" class="game-selector-btn">Pronunciation Sprint</button>
             <button id="select-adaptive-flashcards" class="game-selector-btn">Adaptive Flashcards</button>
+            <button id="select-story-builder" class="game-selector-btn">Story Builder</button>
         </div>
         <div class="language-selector-container">
             <label for="language-selector">Language:</label>
@@ -118,6 +119,21 @@
                 <button class="recall-btn" data-quality="4">Good (3d)</button>
                 <button class="recall-btn" data-quality="5">Easy (7d)</button>
             </div>
+        </div>
+
+        <div id="story-builder-container" class="game-container">
+            <h2 id="sb-deck-title">Story Builder</h2>
+            <div id="sb-target-sentence" class="dropzone">
+                <!-- Dropped chunks will appear here -->
+            </div>
+            <div id="sb-source-chunks" class="source-zone">
+                <!-- Draggable chunks will be populated here by JS -->
+            </div>
+            <div id="sb-controls">
+                <button id="sb-check-btn">Check Answer</button>
+                <button id="sb-next-btn">Next Sentence</button>
+            </div>
+            <p id="sb-feedback"></p>
         </div>
     </main>
     <script type="module" src="js/main.js"></script>

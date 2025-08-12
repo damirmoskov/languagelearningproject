@@ -4,6 +4,7 @@ import { initSpotTheMistake } from './spot-the-mistake.js';
 import { initPictureBingo } from './picture-bingo.js';
 import { initPronunciationSprint } from './pronunciation-sprint.js';
 import { initAdaptiveFlashcards } from './adaptive-flashcards.js';
+import { initStoryBuilder } from './story-builder.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     let activeGame = 'memory-match';
@@ -18,12 +19,14 @@ document.addEventListener('DOMContentLoaded', () => {
         pictureBingoContainer: document.getElementById('picture-bingo-container'),
         pronunciationSprintContainer: document.getElementById('pronunciation-sprint-container'),
         adaptiveFlashcardsContainer: document.getElementById('adaptive-flashcards-container'),
+        storyBuilderContainer: document.getElementById('story-builder-container'),
         selectMemoryMatchBtn: document.getElementById('select-memory-match'),
         selectClozeRaceBtn: document.getElementById('select-cloze-race'),
         selectSpotMistakeBtn: document.getElementById('select-spot-mistake'),
         selectPictureBingoBtn: document.getElementById('select-picture-bingo'),
         selectPronunciationSprintBtn: document.getElementById('select-pronunciation-sprint'),
         selectAdaptiveFlashcardsBtn: document.getElementById('select-adaptive-flashcards'),
+        selectStoryBuilderBtn: document.getElementById('select-story-builder'),
         memoryMatchElements: {
             gameBoard: document.getElementById('game-board'),
             matchesCountSpan: document.getElementById('matches-count'),
@@ -72,6 +75,14 @@ document.addEventListener('DOMContentLoaded', () => {
             statsLearning: document.getElementById('srs-stats-learning'),
             statsReview: document.getElementById('srs-stats-review'),
             deckTitle: document.getElementById('af-deck-title')
+        },
+        storyBuilderElements: {
+            targetSentence: document.getElementById('sb-target-sentence'),
+            sourceChunks: document.getElementById('sb-source-chunks'),
+            checkBtn: document.getElementById('sb-check-btn'),
+            nextBtn: document.getElementById('sb-next-btn'),
+            feedback: document.getElementById('sb-feedback'),
+            deckTitle: document.getElementById('sb-deck-title')
         }
     };
 
@@ -88,6 +99,8 @@ document.addEventListener('DOMContentLoaded', () => {
             initPronunciationSprint(currentLanguage, dom.pronunciationSprintElements);
         } else if (activeGame === 'adaptive-flashcards') {
             initAdaptiveFlashcards(currentLanguage, dom.adaptiveFlashcardsElements);
+        } else if (activeGame === 'story-builder') {
+            initStoryBuilder(currentLanguage, dom.storyBuilderElements);
         }
     }
 
@@ -99,6 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.selectPictureBingoBtn.classList.toggle('active', gameName === 'picture-bingo');
         dom.selectPronunciationSprintBtn.classList.toggle('active', gameName === 'pronunciation-sprint');
         dom.selectAdaptiveFlashcardsBtn.classList.toggle('active', gameName === 'adaptive-flashcards');
+        dom.selectStoryBuilderBtn.classList.toggle('active', gameName === 'story-builder');
 
         dom.memoryMatchContainer.classList.toggle('active', gameName === 'memory-match');
         dom.clozeRaceContainer.classList.toggle('active', gameName === 'cloze-race');
@@ -106,6 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.pictureBingoContainer.classList.toggle('active', gameName === 'picture-bingo');
         dom.pronunciationSprintContainer.classList.toggle('active', gameName === 'pronunciation-sprint');
         dom.adaptiveFlashcardsContainer.classList.toggle('active', gameName === 'adaptive-flashcards');
+        dom.storyBuilderContainer.classList.toggle('active', gameName === 'story-builder');
 
         initializeGame();
     }
@@ -122,6 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dom.selectPictureBingoBtn.addEventListener('click', () => switchGame('picture-bingo'));
     dom.selectPronunciationSprintBtn.addEventListener('click', () => switchGame('pronunciation-sprint'));
     dom.selectAdaptiveFlashcardsBtn.addEventListener('click', () => switchGame('adaptive-flashcards'));
+    dom.selectStoryBuilderBtn.addEventListener('click', () => switchGame('story-builder'));
 
     initializeGame();
 });
