@@ -22,6 +22,7 @@
             <button id="select-mystery-game" class="game-selector-btn">5 Clues Mystery</button>
             <button id="select-reverse-translation" class="game-selector-btn">Reverse Translation</button>
             <button id="select-find-the-liar" class="game-selector-btn">Find the Liar</button>
+            <button id="select-synonym-chain" class="game-selector-btn">Synonym Chain</button>
         </div>
         <div class="language-selector-container">
             <label for="language-selector">Language:</label>
@@ -202,6 +203,19 @@
             </div>
             <p id="ftl-feedback"></p>
             <button id="ftl-next-scenario-btn" style="display: none;">Next Scenario</button>
+        </div>
+
+        <div id="synonym-chain-container" class="game-container">
+            <h2>Synonym Chain</h2>
+            <p>Chain Length: <span id="sc-score">0</span></p>
+            <div id="sc-chain-display" class="chain-display"></div>
+            <p id="sc-current-word"></p>
+            <div id="sc-input-container">
+                <input type="text" id="sc-user-input" placeholder="Type a synonym...">
+                <button id="sc-submit-btn">Submit</button>
+            </div>
+            <p id="sc-feedback"></p>
+            <button id="sc-new-chain-btn" style="display: none;">Start New Chain</button>
         </div>
     </main>
     <script type="module" src="js/main.js"></script>
