@@ -16,7 +16,7 @@
             <button id="select-picture-bingo" class="game-selector-btn">Picture Bingo</button>
             <button id="select-pronunciation-sprint" class="game-selector-btn">Pronunciation Sprint</button>
             <button id="select-adaptive-flashcards" class="game-selector-btn">Adaptive Flashcards</button>
-            <button id="select-story-builder" class="game-selector-btn">Story Builder</button>
+            <button id="select-sentence-sculptor" class="game-selector-btn">Sentence Sculptor</button>
             <button id="select-roleplay-simulator" class="game-selector-btn">Roleplay Simulator</button>
             <button id="select-synonym-swap" class="game-selector-btn">Synonym Swap</button>
             <button id="select-mystery-game" class="game-selector-btn">5 Clues Mystery</button>
@@ -140,19 +140,20 @@
             </div>
         </div>
 
-        <div id="story-builder-container" class="game-container">
-            <h2 id="sb-deck-title">Story Builder</h2>
-            <div id="sb-target-sentence" class="dropzone">
+        <div id="sentence-sculptor-container" class="game-container">
+            <h2 id="scs-deck-title">Sentence Sculptor</h2>
+            <img id="scs-prompt-image" src="" alt="Sentence prompt" style="max-width: 100%; height: auto; margin-bottom: 15px; border-radius: 10px; background-color: #eee;">
+            <div id="scs-target-sentence" class="dropzone">
                 <!-- Dropped chunks will appear here -->
             </div>
-            <div id="sb-source-chunks" class="source-zone">
+            <div id="scs-source-chunks" class="source-zone">
                 <!-- Draggable chunks will be populated here by JS -->
             </div>
-            <div id="sb-controls">
-                <button id="sb-check-btn">Check Answer</button>
-                <button id="sb-next-btn">Next Sentence</button>
+            <div id="scs-controls">
+                <button id="scs-check-btn">Check Answer</button>
+                <button id="scs-next-btn">Next Sentence</button>
             </div>
-            <p id="sb-feedback"></p>
+            <p id="scs-feedback"></p>
         </div>
 
         <div id="roleplay-simulator-container" class="game-container">

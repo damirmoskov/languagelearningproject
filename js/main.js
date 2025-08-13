@@ -4,7 +4,7 @@ import { initSpotTheMistake } from './spot-the-mistake.js';
 import { initPictureBingo } from './picture-bingo.js';
 import { initPronunciationSprint } from './pronunciation-sprint.js';
 import { initAdaptiveFlashcards } from './adaptive-flashcards.js';
-import { initStoryBuilder } from './story-builder.js';
+import { initSentenceSculptor } from './sentence-sculptor.js';
 import { initRoleplaySimulator } from './roleplay-simulator.js';
 import { initSynonymSwap } from './synonym-swap.js';
 import { initMysteryGame } from './mystery-game.js';
@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         pictureBingoContainer: document.getElementById('picture-bingo-container'),
         pronunciationSprintContainer: document.getElementById('pronunciation-sprint-container'),
         adaptiveFlashcardsContainer: document.getElementById('adaptive-flashcards-container'),
-        storyBuilderContainer: document.getElementById('story-builder-container'),
+        sentenceSculptorContainer: document.getElementById('sentence-sculptor-container'),
         roleplaySimulatorContainer: document.getElementById('roleplay-simulator-container'),
         synonymSwapContainer: document.getElementById('synonym-swap-container'),
         mysteryGameContainer: document.getElementById('mystery-game-container'),
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
         selectPictureBingoBtn: document.getElementById('select-picture-bingo'),
         selectPronunciationSprintBtn: document.getElementById('select-pronunciation-sprint'),
         selectAdaptiveFlashcardsBtn: document.getElementById('select-adaptive-flashcards'),
-        selectStoryBuilderBtn: document.getElementById('select-story-builder'),
+        selectSentenceSculptorBtn: document.getElementById('select-sentence-sculptor'),
         selectRoleplaySimulatorBtn: document.getElementById('select-roleplay-simulator'),
         selectSynonymSwapBtn: document.getElementById('select-synonym-swap'),
         selectMysteryGameBtn: document.getElementById('select-mystery-game'),
@@ -133,13 +133,14 @@ document.addEventListener('DOMContentLoaded', () => {
             statsReview: document.getElementById('srs-stats-review'),
             deckTitle: document.getElementById('af-deck-title')
         },
-        storyBuilderElements: {
-            targetSentence: document.getElementById('sb-target-sentence'),
-            sourceChunks: document.getElementById('sb-source-chunks'),
-            checkBtn: document.getElementById('sb-check-btn'),
-            nextBtn: document.getElementById('sb-next-btn'),
-            feedback: document.getElementById('sb-feedback'),
-            deckTitle: document.getElementById('sb-deck-title')
+        sentenceSculptorElements: {
+            targetSentence: document.getElementById('scs-target-sentence'),
+            sourceChunks: document.getElementById('scs-source-chunks'),
+            checkBtn: document.getElementById('scs-check-btn'),
+            nextBtn: document.getElementById('scs-next-btn'),
+            feedback: document.getElementById('scs-feedback'),
+            deckTitle: document.getElementById('scs-deck-title'),
+            promptImage: document.getElementById('scs-prompt-image')
         },
         roleplaySimulatorElements: {
             scenarioTitle: document.getElementById('rs-scenario-title'),
@@ -330,8 +331,8 @@ document.addEventListener('DOMContentLoaded', () => {
             initPronunciationSprint(currentLanguage, dom.pronunciationSprintElements);
         } else if (activeGame === 'adaptive-flashcards') {
             initAdaptiveFlashcards(currentLanguage, dom.adaptiveFlashcardsElements);
-        } else if (activeGame === 'story-builder') {
-            initStoryBuilder(currentLanguage, dom.storyBuilderElements);
+        } else if (activeGame === 'sentence-sculptor') {
+            initSentenceSculptor(currentLanguage, dom.sentenceSculptorElements);
         } else if (activeGame === 'roleplay-simulator') {
             initRoleplaySimulator(currentLanguage, dom.roleplaySimulatorElements);
         } else if (activeGame === 'synonym-swap') {
@@ -382,7 +383,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.selectPictureBingoBtn.classList.toggle('active', gameName === 'picture-bingo');
         dom.selectPronunciationSprintBtn.classList.toggle('active', gameName === 'pronunciation-sprint');
         dom.selectAdaptiveFlashcardsBtn.classList.toggle('active', gameName === 'adaptive-flashcards');
-        dom.selectStoryBuilderBtn.classList.toggle('active', gameName === 'story-builder');
+        dom.selectSentenceSculptorBtn.classList.toggle('active', gameName === 'sentence-sculptor');
         dom.selectRoleplaySimulatorBtn.classList.toggle('active', gameName === 'roleplay-simulator');
         dom.selectSynonymSwapBtn.classList.toggle('active', gameName === 'synonym-swap');
         dom.selectMysteryGameBtn.classList.toggle('active', gameName === 'mystery-game');
@@ -409,7 +410,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.pictureBingoContainer.classList.toggle('active', gameName === 'picture-bingo');
         dom.pronunciationSprintContainer.classList.toggle('active', gameName === 'pronunciation-sprint');
         dom.adaptiveFlashcardsContainer.classList.toggle('active', gameName === 'adaptive-flashcards');
-        dom.storyBuilderContainer.classList.toggle('active', gameName === 'story-builder');
+        dom.sentenceSculptorContainer.classList.toggle('active', gameName === 'sentence-sculptor');
         dom.roleplaySimulatorContainer.classList.toggle('active', gameName === 'roleplay-simulator');
         dom.synonymSwapContainer.classList.toggle('active', gameName === 'synonym-swap');
         dom.mysteryGameContainer.classList.toggle('active', gameName === 'mystery-game');
@@ -447,7 +448,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dom.selectPictureBingoBtn.addEventListener('click', () => switchGame('picture-bingo'));
     dom.selectPronunciationSprintBtn.addEventListener('click', () => switchGame('pronunciation-sprint'));
     dom.selectAdaptiveFlashcardsBtn.addEventListener('click', () => switchGame('adaptive-flashcards'));
-    dom.selectStoryBuilderBtn.addEventListener('click', () => switchGame('story-builder'));
+    dom.selectSentenceSculptorBtn.addEventListener('click', () => switchGame('sentence-sculptor'));
     dom.selectRoleplaySimulatorBtn.addEventListener('click', () => switchGame('roleplay-simulator'));
     dom.selectSynonymSwapBtn.addEventListener('click', () => switchGame('synonym-swap'));
     dom.selectMysteryGameBtn.addEventListener('click', () => switchGame('mystery-game'));
