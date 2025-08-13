@@ -22,6 +22,7 @@ import { initTranslateTheMood } from './translate-the-mood.js';
 import { initTwoStageGuess } from './two-stage-guess.js';
 import { initVerbBuilderLab } from './verb-builder-lab.js';
 import { initVerbSnap } from './verb-snap.js';
+import { initGenderQuest } from './gender-quest.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     let activeGame = localStorage.getItem('cosy_activeGame') || 'memory-match';
@@ -54,6 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
         twoStageGuessContainer: document.getElementById('two-stage-guess-container'),
         verbBuilderLabContainer: document.getElementById('verb-builder-lab-container'),
         verbSnapContainer: document.getElementById('verb-snap-container'),
+        genderQuestContainer: document.getElementById('gender-quest-container'),
         selectMemoryMatchBtn: document.getElementById('select-memory-match'),
         selectClozeRaceBtn: document.getElementById('select-cloze-race'),
         selectSpotMistakeBtn: document.getElementById('select-spot-mistake'),
@@ -78,6 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
         selectTwoStageGuessBtn: document.getElementById('select-two-stage-guess'),
         selectVerbBuilderLabBtn: document.getElementById('select-verb-builder-lab'),
         selectVerbSnapBtn: document.getElementById('select-verb-snap'),
+        selectGenderQuestBtn: document.getElementById('select-gender-quest'),
         memoryMatchElements: {
             gameBoard: document.getElementById('game-board'),
             matchesCountSpan: document.getElementById('matches-count'),
@@ -292,6 +295,15 @@ document.addEventListener('DOMContentLoaded', () => {
             overlay: document.getElementById('vs-overlay'),
             startBtn: document.getElementById('vs-start-btn'),
             deckTitle: document.getElementById('deck-title')
+        },
+        genderQuestElements: {
+            score: document.getElementById('gq-score'),
+            nextRoundBtn: document.getElementById('gq-next-round-btn'),
+            masculineHome: document.getElementById('gq-masculine-home'),
+            feminineHome: document.getElementById('gq-feminine-home'),
+            feedback: document.getElementById('gq-feedback'),
+            itemPool: document.getElementById('gq-item-pool'),
+            deckTitle: document.getElementById('deck-title')
         }
     };
 
@@ -344,6 +356,8 @@ document.addEventListener('DOMContentLoaded', () => {
             initVerbBuilderLab(currentLanguage, dom.verbBuilderLabElements);
         } else if (activeGame === 'verb-snap') {
             initVerbSnap(currentLanguage, dom.verbSnapElements);
+        } else if (activeGame === 'gender-quest') {
+            initGenderQuest(currentLanguage, dom.genderQuestElements);
         }
     }
 
@@ -374,6 +388,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.selectTwoStageGuessBtn.classList.toggle('active', gameName === 'two-stage-guess');
         dom.selectVerbBuilderLabBtn.classList.toggle('active', gameName === 'verb-builder-lab');
         dom.selectVerbSnapBtn.classList.toggle('active', gameName === 'verb-snap');
+        dom.selectGenderQuestBtn.classList.toggle('active', gameName === 'gender-quest');
 
         dom.memoryMatchContainer.classList.toggle('active', gameName === 'memory-match');
         dom.clozeRaceContainer.classList.toggle('active', gameName === 'cloze-race');
@@ -399,6 +414,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.twoStageGuessContainer.classList.toggle('active', gameName === 'two-stage-guess');
         dom.verbBuilderLabContainer.classList.toggle('active', gameName === 'verb-builder-lab');
         dom.verbSnapContainer.classList.toggle('active', gameName === 'verb-snap');
+        dom.genderQuestContainer.classList.toggle('active', gameName === 'gender-quest');
 
         initializeGame();
     }
@@ -435,6 +451,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dom.selectTwoStageGuessBtn.addEventListener('click', () => switchGame('two-stage-guess'));
     dom.selectVerbBuilderLabBtn.addEventListener('click', () => switchGame('verb-builder-lab'));
     dom.selectVerbSnapBtn.addEventListener('click', () => switchGame('verb-snap'));
+    dom.selectGenderQuestBtn.addEventListener('click', () => switchGame('gender-quest'));
 
     // Initialize the game based on the loaded state
     switchGame(activeGame);

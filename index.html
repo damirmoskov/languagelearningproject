@@ -34,6 +34,7 @@
             <button id="select-two-stage-guess" class="game-selector-btn">Two-Stage Guess</button>
             <button id="select-verb-builder-lab" class="game-selector-btn">Verb Builder Lab</button>
             <button id="select-verb-snap" class="game-selector-btn">Verb Snap!</button>
+            <button id="select-gender-quest" class="game-selector-btn">Gender Quest</button>
         </div>
         <div class="language-selector-container">
             <label for="language-selector">Language:</label>
@@ -362,6 +363,26 @@
                 <div id="vs-overlay">
                     <button id="vs-start-btn">Start Game</button>
                 </div>
+            </div>
+        </div>
+
+        <div id="gender-quest-container" class="game-container">
+            <h2>Gender Quest</h2>
+            <div id="gq-stats">
+                <p>Score: <span id="gq-score">0</span></p>
+                <button id="gq-next-round-btn" style="display: none;">Next Round</button>
+            </div>
+            <div id="gq-homes-container">
+                <div id="gq-masculine-home" class="gq-home" data-gender="masculine">
+                    <h3>Masculine</h3>
+                </div>
+                <div id="gq-feminine-home" class="gq-home" data-gender="feminine">
+                    <h3>Feminine</h3>
+                </div>
+            </div>
+            <p id="gq-feedback">Drag the items to their correct home.</p>
+            <div id="gq-item-pool">
+                <!-- Draggable items will be spawned here by JS -->
             </div>
         </div>
     </main>
