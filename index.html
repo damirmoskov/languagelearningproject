@@ -32,6 +32,7 @@
             <button id="select-diagnosis-game" class="game-selector-btn">Diagnosis Game</button>
             <button id="select-translate-the-mood" class="game-selector-btn">Translate the Mood</button>
             <button id="select-two-stage-guess" class="game-selector-btn">Two-Stage Guess</button>
+            <button id="select-chain-qa" class="game-selector-btn">Chain Q&A</button>
         </div>
         <div class="language-selector-container">
             <label for="language-selector">Language:</label>
@@ -324,6 +325,19 @@
             <button id="tsg-submit-btn">Submit Hypothesis</button>
             <div id="tsg-model-answer-container" class="model-answer" style="display: none;"></div>
             <button id="tsg-next-btn" style="display: none;">Next Challenge</button>
+        </div>
+
+        <div id="chain-qa-container" class="game-container">
+            <h2>Chain Q&A</h2>
+            <div id="cqa-image-container">
+                <img id="cqa-image" src="" alt="Chain Q&A prompt image" style="max-width: 100%; height: auto; display: none;">
+            </div>
+            <div id="cqa-conversation-log" class="conversation-log"></div>
+            <div id="cqa-input-container">
+                <textarea id="cqa-user-input" rows="3" placeholder="Your answer..."></textarea>
+                <button id="cqa-submit-btn">Submit</button>
+            </div>
+            <button id="cqa-next-btn" style="display: none;">Next Scenario</button>
         </div>
     </main>
     <script type="module" src="js/main.js"></script>

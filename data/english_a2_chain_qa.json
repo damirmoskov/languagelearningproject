@@ -1,0 +1,61 @@
+{
+  "lang": "English",
+  "level": "A2",
+  "game": "Chain Q&A",
+  "scenarios": [
+    {
+      "id": "cqa1",
+      "image": "https://images.unsplash.com/photo-1573865526739-10659fec78a5?q=80&w=2515&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "chain": [
+        {
+          "question": "What is in the picture?",
+          "model_answer": {
+            "text": "There is a cat sitting on a wooden floor.",
+            "image_feedback": "https://images.unsplash.com/photo-1573865526739-10659fec78a5?q=80&w=2515&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          }
+        },
+        {
+          "question": "What color is the cat?",
+          "model_answer": {
+            "text": "The cat is tabby, with stripes of grey, black, and white.",
+            "image_feedback": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Calico_tabby_cat.jpg/1200px-Calico_tabby_cat.jpg"
+          }
+        },
+        {
+          "question": "What is the cat looking at?",
+          "model_answer": {
+            "text": "The cat is looking up, maybe at its owner or at something interesting.",
+            "image_feedback": "https://i.natgeofe.com/n/548467d8-c5f1-4551-9f58-6817a8d2c45e/NationalGeographic_2572187_3x2.jpg"
+          }
+        }
+      ]
+    },
+    {
+      "id": "cqa2",
+      "image": "https://images.unsplash.com/photo-1583224964987-75a7a41227d8?q=80&w=2532&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+      "chain": [
+        {
+          "question": "Where are these people?",
+          "model_answer": {
+            "text": "They are at a market, maybe a farmers' market.",
+            "image_feedback": "https://images.unsplash.com/photo-1583224964987-75a7a41227d8?q=80&w=2532&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          }
+        },
+        {
+          "question": "What is the woman doing?",
+          "model_answer": {
+            "text": "She is choosing some fresh vegetables.",
+            "image_feedback": "https://as2.ftcdn.net/v2/jpg/01/78/51/23/1000_F_178512311_Tj2e2n0iB4g3v1G24LVp6vD2fV3AEl9w.jpg"
+          }
+        },
+        {
+          "question": "What kind of vegetables can you see?",
+          "model_answer": {
+            "text": "I can see carrots, broccoli, and maybe some peppers.",
+            "image_feedback": "https://images.ctfassets.net/3s5io6mnxfqz/5Gl1s125d5sTj0gT9sYx1C/96253957248a313c63b21696245366f2/AdobeStock_177152033.jpeg"
+          }
+        }
+      ]
+    }
+  ]
+}
