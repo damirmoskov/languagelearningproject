@@ -30,6 +30,7 @@
             <button id="select-metaphor-match" class="game-selector-btn">Metaphor Match</button>
             <button id="select-problem-solvers" class="game-selector-btn">Problem Solvers</button>
             <button id="select-diagnosis-game" class="game-selector-btn">Diagnosis Game</button>
+            <button id="select-translate-the-mood" class="game-selector-btn">Translate the Mood</button>
         </div>
         <div class="language-selector-container">
             <label for="language-selector">Language:</label>
@@ -298,6 +299,19 @@
             <div id="dg-options-container"></div>
             <div id="dg-justification" style="display: none;"></div>
             <button id="dg-next-btn" style="display: none;">Next Challenge</button>
+        </div>
+
+        <div id="translate-the-mood-container" class="game-container">
+            <h2>Translate the Mood</h2>
+            <p>Score: <span id="tm-score">0</span></p>
+            <p id="tm-sentence" class="sentence-text"></p>
+            <p id="tm-mood" class="mood-text"></p>
+            <div id="tm-input-container">
+                 <input type="text" id="tm-user-input" placeholder="Rewrite the sentence to convey the mood.">
+                 <button id="tm-submit-btn">Submit</button>
+            </div>
+            <div id="tm-explanation" style="display: none;"></div>
+            <button id="tm-next-btn" style="display: none;">Next Challenge</button>
         </div>
     </main>
     <script type="module" src="js/main.js"></script>
