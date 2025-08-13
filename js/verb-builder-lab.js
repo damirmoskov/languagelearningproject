@@ -26,7 +26,7 @@ const plantSVGs = [
 // --- Core Functions ---
 
 async function loadVerbData(language) {
-    const dataFile = `data/french_a2_verbs.json`;
+    const dataFile = `data/${language}_verbs.json`;
     try {
         const response = await fetch(dataFile);
         if (!response.ok) {
@@ -38,7 +38,9 @@ async function loadVerbData(language) {
     } catch (error) {
         console.error("Could not load verb data:", error);
         if (domElements.plantContainer) {
-            domElements.plantContainer.innerHTML = `<p style="color: red;">Error: Could not load verb data for ${language}.</p>`;
+            domElements.plantContainer.innerHTML = `<p style="color: red;">Error: Could not load verb data for ${language}. Please select another language.</p>`;
+            domElements.optionsContainer.innerHTML = '';
+            domElements.feedback.textContent = '';
         }
         return false;
     }

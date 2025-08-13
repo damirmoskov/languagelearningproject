@@ -12,7 +12,7 @@ let domElements = {};
 // --- Core Functions ---
 
 async function loadData(language) {
-    const verbFile = `data/french_a2_verbs.json`;
+    const verbFile = `data/${language}_verbs.json`;
     try {
         const response = await fetch(verbFile);
         if (!response.ok) throw new Error(`HTTP error!`);
@@ -120,6 +120,6 @@ export async function initConjugationDuel(language, elements) {
         });
         startRound();
     } else {
-        domElements.feedback.textContent = 'Error loading game data.';
+        domElements.feedback.textContent = 'Error loading game data for this language. Please select another.';
     }
 }

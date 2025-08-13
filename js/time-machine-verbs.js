@@ -12,8 +12,8 @@ const tenseMapping = ['imparfait', 'présent', 'futur'];
 
 async function loadData(language) {
     console.log("TMV: Loading data...");
-    const challengeFile = `data/french_a2_time_machine.json`;
-    const verbFile = `data/french_a2_verbs.json`;
+    const challengeFile = `data/${language}_time_machine.json`;
+    const verbFile = `data/${language}_verbs.json`;
     try {
         const [challengeResponse, verbResponse] = await Promise.all([
             fetch(challengeFile),
@@ -130,6 +130,7 @@ export async function initTimeMachineVerbs(language, elements) {
         domElements.nextBtn.addEventListener('click', startRound);
         startRound();
     } else {
+        domElements.feedback.textContent = 'Error loading game data for this language. Please select another.';
         console.error("TMV: Initialization failed because data did not load.");
     }
 }

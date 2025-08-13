@@ -12,8 +12,7 @@ let domElements = {};
 // --- Core Functions ---
 
 async function loadData(language) {
-    // Assuming french for now, will need to be dynamic later
-    const dataFile = `data/french_a2_verbsnap.json`;
+    const dataFile = `data/${language}_verbsnap.json`;
     try {
         const response = await fetch(dataFile);
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
@@ -22,7 +21,8 @@ async function loadData(language) {
     } catch (error) {
         console.error("Could not load Verb Snap! data:", error);
         if(domElements.overlay) {
-            domElements.overlay.innerHTML = `<p style="color: red;">Error loading game data.</p>`;
+            domElements.overlay.style.display = 'flex';
+            domElements.overlay.innerHTML = `<p style="color: red;">Error loading game data for this language. Please select another.</p>`;
         }
         return false;
     }

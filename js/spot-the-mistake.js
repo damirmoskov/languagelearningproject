@@ -65,9 +65,9 @@ function resetGame(fullReset = false) {
 }
 
 async function loadSpotTheMistake(language) {
-    currentLanguage_stm = 'english_b1';
+    currentLanguage_stm = language;
     try {
-        const response = await fetch(`data/english_b1_spot.json`);
+        const response = await fetch(`data/${language}_spot.json`);
         const data = await response.json();
         textsData = data.texts;
         deckTitle.textContent = `${data.lang} ${data.level}`;

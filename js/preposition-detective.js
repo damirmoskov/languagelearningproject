@@ -3,9 +3,9 @@ export function initPrepositionDetective(language, elements) {
     let currentChallengeIndex = -1;
     let score = 0;
 
-    async function loadGameData() {
+    async function loadGameData(language) {
         try {
-            const response = await fetch(`data/french_a2_preposition_detective.json`);
+            const response = await fetch(`data/${language}_preposition_detective.json`);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -15,7 +15,8 @@ export function initPrepositionDetective(language, elements) {
             loadNextChallenge();
         } catch (error) {
             console.error('Failed to load preposition detective data:', error);
-            elements.clueEl.textContent = 'Failed to load game data. Please try refreshing.';
+            elements.clueEl.textContent = 'Error loading game data for this language. Please select another.';
+            elements.panelsContainerEl.innerHTML = '';
         }
     }
 
@@ -85,5 +86,5 @@ export function initPrepositionDetective(language, elements) {
 
     elements.nextBtn.addEventListener('click', loadNextChallenge);
 
-    loadGameData();
+    loadGameData(language);
 }

@@ -13,7 +13,7 @@ let domElements = {};
 // --- Core Functions ---
 
 async function loadData(language) {
-    const dataFile = `data/french_a2_agreement.json`;
+    const dataFile = `data/${language}_agreement.json`;
     try {
         const response = await fetch(dataFile);
         if (!response.ok) throw new Error(`HTTP error!`);
@@ -161,6 +161,7 @@ export async function initAgreementArcade(language, elements) {
             domElements.startBtn.addEventListener('click', startGame);
         }
     } else {
-        domElements.overlay.innerHTML = '<p style="color: red;">Could not load game data.</p>';
+        domElements.overlay.style.display = 'flex';
+        domElements.overlay.innerHTML = '<p style="color: red;">Could not load game data for this language. Please select another.</p>';
     }
 }

@@ -3,9 +3,9 @@ export function initMorphologyMixer(language, elements) {
     let currentChallengeIndex = -1;
     let score = 0;
 
-    async function loadGameData() {
+    async function loadGameData(language) {
         try {
-            const response = await fetch(`data/french_a2_morphology_mixer.json`);
+            const response = await fetch(`data/${language}_morphology_mixer.json`);
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
             const data = await response.json();
             challenges = data.challenges;
@@ -13,7 +13,9 @@ export function initMorphologyMixer(language, elements) {
             loadNextChallenge();
         } catch (error) {
             console.error('Failed to load morphology mixer data:', error);
-            elements.wordContainerEl.textContent = 'Failed to load game data.';
+            elements.wordContainerEl.textContent = 'Error loading game data for this language. Please select another.';
+            elements.promptImageEl.style.display = 'none';
+            elements.optionsContainerEl.innerHTML = '';
         }
     }
 
@@ -87,5 +89,5 @@ export function initMorphologyMixer(language, elements) {
 
     elements.nextBtn.addEventListener('click', loadNextChallenge);
 
-    loadGameData();
+    loadGameData(language);
 }

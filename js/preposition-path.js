@@ -9,7 +9,7 @@ let dropSucceeded = false;
 // --- Core Functions ---
 
 async function loadData(language) {
-    const dataFile = `data/french_a2_prepositions.json`; // Assuming French for now
+    const dataFile = `data/${language}_prepositions.json`;
     try {
         const response = await fetch(dataFile);
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
@@ -18,7 +18,9 @@ async function loadData(language) {
     } catch (error) {
         console.error("Could not load Preposition Path data:", error);
         if (domElements.instruction) {
-            domElements.instruction.textContent = 'Error loading game data.';
+            domElements.instruction.textContent = 'Error loading game data for this language. Please select another.';
+            domElements.sceneContainer.style.backgroundImage = 'none';
+            domElements.itemHolder.innerHTML = '';
         }
         return false;
     }

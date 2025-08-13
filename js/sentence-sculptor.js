@@ -29,9 +29,8 @@ function clearState() {
 
 async function loadSentences() {
     try {
-        // For now, we only have a French data file for this new game type
-        const response = await fetch(`data/french_a2_sentence_sculptor.json`);
-        if (!response.ok) throw new Error(`Data file not found for french_a2_sentence_sculptor`);
+        const response = await fetch(`data/${currentLanguage_ss}_sentence_sculptor.json`);
+        if (!response.ok) throw new Error(`Data file not found for ${currentLanguage_ss}_sentence_sculptor`);
         const data = await response.json();
         allSentences = data.sentences;
         deckTitleEl.textContent = `${data.lang} ${data.level} - Sentence Sculptor`;
@@ -39,7 +38,12 @@ async function loadSentences() {
         availableSentences = allSentences.filter(s => !completedIds.includes(s.id));
     } catch (error) {
         console.error("Could not load sentence sculptor data:", error);
-        deckTitleEl.textContent = "Error loading data";
+        deckTitleEl.textContent = "Sentence Sculptor";
+        feedbackEl.textContent = "Error loading game data for this language. Please select another.";
+        promptImageEl.style.display = 'none';
+        sourceChunksEl.innerHTML = '';
+        targetSentenceEl.innerHTML = '';
+        checkBtn.disabled = true;
         allSentences = [];
         availableSentences = [];
     }

@@ -10,7 +10,7 @@ let domElements = {};
 // --- Core Functions ---
 
 async function loadData(language) {
-    const dataFile = `data/french_a2_gender.json`; // Assuming French for now
+    const dataFile = `data/${language}_gender.json`;
     try {
         const response = await fetch(dataFile);
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
@@ -19,7 +19,10 @@ async function loadData(language) {
     } catch (error) {
         console.error("Could not load Gender Quest data:", error);
         if (domElements.feedback) {
-            domElements.feedback.textContent = 'Error loading game data.';
+            domElements.feedback.textContent = 'Error loading game data for this language. Please select another.';
+            domElements.itemPool.innerHTML = '';
+            domElements.masculineHome.innerHTML = '<h3>Masculine</h3>';
+            domElements.feminineHome.innerHTML = '<h3>Feminine</h3>';
         }
         return false;
     }

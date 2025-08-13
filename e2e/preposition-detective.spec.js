@@ -6,7 +6,7 @@ test.describe('Preposition Detective Game', () => {
   let gameData;
 
   test.beforeAll(() => {
-    const dataPath = path.join(__dirname, '..', 'data', 'french_a2', 'preposition_detective.json');
+    const dataPath = path.join(__dirname, '..', 'data', 'french_a2_preposition_detective.json');
     gameData = JSON.parse(fs.readFileSync(dataPath, 'utf8'));
   });
 
