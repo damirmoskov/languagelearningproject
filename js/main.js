@@ -19,6 +19,7 @@ import { initMetaphorMatch } from './metaphor-match.js';
 import { initProblemSolvers } from './problem-solvers.js';
 import { initDiagnosisGame } from './diagnosis-game.js';
 import { initTranslateTheMood } from './translate-the-mood.js';
+import { initTwoStageGuess } from './two-stage-guess.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     let activeGame = localStorage.getItem('cosy_activeGame') || 'memory-match';
@@ -48,6 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
         problemSolversContainer: document.getElementById('problem-solvers-container'),
         diagnosisGameContainer: document.getElementById('diagnosis-game-container'),
         translateTheMoodContainer: document.getElementById('translate-the-mood-container'),
+        twoStageGuessContainer: document.getElementById('two-stage-guess-container'),
         selectMemoryMatchBtn: document.getElementById('select-memory-match'),
         selectClozeRaceBtn: document.getElementById('select-cloze-race'),
         selectSpotMistakeBtn: document.getElementById('select-spot-mistake'),
@@ -69,6 +71,7 @@ document.addEventListener('DOMContentLoaded', () => {
         selectProblemSolversBtn: document.getElementById('select-problem-solvers'),
         selectDiagnosisGameBtn: document.getElementById('select-diagnosis-game'),
         selectTranslateTheMoodBtn: document.getElementById('select-translate-the-mood'),
+        selectTwoStageGuessBtn: document.getElementById('select-two-stage-guess'),
         memoryMatchElements: {
             gameBoard: document.getElementById('game-board'),
             matchesCountSpan: document.getElementById('matches-count'),
@@ -252,6 +255,16 @@ document.addEventListener('DOMContentLoaded', () => {
             nextBtn: document.getElementById('tm-next-btn'),
             scoreEl: document.getElementById('tm-score'),
             deckTitle: document.getElementById('deck-title')
+        },
+        twoStageGuessElements: {
+            evidenceEl: document.getElementById('tsg-evidence-container'),
+            promptEl: document.getElementById('tsg-prompt-container'),
+            userInputEl: document.getElementById('tsg-user-input'),
+            submitBtn: document.getElementById('tsg-submit-btn'),
+            modelAnswerEl: document.getElementById('tsg-model-answer-container'),
+            nextBtn: document.getElementById('tsg-next-btn'),
+            scoreEl: document.getElementById('tsg-score'),
+            deckTitle: document.getElementById('deck-title')
         }
     };
 
@@ -298,6 +311,8 @@ document.addEventListener('DOMContentLoaded', () => {
             initDiagnosisGame(currentLanguage, dom.diagnosisGameElements);
         } else if (activeGame === 'translate-the-mood') {
             initTranslateTheMood(currentLanguage, dom.translateTheMoodElements);
+        } else if (activeGame === 'two-stage-guess') {
+            initTwoStageGuess(currentLanguage, dom.twoStageGuessElements);
         }
     }
 
@@ -325,6 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.selectProblemSolversBtn.classList.toggle('active', gameName === 'problem-solvers');
         dom.selectDiagnosisGameBtn.classList.toggle('active', gameName === 'diagnosis-game');
         dom.selectTranslateTheMoodBtn.classList.toggle('active', gameName === 'translate-the-mood');
+        dom.selectTwoStageGuessBtn.classList.toggle('active', gameName === 'two-stage-guess');
 
         dom.memoryMatchContainer.classList.toggle('active', gameName === 'memory-match');
         dom.clozeRaceContainer.classList.toggle('active', gameName === 'cloze-race');
@@ -347,6 +363,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.problemSolversContainer.classList.toggle('active', gameName === 'problem-solvers');
         dom.diagnosisGameContainer.classList.toggle('active', gameName === 'diagnosis-game');
         dom.translateTheMoodContainer.classList.toggle('active', gameName === 'translate-the-mood');
+        dom.twoStageGuessContainer.classList.toggle('active', gameName === 'two-stage-guess');
 
         initializeGame();
     }
@@ -380,6 +397,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dom.selectProblemSolversBtn.addEventListener('click', () => switchGame('problem-solvers'));
     dom.selectDiagnosisGameBtn.addEventListener('click', () => switchGame('diagnosis-game'));
     dom.selectTranslateTheMoodBtn.addEventListener('click', () => switchGame('translate-the-mood'));
+    dom.selectTwoStageGuessBtn.addEventListener('click', () => switchGame('two-stage-guess'));
 
     // Initialize the game based on the loaded state
     switchGame(activeGame);

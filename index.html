@@ -31,6 +31,7 @@
             <button id="select-problem-solvers" class="game-selector-btn">Problem Solvers</button>
             <button id="select-diagnosis-game" class="game-selector-btn">Diagnosis Game</button>
             <button id="select-translate-the-mood" class="game-selector-btn">Translate the Mood</button>
+            <button id="select-two-stage-guess" class="game-selector-btn">Two-Stage Guess</button>
         </div>
         <div class="language-selector-container">
             <label for="language-selector">Language:</label>
@@ -312,6 +313,17 @@
             </div>
             <div id="tm-explanation" style="display: none;"></div>
             <button id="tm-next-btn" style="display: none;">Next Challenge</button>
+        </div>
+
+        <div id="two-stage-guess-container" class="game-container">
+            <h2>Two-Stage Guess</h2>
+            <p>Score: <span id="tsg-score">0</span></p>
+            <div id="tsg-evidence-container" class="evidence-text"></div>
+            <p id="tsg-prompt-container" class="prompt-text"></p>
+            <textarea id="tsg-user-input" rows="4" placeholder="Write your hypothesis here..."></textarea>
+            <button id="tsg-submit-btn">Submit Hypothesis</button>
+            <div id="tsg-model-answer-container" class="model-answer" style="display: none;"></div>
+            <button id="tsg-next-btn" style="display: none;">Next Challenge</button>
         </div>
     </main>
     <script type="module" src="js/main.js"></script>
