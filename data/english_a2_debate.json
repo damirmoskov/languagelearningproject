@@ -1,0 +1,50 @@
+{
+  "lang": "English",
+  "level": "A2",
+  "debates": [
+    {
+      "id": "deb001",
+      "topic": "Living in a big city is better than living in the countryside.",
+      "image_url": "https://placehold.co/600x400?text=Busy+City+Street",
+      "model_arguments": {
+        "for": [
+          "Cities have more job opportunities.",
+          "There are more things to do, like museums and concerts."
+        ],
+        "against": [
+          "The countryside is more peaceful and quiet.",
+          "Cities can be crowded and expensive."
+        ],
+        "conclusion": "Ultimately, the best place to live depends on a person's lifestyle and priorities."
+      },
+      "useful_phrases": [
+        "On one hand...",
+        "On the other hand...",
+        "For example...",
+        "I believe that..."
+      ]
+    },
+    {
+      "id": "deb002",
+      "topic": "Governments should ban all single-use plastics.",
+      "image_url": "https://placehold.co/600x400?text=Polluted+Beach",
+      "model_arguments": {
+        "for": [
+          "This would greatly reduce pollution in our oceans.",
+          "It would force companies to find better alternatives."
+        ],
+        "against": [
+          "Banning all plastics could be difficult for small businesses.",
+          "Some plastic items are necessary for health and safety."
+        ],
+        "conclusion": "Finding a balance between environmental protection and economic needs is a difficult but important challenge."
+      },
+      "useful_phrases": [
+        "A key argument for this is...",
+        "However, a problem is...",
+        "In conclusion...",
+        "It is important to consider..."
+      ]
+    }
+  ]
+}

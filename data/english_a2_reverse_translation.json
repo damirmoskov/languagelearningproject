@@ -1,0 +1,30 @@
+{
+  "lang": "English",
+  "level": "A2",
+  "challenges": [
+    {
+      "id": "rt001",
+      "word_to_define": "a banana",
+      "forbidden_words": ["banana", "bananas"],
+      "model_definition": "It's a long, yellow fruit that monkeys like to eat."
+    },
+    {
+      "id": "rt002",
+      "word_to_define": "a teacher",
+      "forbidden_words": ["teacher", "teach", "teaches", "taught"],
+      "model_definition": "A person who works in a school and helps students learn new things."
+    },
+    {
+      "id": "rt003",
+      "word_to_define": "a bicycle",
+      "forbidden_words": ["bicycle", "bike", "cycle"],
+      "model_definition": "A vehicle with two wheels that you move by pushing pedals with your feet."
+    },
+    {
+      "id": "rt004",
+      "word_to_define": "rain",
+      "forbidden_words": ["rain", "raining", "rained"],
+      "model_definition": "Water that falls from the clouds in the sky."
+    }
+  ]
+}

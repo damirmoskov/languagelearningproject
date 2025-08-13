@@ -18,6 +18,20 @@
             <button id="select-adaptive-flashcards" class="game-selector-btn">Adaptive Flashcards</button>
             <button id="select-story-builder" class="game-selector-btn">Story Builder</button>
             <button id="select-roleplay-simulator" class="game-selector-btn">Roleplay Simulator</button>
+            <button id="select-synonym-swap" class="game-selector-btn">Synonym Swap</button>
+            <button id="select-mystery-game" class="game-selector-btn">5 Clues Mystery</button>
+            <button id="select-reverse-translation" class="game-selector-btn">Reverse Translation</button>
+            <button id="select-find-the-liar" class="game-selector-btn">Find the Liar</button>
+            <button id="select-synonym-chain" class="game-selector-btn">Synonym Chain</button>
+            <button id="select-wrong-ending-detective" class="game-selector-btn">Wrong Ending Detective</button>
+            <button id="select-picture-debate" class="game-selector-btn">Picture Debate</button>
+            <button id="select-what-happens-next" class="game-selector-btn">What Happens Next?</button>
+            <button id="select-word-detective" class="game-selector-btn">Word Detective</button>
+            <button id="select-metaphor-match" class="game-selector-btn">Metaphor Match</button>
+            <button id="select-problem-solvers" class="game-selector-btn">Problem Solvers</button>
+            <button id="select-diagnosis-game" class="game-selector-btn">Diagnosis Game</button>
+            <button id="select-translate-the-mood" class="game-selector-btn">Translate the Mood</button>
+            <button id="select-two-stage-guess" class="game-selector-btn">Two-Stage Guess</button>
         </div>
         <div class="language-selector-container">
             <label for="language-selector">Language:</label>
@@ -142,6 +156,174 @@
             <div id="rs-conversation-log"></div>
             <div id="rs-npc-prompt"></div>
             <div id="rs-user-choices"></div>
+        </div>
+
+        <div id="synonym-swap-container" class="game-container">
+            <div id="ss-stats">
+                <p>Score: <span id="ss-score">0</span></p>
+            </div>
+            <div id="ss-sentence-container">
+                <p id="ss-sentence">Loading...</p>
+            </div>
+            <div id="ss-options-container"></div>
+            <button id="ss-next-btn">Next</button>
+        </div>
+
+        <div id="mystery-game-container" class="game-container">
+            <h2>5 Clues Mystery</h2>
+            <p>Score: <span id="mg-score">0</span></p>
+            <ul id="mg-clues-list">
+                <!-- Clues will be populated by JS -->
+            </ul>
+            <div id="mg-input-container">
+                <input type="text" id="mg-guess-input" placeholder="What is it?">
+                <button id="mg-guess-btn">Guess</button>
+            </div>
+            <button id="mg-next-clue-btn">Next Clue</button>
+            <p id="mg-feedback"></p>
+        </div>
+
+        <div id="reverse-translation-container" class="game-container">
+            <h2>Reverse Translation</h2>
+            <p id="rt-challenge-prompt">Loading challenge...</p>
+            <textarea id="rt-user-input" rows="4" placeholder="Write your definition here..."></textarea>
+            <button id="rt-submit-btn">Submit Definition</button>
+            <div id="rt-model-answer-container" style="display: none;">
+                <h3>Model Definition:</h3>
+                <p></p>
+            </div>
+            <p id="rt-feedback"></p>
+            <button id="rt-next-btn" style="display: none;">Next Challenge</button>
+        </div>
+
+        <div id="find-the-liar-container" class="game-container">
+            <h2>Find the Liar</h2>
+            <p>Score: <span id="ftl-score">0</span></p>
+            <h3 id="ftl-topic">Loading scenario...</h3>
+            <ul id="ftl-statements-list" class="statements">
+                <!-- Statements will be populated by JS -->
+            </ul>
+            <button id="ftl-reveal-clue-btn">Reveal a Clue</button>
+            <div class="clues-section">
+                <h4>Clues:</h4>
+                <ul id="ftl-clues-list">
+                    <!-- Clues will be populated by JS -->
+                </ul>
+            </div>
+            <p id="ftl-feedback"></p>
+            <button id="ftl-next-scenario-btn" style="display: none;">Next Scenario</button>
+        </div>
+
+        <div id="synonym-chain-container" class="game-container">
+            <h2>Synonym Chain</h2>
+            <p>Chain Length: <span id="sc-score">0</span></p>
+            <div id="sc-chain-display" class="chain-display"></div>
+            <p id="sc-current-word"></p>
+            <div id="sc-input-container">
+                <input type="text" id="sc-user-input" placeholder="Type a synonym...">
+                <button id="sc-submit-btn">Submit</button>
+            </div>
+            <p id="sc-feedback"></p>
+            <button id="sc-new-chain-btn" style="display: none;">Start New Chain</button>
+        </div>
+
+        <div id="wrong-ending-detective-container" class="game-container">
+            <h2>Wrong Ending Detective</h2>
+            <p>Score: <span id="wed-score">0</span></p>
+            <div id="wed-sentence-container" class="sentence"></div>
+            <div id="wed-explanation-container" class="explanation-options"></div>
+            <p id="wed-feedback"></p>
+            <button id="wed-next-btn" style="display: none;">Next Challenge</button>
+        </div>
+
+        <div id="picture-debate-container" class="game-container">
+            <h2>Picture Prompt Debate</h2>
+            <img id="pd-image" src="" alt="Debate prompt image" style="max-width: 100%; height: auto;">
+            <h3 id="pd-topic"></h3>
+            <p id="pd-prompt"></p>
+            <textarea id="pd-user-input" rows="5" placeholder="Write your thoughts here..."></textarea>
+            <button id="pd-submit-btn">Submit</button>
+            <div id="pd-review-section" style="display: none;">
+                <div id="pd-model-answers"></div>
+                <div id="pd-useful-phrases"></div>
+            </div>
+            <button id="pd-next-debate-btn" style="display: none;">Next Debate</button>
+        </div>
+
+        <div id="what-happens-next-container" class="game-container">
+            <h2>What Happens Next?</h2>
+            <p id="whn-story-starter"></p>
+            <textarea id="whn-user-input" rows="5" placeholder="Write your continuation here..."></textarea>
+            <button id="whn-submit-btn">Submit</button>
+            <div id="whn-model-continuations" style="display: none;"></div>
+            <button id="whn-next-btn" style="display: none;">Next Story</button>
+        </div>
+
+        <div id="word-detective-container" class="game-container">
+            <h2>Word Detective</h2>
+            <p>Score: <span id="wd-score">0</span></p>
+            <div id="wd-paragraph" class="paragraph-text"></div>
+            <textarea id="wd-user-input" rows="3" placeholder="What do you think the highlighted word means?"></textarea>
+            <button id="wd-submit-btn">Submit Definition</button>
+            <div id="wd-definition-container" style="display: none;"></div>
+            <div id="wd-mcq-container" style="display: none;"></div>
+            <button id="wd-next-btn" style="display: none;">Next Word</button>
+        </div>
+
+        <div id="metaphor-match-container" class="game-container">
+            <h2>Metaphor Match</h2>
+            <p>Score: <span id="mm-score">0</span></p>
+            <p id="mm-metaphor" class="metaphor-quote"></p>
+            <div id="mm-options-container"></div>
+            <div id="mm-explanation" style="display: none;"></div>
+            <button id="mm-next-btn" style="display: none;">Next Metaphor</button>
+        </div>
+
+        <div id="problem-solvers-container" class="game-container">
+            <h2>Problem Solvers</h2>
+            <p id="ps-description"></p>
+            <p id="ps-prompt"></p>
+            <textarea id="ps-user-input" rows="5" placeholder="Write your plan here..."></textarea>
+            <button id="ps-submit-btn">Submit Step</button>
+            <div id="ps-review-section" style="display: none;">
+                <div id="ps-model-solution"></div>
+                <div id="ps-useful-vocab"></div>
+            </div>
+            <button id="ps-next-btn" style="display: none;">Next Problem</button>
+        </div>
+
+        <div id="diagnosis-game-container" class="game-container">
+            <h2>Diagnosis Game</h2>
+            <p>Score: <span id="dg-score">0</span></p>
+            <p id="dg-scene" class="scene-text"></p>
+            <p id="dg-context" class="context-text"></p>
+            <div id="dg-options-container"></div>
+            <div id="dg-justification" style="display: none;"></div>
+            <button id="dg-next-btn" style="display: none;">Next Challenge</button>
+        </div>
+
+        <div id="translate-the-mood-container" class="game-container">
+            <h2>Translate the Mood</h2>
+            <p>Score: <span id="tm-score">0</span></p>
+            <p id="tm-sentence" class="sentence-text"></p>
+            <p id="tm-mood" class="mood-text"></p>
+            <div id="tm-input-container">
+                 <input type="text" id="tm-user-input" placeholder="Rewrite the sentence to convey the mood.">
+                 <button id="tm-submit-btn">Submit</button>
+            </div>
+            <div id="tm-explanation" style="display: none;"></div>
+            <button id="tm-next-btn" style="display: none;">Next Challenge</button>
+        </div>
+
+        <div id="two-stage-guess-container" class="game-container">
+            <h2>Two-Stage Guess</h2>
+            <p>Score: <span id="tsg-score">0</span></p>
+            <div id="tsg-evidence-container" class="evidence-text"></div>
+            <p id="tsg-prompt-container" class="prompt-text"></p>
+            <textarea id="tsg-user-input" rows="4" placeholder="Write your hypothesis here..."></textarea>
+            <button id="tsg-submit-btn">Submit Hypothesis</button>
+            <div id="tsg-model-answer-container" class="model-answer" style="display: none;"></div>
+            <button id="tsg-next-btn" style="display: none;">Next Challenge</button>
         </div>
     </main>
     <script type="module" src="js/main.js"></script>
