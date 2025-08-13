@@ -36,6 +36,7 @@
             <button id="select-verb-snap" class="game-selector-btn">Verb Snap!</button>
             <button id="select-gender-quest" class="game-selector-btn">Gender Quest</button>
             <button id="select-preposition-path" class="game-selector-btn">Preposition Path</button>
+            <button id="select-time-machine-verbs" class="game-selector-btn">Time Machine Verbs</button>
         </div>
         <div class="language-selector-container">
             <label for="language-selector">Language:</label>
@@ -400,6 +401,28 @@
                 </div>
             </div>
             <button id="pp-next-btn" style="display: none;">Next Scene</button>
+        </div>
+
+        <div id="time-machine-verbs-container" class="game-container">
+            <h2>Time Machine Verbs</h2>
+            <img id="tmv-prompt-image" src="" alt="Time context prompt" style="max-width: 100%; height: 200px; border-radius: 10px; background-color: #eee; margin-bottom: 15px;">
+            <p id="tmv-prompt-sentence"></p>
+            <div id="tmv-timeline-container">
+                <div class="tmv-tense-labels">
+                    <span>Past</span>
+                    <span>Present</span>
+                    <span>Future</span>
+                </div>
+                <input type="range" id="tmv-tense-slider" min="0" max="2" value="1" step="1">
+            </div>
+            <div id="tmv-verb-display">
+                <!-- The verb form will be updated here by JS -->
+            </div>
+            <div id="tmv-controls">
+                <button id="tmv-check-btn">Check Answer</button>
+                <button id="tmv-next-btn" style="display: none;">Next</button>
+            </div>
+            <p id="tmv-feedback"></p>
         </div>
     </main>
     <script type="module" src="js/main.js"></script>

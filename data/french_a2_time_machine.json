@@ -1,0 +1,33 @@
+{
+  "lang": "French",
+  "level": "A2",
+  "challenges": [
+    {
+      "id": "tmv001",
+      "image_url": "https://placehold.co/600x300/EFEFEF/AAAAAA&text=Parc+ensoleillé",
+      "prompt_template": "{subject} {verb_form} au parc {time_adverb}.",
+      "subject": "il",
+      "verb": "aller",
+      "time_adverb": "demain",
+      "correct_tense": "futur"
+    },
+    {
+      "id": "tmv002",
+      "image_url": "https://placehold.co/600x300/EFEFEF/AAAAAA&text=Cinéma",
+      "prompt_template": "{subject} {verb_form} un film {time_adverb}.",
+      "subject": "elle",
+      "verb": "regarder",
+      "time_adverb": "hier",
+      "correct_tense": "imparfait"
+    },
+    {
+      "id": "tmv003",
+      "image_url": "https://placehold.co/600x300/EFEFEF/AAAAAA&text=Personne+avec+casque",
+      "prompt_template": "{subject} {verb_form} de la musique {time_adverb}.",
+      "subject": "nous",
+      "verb": "écouter",
+      "time_adverb": "en ce moment",
+      "correct_tense": "présent"
+    }
+  ]
+}

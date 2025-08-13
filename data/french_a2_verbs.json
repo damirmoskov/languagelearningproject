@@ -116,6 +116,36 @@
                     "ils/elles": "auront"
                 }
             }
+        },
+        {
+            "verb": "regarder",
+            "translation": "to watch",
+            "root": "regard",
+            "conjugations": {
+                "présent": { "je": "regarde", "tu": "regardes", "il/elle/on": "regarde", "nous": "regardons", "vous": "regardez", "ils/elles": "regardent" },
+                "futur": { "je": "regarderai", "tu": "regarderas", "il/elle/on": "regardera", "nous": "regarderons", "vous": "regarderez", "ils/elles": "regarderont" },
+                "imparfait": { "je": "regardais", "tu": "regardais", "il/elle/on": "regardait", "nous": "regardions", "vous": "regardiez", "ils/elles": "regardaient" }
+            }
+        },
+        {
+            "verb": "écouter",
+            "translation": "to listen",
+            "root": "écout",
+            "conjugations": {
+                "présent": { "je": "écoute", "tu": "écoutes", "il/elle/on": "écoute", "nous": "écoutons", "vous": "écoutez", "ils/elles": "écoutent" },
+                "futur": { "je": "écouterai", "tu": "écouteras", "il/elle/on": "écoutera", "nous": "écouterons", "vous": "écouterez", "ils/elles": "écouteront" },
+                "imparfait": { "je": "écoutais", "tu": "écoutais", "il/elle/on": "écoutait", "nous": "écoutions", "vous": "écoutiez", "ils/elles": "écoutaient" }
+            }
+        },
+        {
+            "verb": "aller",
+            "translation": "to go",
+            "root": "",
+            "conjugations": {
+                "présent": { "je": "vais", "tu": "vas", "il/elle/on": "va", "nous": "allons", "vous": "allez", "ils/elles": "vont" },
+                "futur": { "je": "irai", "tu": "iras", "il/elle/on": "ira", "nous": "irons", "vous": "irez", "ils/elles": "iront" },
+                "imparfait": { "je": "allais", "tu": "allais", "il/elle/on": "allait", "nous": "allions", "vous": "alliez", "ils/elles": "allaient" }
+            }
         }
     ]
 }
