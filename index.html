@@ -32,6 +32,7 @@
             <button id="select-diagnosis-game" class="game-selector-btn">Diagnosis Game</button>
             <button id="select-translate-the-mood" class="game-selector-btn">Translate the Mood</button>
             <button id="select-two-stage-guess" class="game-selector-btn">Two-Stage Guess</button>
+            <button id="select-verb-builder-lab" class="game-selector-btn">Verb Builder Lab</button>
         </div>
         <div class="language-selector-container">
             <label for="language-selector">Language:</label>
@@ -324,6 +325,26 @@
             <button id="tsg-submit-btn">Submit Hypothesis</button>
             <div id="tsg-model-answer-container" class="model-answer" style="display: none;"></div>
             <button id="tsg-next-btn" style="display: none;">Next Challenge</button>
+        </div>
+
+        <div id="verb-builder-lab-container" class="game-container">
+            <h2>Verb Builder Lab</h2>
+            <div id="vbl-plant-container">
+                <!-- SVG for the growing plant will go here -->
+            </div>
+            <div id="vbl-prompt-container">
+                <p>Person: <span id="vbl-person"></span></p>
+                <p>Tense: <span id="vbl-tense"></span></p>
+            </div>
+            <div id="vbl-verb-container">
+                <span id="vbl-verb-root"></span>
+                <span id="vbl-verb-ending">?</span>
+            </div>
+            <div id="vbl-options-container">
+                <!-- Answer tiles will be populated by JS -->
+            </div>
+            <p id="vbl-feedback"></p>
+            <button id="vbl-next-btn" style="display: none;">Next Verb</button>
         </div>
     </main>
     <script type="module" src="js/main.js"></script>

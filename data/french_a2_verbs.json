@@ -1,0 +1,121 @@
+{
+    "lang": "French",
+    "level": "A2",
+    "verbs": [
+        {
+            "verb": "parler",
+            "translation": "to speak",
+            "root": "parl",
+            "conjugations": {
+                "présent": {
+                    "je": "parle",
+                    "tu": "parles",
+                    "il/elle/on": "parle",
+                    "nous": "parlons",
+                    "vous": "parlez",
+                    "ils/elles": "parlent"
+                },
+                "futur": {
+                    "je": "parlerai",
+                    "tu": "parleras",
+                    "il/elle/on": "parlera",
+                    "nous": "parlerons",
+                    "vous": "parlerez",
+                    "ils/elles": "parleront"
+                },
+                "imparfait": {
+                    "je": "parlais",
+                    "tu": "parlais",
+                    "il/elle/on": "parlait",
+                    "nous": "parlions",
+                    "vous": "parliez",
+                    "ils/elles": "parlaient"
+                }
+            }
+        },
+        {
+            "verb": "finir",
+            "translation": "to finish",
+            "root": "fin",
+            "conjugations": {
+                "présent": {
+                    "je": "finis",
+                    "tu": "finis",
+                    "il/elle/on": "finit",
+                    "nous": "finissons",
+                    "vous": "finissez",
+                    "ils/elles": "finissent"
+                },
+                "futur": {
+                    "je": "finirai",
+                    "tu": "finiras",
+                    "il/elle/on": "finira",
+                    "nous": "finirons",
+                    "vous": "finirez",
+                    "ils/elles": "finiront"
+                }
+            }
+        },
+        {
+            "verb": "vendre",
+            "translation": "to sell",
+            "root": "vend",
+            "conjugations": {
+                "présent": {
+                    "je": "vends",
+                    "tu": "vends",
+                    "il/elle/on": "vend",
+                    "nous": "vendons",
+                    "vous": "vendez",
+                    "ils/elles": "vendent"
+                }
+            }
+        },
+        {
+            "verb": "être",
+            "translation": "to be",
+            "root": "",
+            "conjugations": {
+                "présent": {
+                    "je": "suis",
+                    "tu": "es",
+                    "il/elle/on": "est",
+                    "nous": "sommes",
+                    "vous": "êtes",
+                    "ils/elles": "sont"
+                },
+                "futur": {
+                    "je": "serai",
+                    "tu": "seras",
+                    "il/elle/on": "sera",
+                    "nous": "serons",
+                    "vous": "serez",
+                    "ils/elles": "seront"
+                }
+            }
+        },
+        {
+            "verb": "avoir",
+            "translation": "to have",
+            "root": "",
+            "conjugations": {
+                "présent": {
+                    "je": "ai",
+                    "tu": "as",
+                    "il/elle/on": "a",
+                    "nous": "avons",
+                    "vous": "avez",
+                    "ils/elles": "ont"
+                },
+                "futur": {
+                    "je": "aurai",
+                    "tu": "auras",
+                    "il/elle/on": "aura",
+                    "nous": "aurons",
+                    "vous": "aurez",
+                    "ils/elles": "auront"
+                }
+            }
+        }
+    ]
+}

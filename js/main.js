@@ -20,6 +20,7 @@ import { initProblemSolvers } from './problem-solvers.js';
 import { initDiagnosisGame } from './diagnosis-game.js';
 import { initTranslateTheMood } from './translate-the-mood.js';
 import { initTwoStageGuess } from './two-stage-guess.js';
+import { initVerbBuilderLab } from './verb-builder-lab.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     let activeGame = localStorage.getItem('cosy_activeGame') || 'memory-match';
@@ -50,6 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
         diagnosisGameContainer: document.getElementById('diagnosis-game-container'),
         translateTheMoodContainer: document.getElementById('translate-the-mood-container'),
         twoStageGuessContainer: document.getElementById('two-stage-guess-container'),
+        verbBuilderLabContainer: document.getElementById('verb-builder-lab-container'),
         selectMemoryMatchBtn: document.getElementById('select-memory-match'),
         selectClozeRaceBtn: document.getElementById('select-cloze-race'),
         selectSpotMistakeBtn: document.getElementById('select-spot-mistake'),
@@ -72,6 +74,7 @@ document.addEventListener('DOMContentLoaded', () => {
         selectDiagnosisGameBtn: document.getElementById('select-diagnosis-game'),
         selectTranslateTheMoodBtn: document.getElementById('select-translate-the-mood'),
         selectTwoStageGuessBtn: document.getElementById('select-two-stage-guess'),
+        selectVerbBuilderLabBtn: document.getElementById('select-verb-builder-lab'),
         memoryMatchElements: {
             gameBoard: document.getElementById('game-board'),
             matchesCountSpan: document.getElementById('matches-count'),
@@ -265,6 +268,17 @@ document.addEventListener('DOMContentLoaded', () => {
             nextBtn: document.getElementById('tsg-next-btn'),
             scoreEl: document.getElementById('tsg-score'),
             deckTitle: document.getElementById('deck-title')
+        },
+        verbBuilderLabElements: {
+            plantContainer: document.getElementById('vbl-plant-container'),
+            person: document.getElementById('vbl-person'),
+            tense: document.getElementById('vbl-tense'),
+            verbRoot: document.getElementById('vbl-verb-root'),
+            verbEnding: document.getElementById('vbl-verb-ending'),
+            optionsContainer: document.getElementById('vbl-options-container'),
+            feedback: document.getElementById('vbl-feedback'),
+            nextBtn: document.getElementById('vbl-next-btn'),
+            deckTitle: document.getElementById('deck-title')
         }
     };
 
@@ -313,6 +327,8 @@ document.addEventListener('DOMContentLoaded', () => {
             initTranslateTheMood(currentLanguage, dom.translateTheMoodElements);
         } else if (activeGame === 'two-stage-guess') {
             initTwoStageGuess(currentLanguage, dom.twoStageGuessElements);
+        } else if (activeGame === 'verb-builder-lab') {
+            initVerbBuilderLab(currentLanguage, dom.verbBuilderLabElements);
         }
     }
 
@@ -341,6 +357,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.selectDiagnosisGameBtn.classList.toggle('active', gameName === 'diagnosis-game');
         dom.selectTranslateTheMoodBtn.classList.toggle('active', gameName === 'translate-the-mood');
         dom.selectTwoStageGuessBtn.classList.toggle('active', gameName === 'two-stage-guess');
+        dom.selectVerbBuilderLabBtn.classList.toggle('active', gameName === 'verb-builder-lab');
 
         dom.memoryMatchContainer.classList.toggle('active', gameName === 'memory-match');
         dom.clozeRaceContainer.classList.toggle('active', gameName === 'cloze-race');
@@ -364,6 +381,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.diagnosisGameContainer.classList.toggle('active', gameName === 'diagnosis-game');
         dom.translateTheMoodContainer.classList.toggle('active', gameName === 'translate-the-mood');
         dom.twoStageGuessContainer.classList.toggle('active', gameName === 'two-stage-guess');
+        dom.verbBuilderLabContainer.classList.toggle('active', gameName === 'verb-builder-lab');
 
         initializeGame();
     }
@@ -398,6 +416,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dom.selectDiagnosisGameBtn.addEventListener('click', () => switchGame('diagnosis-game'));
     dom.selectTranslateTheMoodBtn.addEventListener('click', () => switchGame('translate-the-mood'));
     dom.selectTwoStageGuessBtn.addEventListener('click', () => switchGame('two-stage-guess'));
+    dom.selectVerbBuilderLabBtn.addEventListener('click', () => switchGame('verb-builder-lab'));
 
     // Initialize the game based on the loaded state
     switchGame(activeGame);
