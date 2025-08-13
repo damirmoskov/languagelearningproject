@@ -39,6 +39,8 @@
             <button id="select-time-machine-verbs" class="game-selector-btn">Time Machine Verbs</button>
             <button id="select-agreement-arcade" class="game-selector-btn">Agreement Arcade</button>
             <button id="select-conjugation-duel" class="game-selector-btn">Conjugation Duel</button>
+            <button id="select-preposition-detective" class="game-selector-btn">Preposition Detective</button>
+            <button id="select-morphology-mixer" class="game-selector-btn">Morphology Mixer</button>
         </div>
         <div class="language-selector-container">
             <label for="language-selector">Language:</label>
@@ -463,6 +465,35 @@
                 </div>
             </div>
             <p id="cd-feedback"></p>
+        </div>
+
+        <div id="preposition-detective-container" class="game-container">
+            <h2>Preposition Detective</h2>
+            <div class="stats-bar">
+                <p>Score: <span id="pd-score">0</span></p>
+            </div>
+            <p id="pd-clue" class="clue">Loading clue...</p>
+            <div id="pd-panels-container">
+                <!-- Panels will be dynamically inserted here by JS -->
+            </div>
+            <p id="pd-feedback" class="feedback"></p>
+            <button id="pd-next-btn" class="button" style="display: none;">Next Challenge</button>
+        </div>
+
+        <div id="morphology-mixer-container" class="game-container">
+            <h2>Morphology Mixer</h2>
+            <div class="stats-bar">
+                <p>Score: <span id="mm-score">0</span></p>
+            </div>
+            <img id="mm-prompt-image" src="" alt="Morphology prompt" style="max-width: 100%; height: auto; max-height: 200px; margin-bottom: 15px; border-radius: 10px; background-color: #eee;">
+            <div id="mm-word-container" class="word-construction">
+                <!-- Word parts will be inserted here by JS -->
+            </div>
+            <div id="mm-options-container">
+                <!-- Morpheme options will be inserted here by JS -->
+            </div>
+            <p id="mm-feedback" class="feedback"></p>
+            <button id="mm-next-btn" class="button" style="display: none;">Next Word</button>
         </div>
     </main>
     <script type="module" src="js/main.js"></script>

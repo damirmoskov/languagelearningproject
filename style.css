@@ -373,6 +373,96 @@ header { text-align: center; margin-bottom: 20px; }
     margin-top: 10px;
 }
 
+/* Preposition Detective Styles */
+#pd-panels-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.pd-panel {
+    border: 3px solid #ccc;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s, border-color 0.2s;
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.pd-panel:hover {
+    transform: scale(1.05);
+    border-color: #74b9ff;
+}
+
+.pd-panel img {
+    width: 100%;
+    max-width: 220px;
+    display: block;
+}
+
+.pd-panel.correct {
+    border-color: #2ecc71;
+    box-shadow: 0 0 10px #2ecc71;
+}
+
+.pd-panel.incorrect {
+    border-color: #e74c3c;
+    box-shadow: 0 0 10px #e74c3c;
+}
+
+#pd-clue {
+    font-size: 1.3em;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+#pd-feedback {
+    font-size: 1.2em;
+    font-weight: bold;
+    min-height: 1.5em;
+    margin-top: 15px;
+}
+
+/* Morphology Mixer Styles */
+.word-construction {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.mm-morpheme-slot {
+    color: #4a90e2;
+    text-decoration: underline;
+    padding: 0 5px;
+    text-decoration-style: dashed;
+}
+
+#mm-options-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.mm-option-btn {
+    padding: 15px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background-color: #f7f7f7;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.mm-option-btn:hover:not(:disabled) {
+    background-color: #e7e7e7;
+}
+
 /* Conjugation Duel Styles */
 #conjugation-duel-container {
     width: 100%;
