@@ -1,0 +1,48 @@
+{
+    "lang": "French",
+    "level": "A2",
+    "scenes": [
+        {
+            "id": "scene001",
+            "background_image_url": "https://placehold.co/600x400/F5F5DC/808080&text=Une+salle+avec+une+table",
+            "instruction": "Mets le chat sous la table.",
+            "draggable_item": {
+                "name": "chat",
+                "image_url": "https://placehold.co/80x80/FFC0CB/000000&text=Chat"
+            },
+            "drop_zones": [
+                {
+                    "id": "dz001-correct",
+                    "is_correct": true,
+                    "position": { "top": "65%", "left": "35%", "width": "30%", "height": "25%" }
+                },
+                {
+                    "id": "dz001-incorrect",
+                    "is_correct": false,
+                    "position": { "top": "40%", "left": "30%", "width": "40%", "height": "20%" }
+                }
+            ]
+        },
+        {
+            "id": "scene002",
+            "background_image_url": "https://placehold.co/600x400/DEB887/FFFFFF&text=Un+mur+avec+une+étagère",
+            "instruction": "Mets le livre sur l'étagère.",
+            "draggable_item": {
+                "name": "livre",
+                "image_url": "https://placehold.co/80x80/ADD8E6/000000&text=Livre"
+            },
+            "drop_zones": [
+                {
+                    "id": "dz002-correct",
+                    "is_correct": true,
+                    "position": { "top": "45%", "left": "25%", "width": "50%", "height": "15%" }
+                },
+                {
+                    "id": "dz002-incorrect",
+                    "is_correct": false,
+                    "position": { "top": "65%", "left": "10%", "width": "20%", "height": "20%" }
+                }
+            ]
+        }
+    ]
+}

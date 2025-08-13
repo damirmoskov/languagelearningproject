@@ -4,7 +4,7 @@ import { initSpotTheMistake } from './spot-the-mistake.js';
 import { initPictureBingo } from './picture-bingo.js';
 import { initPronunciationSprint } from './pronunciation-sprint.js';
 import { initAdaptiveFlashcards } from './adaptive-flashcards.js';
-import { initStoryBuilder } from './story-builder.js';
+import { initSentenceSculptor } from './sentence-sculptor.js';
 import { initRoleplaySimulator } from './roleplay-simulator.js';
 import { initSynonymSwap } from './synonym-swap.js';
 import { initMysteryGame } from './mystery-game.js';
@@ -20,6 +20,15 @@ import { initProblemSolvers } from './problem-solvers.js';
 import { initDiagnosisGame } from './diagnosis-game.js';
 import { initTranslateTheMood } from './translate-the-mood.js';
 import { initTwoStageGuess } from './two-stage-guess.js';
+import { initVerbBuilderLab } from './verb-builder-lab.js';
+import { initVerbSnap } from './verb-snap.js';
+import { initGenderQuest } from './gender-quest.js';
+import { initPrepositionPath } from './preposition-path.js';
+import { initTimeMachineVerbs } from './time-machine-verbs.js';
+import { initAgreementArcade } from './agreement-arcade.js';
+import { initConjugationDuel } from './conjugation-duel.js';
+import { initPrepositionDetective } from './preposition-detective.js';
+import { initMorphologyMixer } from './morphology-mixer.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     let activeGame = localStorage.getItem('cosy_activeGame') || 'memory-match';
@@ -34,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         pictureBingoContainer: document.getElementById('picture-bingo-container'),
         pronunciationSprintContainer: document.getElementById('pronunciation-sprint-container'),
         adaptiveFlashcardsContainer: document.getElementById('adaptive-flashcards-container'),
-        storyBuilderContainer: document.getElementById('story-builder-container'),
+        sentenceSculptorContainer: document.getElementById('sentence-sculptor-container'),
         roleplaySimulatorContainer: document.getElementById('roleplay-simulator-container'),
         synonymSwapContainer: document.getElementById('synonym-swap-container'),
         mysteryGameContainer: document.getElementById('mystery-game-container'),
@@ -50,13 +59,22 @@ document.addEventListener('DOMContentLoaded', () => {
         diagnosisGameContainer: document.getElementById('diagnosis-game-container'),
         translateTheMoodContainer: document.getElementById('translate-the-mood-container'),
         twoStageGuessContainer: document.getElementById('two-stage-guess-container'),
+        verbBuilderLabContainer: document.getElementById('verb-builder-lab-container'),
+        verbSnapContainer: document.getElementById('verb-snap-container'),
+        genderQuestContainer: document.getElementById('gender-quest-container'),
+        prepositionPathContainer: document.getElementById('preposition-path-container'),
+        timeMachineVerbsContainer: document.getElementById('time-machine-verbs-container'),
+        agreementArcadeContainer: document.getElementById('agreement-arcade-container'),
+        conjugationDuelContainer: document.getElementById('conjugation-duel-container'),
+        prepositionDetectiveContainer: document.getElementById('preposition-detective-container'),
+        morphologyMixerContainer: document.getElementById('morphology-mixer-container'),
         selectMemoryMatchBtn: document.getElementById('select-memory-match'),
         selectClozeRaceBtn: document.getElementById('select-cloze-race'),
         selectSpotMistakeBtn: document.getElementById('select-spot-mistake'),
         selectPictureBingoBtn: document.getElementById('select-picture-bingo'),
         selectPronunciationSprintBtn: document.getElementById('select-pronunciation-sprint'),
         selectAdaptiveFlashcardsBtn: document.getElementById('select-adaptive-flashcards'),
-        selectStoryBuilderBtn: document.getElementById('select-story-builder'),
+        selectSentenceSculptorBtn: document.getElementById('select-sentence-sculptor'),
         selectRoleplaySimulatorBtn: document.getElementById('select-roleplay-simulator'),
         selectSynonymSwapBtn: document.getElementById('select-synonym-swap'),
         selectMysteryGameBtn: document.getElementById('select-mystery-game'),
@@ -72,6 +90,15 @@ document.addEventListener('DOMContentLoaded', () => {
         selectDiagnosisGameBtn: document.getElementById('select-diagnosis-game'),
         selectTranslateTheMoodBtn: document.getElementById('select-translate-the-mood'),
         selectTwoStageGuessBtn: document.getElementById('select-two-stage-guess'),
+        selectVerbBuilderLabBtn: document.getElementById('select-verb-builder-lab'),
+        selectVerbSnapBtn: document.getElementById('select-verb-snap'),
+        selectGenderQuestBtn: document.getElementById('select-gender-quest'),
+        selectPrepositionPathBtn: document.getElementById('select-preposition-path'),
+        selectTimeMachineVerbsBtn: document.getElementById('select-time-machine-verbs'),
+        selectAgreementArcadeBtn: document.getElementById('select-agreement-arcade'),
+        selectConjugationDuelBtn: document.getElementById('select-conjugation-duel'),
+        selectPrepositionDetectiveBtn: document.getElementById('select-preposition-detective'),
+        selectMorphologyMixerBtn: document.getElementById('select-morphology-mixer'),
         memoryMatchElements: {
             gameBoard: document.getElementById('game-board'),
             matchesCountSpan: document.getElementById('matches-count'),
@@ -121,13 +148,14 @@ document.addEventListener('DOMContentLoaded', () => {
             statsReview: document.getElementById('srs-stats-review'),
             deckTitle: document.getElementById('af-deck-title')
         },
-        storyBuilderElements: {
-            targetSentence: document.getElementById('sb-target-sentence'),
-            sourceChunks: document.getElementById('sb-source-chunks'),
-            checkBtn: document.getElementById('sb-check-btn'),
-            nextBtn: document.getElementById('sb-next-btn'),
-            feedback: document.getElementById('sb-feedback'),
-            deckTitle: document.getElementById('sb-deck-title')
+        sentenceSculptorElements: {
+            targetSentence: document.getElementById('scs-target-sentence'),
+            sourceChunks: document.getElementById('scs-source-chunks'),
+            checkBtn: document.getElementById('scs-check-btn'),
+            nextBtn: document.getElementById('scs-next-btn'),
+            feedback: document.getElementById('scs-feedback'),
+            deckTitle: document.getElementById('scs-deck-title'),
+            promptImage: document.getElementById('scs-prompt-image')
         },
         roleplaySimulatorElements: {
             scenarioTitle: document.getElementById('rs-scenario-title'),
@@ -265,6 +293,91 @@ document.addEventListener('DOMContentLoaded', () => {
             nextBtn: document.getElementById('tsg-next-btn'),
             scoreEl: document.getElementById('tsg-score'),
             deckTitle: document.getElementById('deck-title')
+        },
+        verbBuilderLabElements: {
+            plantContainer: document.getElementById('vbl-plant-container'),
+            person: document.getElementById('vbl-person'),
+            tense: document.getElementById('vbl-tense'),
+            verbRoot: document.getElementById('vbl-verb-root'),
+            verbEnding: document.getElementById('vbl-verb-ending'),
+            optionsContainer: document.getElementById('vbl-options-container'),
+            feedback: document.getElementById('vbl-feedback'),
+            nextBtn: document.getElementById('vbl-next-btn'),
+            deckTitle: document.getElementById('deck-title')
+        },
+        verbSnapElements: {
+            score: document.getElementById('vs-score'),
+            timer: document.getElementById('vs-timer'),
+            promptMedia: document.getElementById('vs-prompt-media'),
+            promptText: document.getElementById('vs-prompt-text'),
+            optionsArea: document.getElementById('vs-options-area'),
+            overlay: document.getElementById('vs-overlay'),
+            startBtn: document.getElementById('vs-start-btn'),
+            deckTitle: document.getElementById('deck-title')
+        },
+        genderQuestElements: {
+            score: document.getElementById('gq-score'),
+            nextRoundBtn: document.getElementById('gq-next-round-btn'),
+            masculineHome: document.getElementById('gq-masculine-home'),
+            feminineHome: document.getElementById('gq-feminine-home'),
+            feedback: document.getElementById('gq-feedback'),
+            itemPool: document.getElementById('gq-item-pool'),
+            deckTitle: document.getElementById('deck-title')
+        },
+        prepositionPathElements: {
+            instruction: document.getElementById('pp-instruction'),
+            sceneContainer: document.getElementById('pp-scene-container'),
+            itemHolder: document.getElementById('pp-item-holder'),
+            nextBtn: document.getElementById('pp-next-btn'),
+            deckTitle: document.getElementById('deck-title')
+        },
+        timeMachineVerbsElements: {
+            container: document.getElementById('time-machine-verbs-container'),
+            promptImage: document.getElementById('tmv-prompt-image'),
+            promptSentence: document.getElementById('tmv-prompt-sentence'),
+            tenseSlider: document.getElementById('tmv-tense-slider'),
+            verbDisplay: document.getElementById('tmv-verb-display'),
+            checkBtn: document.getElementById('tmv-check-btn'),
+            nextBtn: document.getElementById('tmv-next-btn'),
+            feedback: document.getElementById('tmv-feedback'),
+            deckTitle: document.getElementById('deck-title')
+        },
+        agreementArcadeElements: {
+            score: document.getElementById('aa-score'),
+            lives: document.getElementById('aa-lives'),
+            gameArea: document.getElementById('aa-game-area'),
+            landingZone: document.getElementById('aa-landing-zone'),
+            overlay: document.getElementById('aa-overlay'),
+            startBtn: document.getElementById('aa-start-btn'),
+            deckTitle: document.getElementById('deck-title')
+        },
+        conjugationDuelElements: {
+            playerScore: document.getElementById('cd-player-score'),
+            opponentScore: document.getElementById('cd-opponent-score'),
+            verb: document.getElementById('cd-verb'),
+            subject: document.getElementById('cd-subject'),
+            tense: document.getElementById('cd-tense'),
+            playerInput: document.getElementById('cd-player-input'),
+            opponentProgress: document.getElementById('cd-opponent-progress'),
+            feedback: document.getElementById('cd-feedback'),
+            deckTitle: document.getElementById('deck-title')
+        },
+        prepositionDetectiveElements: {
+            clueEl: document.getElementById('pd-clue'),
+            panelsContainerEl: document.getElementById('pd-panels-container'),
+            feedbackEl: document.getElementById('pd-feedback'),
+            nextBtn: document.getElementById('pd-next-btn'),
+            scoreEl: document.getElementById('pd-score'),
+            deckTitle: document.getElementById('deck-title')
+        },
+        morphologyMixerElements: {
+            promptImageEl: document.getElementById('mm-prompt-image'),
+            wordContainerEl: document.getElementById('mm-word-container'),
+            optionsContainerEl: document.getElementById('mm-options-container'),
+            feedbackEl: document.getElementById('mm-feedback'),
+            scoreEl: document.getElementById('mm-score'),
+            nextBtn: document.getElementById('mm-next-btn'),
+            deckTitle: document.getElementById('deck-title')
         }
     };
 
@@ -281,8 +394,8 @@ document.addEventListener('DOMContentLoaded', () => {
             initPronunciationSprint(currentLanguage, dom.pronunciationSprintElements);
         } else if (activeGame === 'adaptive-flashcards') {
             initAdaptiveFlashcards(currentLanguage, dom.adaptiveFlashcardsElements);
-        } else if (activeGame === 'story-builder') {
-            initStoryBuilder(currentLanguage, dom.storyBuilderElements);
+        } else if (activeGame === 'sentence-sculptor') {
+            initSentenceSculptor(currentLanguage, dom.sentenceSculptorElements);
         } else if (activeGame === 'roleplay-simulator') {
             initRoleplaySimulator(currentLanguage, dom.roleplaySimulatorElements);
         } else if (activeGame === 'synonym-swap') {
@@ -313,6 +426,24 @@ document.addEventListener('DOMContentLoaded', () => {
             initTranslateTheMood(currentLanguage, dom.translateTheMoodElements);
         } else if (activeGame === 'two-stage-guess') {
             initTwoStageGuess(currentLanguage, dom.twoStageGuessElements);
+        } else if (activeGame === 'verb-builder-lab') {
+            initVerbBuilderLab(currentLanguage, dom.verbBuilderLabElements);
+        } else if (activeGame === 'verb-snap') {
+            initVerbSnap(currentLanguage, dom.verbSnapElements);
+        } else if (activeGame === 'gender-quest') {
+            initGenderQuest(currentLanguage, dom.genderQuestElements);
+        } else if (activeGame === 'preposition-path') {
+            initPrepositionPath(currentLanguage, dom.prepositionPathElements);
+        } else if (activeGame === 'time-machine-verbs') {
+            initTimeMachineVerbs(currentLanguage, dom.timeMachineVerbsElements);
+        } else if (activeGame === 'agreement-arcade') {
+            initAgreementArcade(currentLanguage, dom.agreementArcadeElements);
+        } else if (activeGame === 'conjugation-duel') {
+            initConjugationDuel(currentLanguage, dom.conjugationDuelElements);
+        } else if (activeGame === 'preposition-detective') {
+            initPrepositionDetective(currentLanguage, dom.prepositionDetectiveElements);
+        } else if (activeGame === 'morphology-mixer') {
+            initMorphologyMixer(currentLanguage, dom.morphologyMixerElements);
         }
     }
 
@@ -325,7 +456,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.selectPictureBingoBtn.classList.toggle('active', gameName === 'picture-bingo');
         dom.selectPronunciationSprintBtn.classList.toggle('active', gameName === 'pronunciation-sprint');
         dom.selectAdaptiveFlashcardsBtn.classList.toggle('active', gameName === 'adaptive-flashcards');
-        dom.selectStoryBuilderBtn.classList.toggle('active', gameName === 'story-builder');
+        dom.selectSentenceSculptorBtn.classList.toggle('active', gameName === 'sentence-sculptor');
         dom.selectRoleplaySimulatorBtn.classList.toggle('active', gameName === 'roleplay-simulator');
         dom.selectSynonymSwapBtn.classList.toggle('active', gameName === 'synonym-swap');
         dom.selectMysteryGameBtn.classList.toggle('active', gameName === 'mystery-game');
@@ -341,6 +472,15 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.selectDiagnosisGameBtn.classList.toggle('active', gameName === 'diagnosis-game');
         dom.selectTranslateTheMoodBtn.classList.toggle('active', gameName === 'translate-the-mood');
         dom.selectTwoStageGuessBtn.classList.toggle('active', gameName === 'two-stage-guess');
+        dom.selectVerbBuilderLabBtn.classList.toggle('active', gameName === 'verb-builder-lab');
+        dom.selectVerbSnapBtn.classList.toggle('active', gameName === 'verb-snap');
+        dom.selectGenderQuestBtn.classList.toggle('active', gameName === 'gender-quest');
+        dom.selectPrepositionPathBtn.classList.toggle('active', gameName === 'preposition-path');
+        dom.selectTimeMachineVerbsBtn.classList.toggle('active', gameName === 'time-machine-verbs');
+        dom.selectAgreementArcadeBtn.classList.toggle('active', gameName === 'agreement-arcade');
+        dom.selectConjugationDuelBtn.classList.toggle('active', gameName === 'conjugation-duel');
+        dom.selectPrepositionDetectiveBtn.classList.toggle('active', gameName === 'preposition-detective');
+        dom.selectMorphologyMixerBtn.classList.toggle('active', gameName === 'morphology-mixer');
 
         dom.memoryMatchContainer.classList.toggle('active', gameName === 'memory-match');
         dom.clozeRaceContainer.classList.toggle('active', gameName === 'cloze-race');
@@ -348,7 +488,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.pictureBingoContainer.classList.toggle('active', gameName === 'picture-bingo');
         dom.pronunciationSprintContainer.classList.toggle('active', gameName === 'pronunciation-sprint');
         dom.adaptiveFlashcardsContainer.classList.toggle('active', gameName === 'adaptive-flashcards');
-        dom.storyBuilderContainer.classList.toggle('active', gameName === 'story-builder');
+        dom.sentenceSculptorContainer.classList.toggle('active', gameName === 'sentence-sculptor');
         dom.roleplaySimulatorContainer.classList.toggle('active', gameName === 'roleplay-simulator');
         dom.synonymSwapContainer.classList.toggle('active', gameName === 'synonym-swap');
         dom.mysteryGameContainer.classList.toggle('active', gameName === 'mystery-game');
@@ -364,6 +504,15 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.diagnosisGameContainer.classList.toggle('active', gameName === 'diagnosis-game');
         dom.translateTheMoodContainer.classList.toggle('active', gameName === 'translate-the-mood');
         dom.twoStageGuessContainer.classList.toggle('active', gameName === 'two-stage-guess');
+        dom.verbBuilderLabContainer.classList.toggle('active', gameName === 'verb-builder-lab');
+        dom.verbSnapContainer.classList.toggle('active', gameName === 'verb-snap');
+        dom.genderQuestContainer.classList.toggle('active', gameName === 'gender-quest');
+        dom.prepositionPathContainer.classList.toggle('active', gameName === 'preposition-path');
+        dom.timeMachineVerbsContainer.classList.toggle('active', gameName === 'time-machine-verbs');
+        dom.agreementArcadeContainer.classList.toggle('active', gameName === 'agreement-arcade');
+        dom.conjugationDuelContainer.classList.toggle('active', gameName === 'conjugation-duel');
+        dom.prepositionDetectiveContainer.classList.toggle('active', gameName === 'preposition-detective');
+        dom.morphologyMixerContainer.classList.toggle('active', gameName === 'morphology-mixer');
 
         initializeGame();
     }
@@ -382,7 +531,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dom.selectPictureBingoBtn.addEventListener('click', () => switchGame('picture-bingo'));
     dom.selectPronunciationSprintBtn.addEventListener('click', () => switchGame('pronunciation-sprint'));
     dom.selectAdaptiveFlashcardsBtn.addEventListener('click', () => switchGame('adaptive-flashcards'));
-    dom.selectStoryBuilderBtn.addEventListener('click', () => switchGame('story-builder'));
+    dom.selectSentenceSculptorBtn.addEventListener('click', () => switchGame('sentence-sculptor'));
     dom.selectRoleplaySimulatorBtn.addEventListener('click', () => switchGame('roleplay-simulator'));
     dom.selectSynonymSwapBtn.addEventListener('click', () => switchGame('synonym-swap'));
     dom.selectMysteryGameBtn.addEventListener('click', () => switchGame('mystery-game'));
@@ -398,6 +547,15 @@ document.addEventListener('DOMContentLoaded', () => {
     dom.selectDiagnosisGameBtn.addEventListener('click', () => switchGame('diagnosis-game'));
     dom.selectTranslateTheMoodBtn.addEventListener('click', () => switchGame('translate-the-mood'));
     dom.selectTwoStageGuessBtn.addEventListener('click', () => switchGame('two-stage-guess'));
+    dom.selectVerbBuilderLabBtn.addEventListener('click', () => switchGame('verb-builder-lab'));
+    dom.selectVerbSnapBtn.addEventListener('click', () => switchGame('verb-snap'));
+    dom.selectGenderQuestBtn.addEventListener('click', () => switchGame('gender-quest'));
+    dom.selectPrepositionPathBtn.addEventListener('click', () => switchGame('preposition-path'));
+    dom.selectTimeMachineVerbsBtn.addEventListener('click', () => switchGame('time-machine-verbs'));
+    dom.selectAgreementArcadeBtn.addEventListener('click', () => switchGame('agreement-arcade'));
+    dom.selectConjugationDuelBtn.addEventListener('click', () => switchGame('conjugation-duel'));
+    dom.selectPrepositionDetectiveBtn.addEventListener('click', () => switchGame('preposition-detective'));
+    dom.selectMorphologyMixerBtn.addEventListener('click', () => switchGame('morphology-mixer'));
 
     // Initialize the game based on the loaded state
     switchGame(activeGame);

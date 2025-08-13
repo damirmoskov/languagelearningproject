@@ -1,0 +1,34 @@
+{
+    "lang": "French",
+    "level": "A2",
+    "challenges": [
+        {
+            "id": "vs001",
+            "image_url": "https://placehold.co/400x200/EFEFEF/AAAAAA&text=Hier,+une+fille+a+mangé",
+            "prompt": "Hier, elle ___ (manger).",
+            "correct_form": "a mangé",
+            "distractors": ["mangeait", "mangera", "mange"]
+        },
+        {
+            "id": "vs002",
+            "image_url": "https://placehold.co/400x200/EFEFEF/AAAAAA&text=Demain,+nous+allons+à+la+plage",
+            "prompt": "Demain, nous ___ (aller) à la plage.",
+            "correct_form": "allons aller",
+            "distractors": ["irons", "allions", "allons"]
+        },
+        {
+            "id": "vs003",
+            "image_url": "https://placehold.co/400x200/EFEFEF/AAAAAA&text=Je+finis+mes+devoirs",
+            "prompt": "Je ___ (finir) mes devoirs.",
+            "correct_form": "finis",
+            "distractors": ["finirai", "finissais", "finit"]
+        },
+        {
+            "id": "vs004",
+            "image_url": "https://placehold.co/400x200/EFEFEF/AAAAAA&text=Vous+regardez+la+télé",
+            "prompt": "En ce moment, vous ___ (regarder) la télé.",
+            "correct_form": "regardez",
+            "distractors": ["regarderez", "regardiez", "regardent"]
+        }
+    ]
+}

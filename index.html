@@ -10,28 +10,52 @@
     <header>
         <h1>COSYlanguages</h1>
         <div id="game-selector">
-            <button id="select-memory-match" class="game-selector-btn active">Memory Match</button>
-            <button id="select-cloze-race" class="game-selector-btn">Cloze Race</button>
-            <button id="select-spot-mistake" class="game-selector-btn">Spot the Mistake</button>
-            <button id="select-picture-bingo" class="game-selector-btn">Picture Bingo</button>
-            <button id="select-pronunciation-sprint" class="game-selector-btn">Pronunciation Sprint</button>
-            <button id="select-adaptive-flashcards" class="game-selector-btn">Adaptive Flashcards</button>
-            <button id="select-story-builder" class="game-selector-btn">Story Builder</button>
-            <button id="select-roleplay-simulator" class="game-selector-btn">Roleplay Simulator</button>
-            <button id="select-synonym-swap" class="game-selector-btn">Synonym Swap</button>
-            <button id="select-mystery-game" class="game-selector-btn">5 Clues Mystery</button>
-            <button id="select-reverse-translation" class="game-selector-btn">Reverse Translation</button>
-            <button id="select-find-the-liar" class="game-selector-btn">Find the Liar</button>
-            <button id="select-synonym-chain" class="game-selector-btn">Synonym Chain</button>
-            <button id="select-wrong-ending-detective" class="game-selector-btn">Wrong Ending Detective</button>
-            <button id="select-picture-debate" class="game-selector-btn">Picture Debate</button>
-            <button id="select-what-happens-next" class="game-selector-btn">What Happens Next?</button>
-            <button id="select-word-detective" class="game-selector-btn">Word Detective</button>
-            <button id="select-metaphor-match" class="game-selector-btn">Metaphor Match</button>
-            <button id="select-problem-solvers" class="game-selector-btn">Problem Solvers</button>
-            <button id="select-diagnosis-game" class="game-selector-btn">Diagnosis Game</button>
-            <button id="select-translate-the-mood" class="game-selector-btn">Translate the Mood</button>
-            <button id="select-two-stage-guess" class="game-selector-btn">Two-Stage Guess</button>
+            <div class="game-category">
+                <h2 class="category-title">Grammar Games</h2>
+                <div class="game-buttons-container">
+                    <button id="select-verb-builder-lab" class="game-selector-btn">Verb Builder Lab</button>
+                    <button id="select-verb-snap" class="game-selector-btn">Verb Snap!</button>
+                    <button id="select-gender-quest" class="game-selector-btn">Gender Quest</button>
+                    <button id="select-preposition-path" class="game-selector-btn">Preposition Path</button>
+                    <button id="select-sentence-sculptor" class="game-selector-btn">Sentence Sculptor</button>
+                    <button id="select-time-machine-verbs" class="game-selector-btn">Time Machine Verbs</button>
+                    <button id="select-agreement-arcade" class="game-selector-btn">Agreement Arcade</button>
+                    <button id="select-conjugation-duel" class="game-selector-btn">Conjugation Duel</button>
+                    <button id="select-preposition-detective" class="game-selector-btn">Preposition Detective</button>
+                    <button id="select-morphology-mixer" class="game-selector-btn">Morphology Mixer</button>
+                    <button id="select-spot-mistake" class="game-selector-btn">Spot the Mistake</button>
+                    <button id="select-wrong-ending-detective" class="game-selector-btn">Wrong Ending Detective</button>
+                </div>
+            </div>
+            <div class="game-category">
+                <h2 class="category-title">Vocabulary Games</h2>
+                <div class="game-buttons-container">
+                    <button id="select-memory-match" class="game-selector-btn active">Memory Match</button>
+                    <button id="select-picture-bingo" class="game-selector-btn">Picture Bingo</button>
+                    <button id="select-adaptive-flashcards" class="game-selector-btn">Adaptive Flashcards</button>
+                    <button id="select-synonym-swap" class="game-selector-btn">Synonym Swap</button>
+                    <button id="select-mystery-game" class="game-selector-btn">5 Clues Mystery</button>
+                    <button id="select-reverse-translation" class="game-selector-btn">Reverse Translation</button>
+                    <button id="select-synonym-chain" class="game-selector-btn">Synonym Chain</button>
+                    <button id="select-word-detective" class="game-selector-btn">Word Detective</button>
+                    <button id="select-metaphor-match" class="game-selector-btn">Metaphor Match</button>
+                </div>
+            </div>
+            <div class="game-category">
+                <h2 class="category-title">Mixed Skills</h2>
+                <div class="game-buttons-container">
+                    <button id="select-cloze-race" class="game-selector-btn">Cloze Race</button>
+                    <button id="select-pronunciation-sprint" class="game-selector-btn">Pronunciation Sprint</button>
+                    <button id="select-roleplay-simulator" class="game-selector-btn">Roleplay Simulator</button>
+                    <button id="select-find-the-liar" class="game-selector-btn">Find the Liar</button>
+                    <button id="select-picture-debate" class="game-selector-btn">Picture Debate</button>
+                    <button id="select-what-happens-next" class="game-selector-btn">What Happens Next?</button>
+                    <button id="select-problem-solvers" class="game-selector-btn">Problem Solvers</button>
+                    <button id="select-diagnosis-game" class="game-selector-btn">Diagnosis Game</button>
+                    <button id="select-translate-the-mood" class="game-selector-btn">Translate the Mood</button>
+                    <button id="select-two-stage-guess" class="game-selector-btn">Two-Stage Guess</button>
+                </div>
+            </div>
         </div>
         <div class="language-selector-container">
             <label for="language-selector">Language:</label>
@@ -136,19 +160,20 @@
             </div>
         </div>
 
-        <div id="story-builder-container" class="game-container">
-            <h2 id="sb-deck-title">Story Builder</h2>
-            <div id="sb-target-sentence" class="dropzone">
+        <div id="sentence-sculptor-container" class="game-container">
+            <h2 id="scs-deck-title">Sentence Sculptor</h2>
+            <img id="scs-prompt-image" src="" alt="Sentence prompt" style="max-width: 100%; height: auto; margin-bottom: 15px; border-radius: 10px; background-color: #eee;">
+            <div id="scs-target-sentence" class="dropzone">
                 <!-- Dropped chunks will appear here -->
             </div>
-            <div id="sb-source-chunks" class="source-zone">
+            <div id="scs-source-chunks" class="source-zone">
                 <!-- Draggable chunks will be populated here by JS -->
             </div>
-            <div id="sb-controls">
-                <button id="sb-check-btn">Check Answer</button>
-                <button id="sb-next-btn">Next Sentence</button>
+            <div id="scs-controls">
+                <button id="scs-check-btn">Check Answer</button>
+                <button id="scs-next-btn">Next Sentence</button>
             </div>
-            <p id="sb-feedback"></p>
+            <p id="scs-feedback"></p>
         </div>
 
         <div id="roleplay-simulator-container" class="game-container">
@@ -324,6 +349,166 @@
             <button id="tsg-submit-btn">Submit Hypothesis</button>
             <div id="tsg-model-answer-container" class="model-answer" style="display: none;"></div>
             <button id="tsg-next-btn" style="display: none;">Next Challenge</button>
+        </div>
+
+        <div id="verb-builder-lab-container" class="game-container">
+            <h2>Verb Builder Lab</h2>
+            <div id="vbl-plant-container">
+                <!-- SVG for the growing plant will go here -->
+            </div>
+            <div id="vbl-prompt-container">
+                <p>Person: <span id="vbl-person"></span></p>
+                <p>Tense: <span id="vbl-tense"></span></p>
+            </div>
+            <div id="vbl-verb-container">
+                <span id="vbl-verb-root"></span>
+                <span id="vbl-verb-ending">?</span>
+            </div>
+            <div id="vbl-options-container">
+                <!-- Answer tiles will be populated by JS -->
+            </div>
+            <p id="vbl-feedback"></p>
+            <button id="vbl-next-btn" style="display: none;">Next Verb</button>
+        </div>
+
+        <div id="verb-snap-container" class="game-container">
+            <div id="vs-header">
+                <p>Score: <span id="vs-score">0</span></p>
+                <p>Time: <span id="vs-timer">60</span></p>
+            </div>
+            <div id="vs-prompt-media-container">
+                <img id="vs-prompt-media" src="" alt="Verb Snap! Prompt">
+            </div>
+            <p id="vs-prompt-text"></p>
+            <div id="vs-options-area">
+                <!-- Moving options will be spawned here by JS -->
+                <div id="vs-overlay">
+                    <button id="vs-start-btn">Start Game</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="gender-quest-container" class="game-container">
+            <h2>Gender Quest</h2>
+            <div id="gq-stats">
+                <p>Score: <span id="gq-score">0</span></p>
+                <button id="gq-next-round-btn" style="display: none;">Next Round</button>
+            </div>
+            <div id="gq-homes-container">
+                <div id="gq-masculine-home" class="gq-home" data-gender="masculine">
+                    <h3>Masculine</h3>
+                </div>
+                <div id="gq-feminine-home" class="gq-home" data-gender="feminine">
+                    <h3>Feminine</h3>
+                </div>
+            </div>
+            <p id="gq-feedback">Drag the items to their correct home.</p>
+            <div id="gq-item-pool">
+                <!-- Draggable items will be spawned here by JS -->
+            </div>
+        </div>
+
+        <div id="preposition-path-container" class="game-container">
+            <h2>Preposition Path</h2>
+            <p id="pp-instruction"></p>
+            <div id="pp-game-area">
+                <div id="pp-scene-container">
+                    <!-- Drop zones will be added here by JS -->
+                </div>
+                <div id="pp-item-holder">
+                    <!-- Draggable item will be added here by JS -->
+                </div>
+            </div>
+            <button id="pp-next-btn" style="display: none;">Next Scene</button>
+        </div>
+
+        <div id="time-machine-verbs-container" class="game-container">
+            <h2>Time Machine Verbs</h2>
+            <img id="tmv-prompt-image" src="" alt="Time context prompt" style="max-width: 100%; height: 200px; border-radius: 10px; background-color: #eee; margin-bottom: 15px;">
+            <p id="tmv-prompt-sentence"></p>
+            <div id="tmv-timeline-container">
+                <div class="tmv-tense-labels">
+                    <span>Past</span>
+                    <span>Present</span>
+                    <span>Future</span>
+                </div>
+                <input type="range" id="tmv-tense-slider" min="0" max="2" value="1" step="1">
+            </div>
+            <div id="tmv-verb-display">
+                <!-- The verb form will be updated here by JS -->
+            </div>
+            <div id="tmv-controls">
+                <button id="tmv-check-btn">Check Answer</button>
+                <button id="tmv-next-btn" style="display: none;">Next</button>
+            </div>
+            <p id="tmv-feedback"></p>
+        </div>
+
+        <div id="agreement-arcade-container" class="game-container">
+            <div id="aa-header">
+                <p>Score: <span id="aa-score">0</span></p>
+                <p>Lives: <span id="aa-lives">3</span></p>
+            </div>
+            <div id="aa-game-area">
+                <!-- Falling objects will be spawned here by JS -->
+            </div>
+            <div id="aa-landing-zone"></div>
+            <div id="aa-overlay" style="display: flex;">
+                <button id="aa-start-btn">Start Game</button>
+            </div>
+        </div>
+
+        <div id="conjugation-duel-container" class="game-container">
+            <h2>Conjugation Duel (vs AI)</h2>
+            <div id="cd-scores">
+                <span>Player: <span id="cd-player-score">0</span></span>
+                <span>Opponent: <span id="cd-opponent-score">0</span></span>
+            </div>
+            <div id="cd-prompt-area">
+                <p>Verb: <span id="cd-verb"></span></p>
+                <p>Subject: <span id="cd-subject"></span></p>
+                <p>Tense: <span id="cd-tense"></span></p>
+            </div>
+            <div id="cd-player-area">
+                <label for="cd-player-input">Your Answer:</label>
+                <input type="text" id="cd-player-input" autocomplete="off">
+            </div>
+            <div id="cd-opponent-area">
+                <p>Opponent's Progress:</p>
+                <div id="cd-opponent-progress-bar">
+                    <div id="cd-opponent-progress"></div>
+                </div>
+            </div>
+            <p id="cd-feedback"></p>
+        </div>
+
+        <div id="preposition-detective-container" class="game-container">
+            <h2>Preposition Detective</h2>
+            <div class="stats-bar">
+                <p>Score: <span id="pd-score">0</span></p>
+            </div>
+            <p id="pd-clue" class="clue">Loading clue...</p>
+            <div id="pd-panels-container">
+                <!-- Panels will be dynamically inserted here by JS -->
+            </div>
+            <p id="pd-feedback" class="feedback"></p>
+            <button id="pd-next-btn" class="button" style="display: none;">Next Challenge</button>
+        </div>
+
+        <div id="morphology-mixer-container" class="game-container">
+            <h2>Morphology Mixer</h2>
+            <div class="stats-bar">
+                <p>Score: <span id="mm-score">0</span></p>
+            </div>
+            <img id="mm-prompt-image" src="" alt="Morphology prompt" style="max-width: 100%; height: auto; max-height: 200px; margin-bottom: 15px; border-radius: 10px; background-color: #eee;">
+            <div id="mm-word-container" class="word-construction">
+                <!-- Word parts will be inserted here by JS -->
+            </div>
+            <div id="mm-options-container">
+                <!-- Morpheme options will be inserted here by JS -->
+            </div>
+            <p id="mm-feedback" class="feedback"></p>
+            <button id="mm-next-btn" class="button" style="display: none;">Next Word</button>
         </div>
     </main>
     <script type="module" src="js/main.js"></script>

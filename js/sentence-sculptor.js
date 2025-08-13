@@ -1,16 +1,18 @@
+// js/sentence-sculptor.js
+
 // --- DOM Elements ---
-let targetSentenceEl, sourceChunksEl, checkBtn, nextBtn, feedbackEl, deckTitleEl;
+let targetSentenceEl, sourceChunksEl, checkBtn, nextBtn, feedbackEl, deckTitleEl, promptImageEl;
 
 // --- Game State ---
-let currentLanguage_sb;
+let currentLanguage_ss;
 let allSentences = [];
 let availableSentences = [];
 let currentSentence = null;
-let draggedChunk = null; // For drag-and-drop
-let heldChunk = null; // For keyboard accessibility
+let draggedChunk = null;
+let heldChunk = null;
 
 // --- Helper for localStorage ---
-const getStorageKey = () => `cosy_sb_progress_${currentLanguage_sb}`;
+const getStorageKey = () => `cosy_ss_progress_${currentLanguage_ss}`;
 
 function saveState(state) {
     localStorage.setItem(getStorageKey(), JSON.stringify(state));
@@ -25,36 +27,29 @@ function clearState() {
     localStorage.removeItem(getStorageKey());
 }
 
-/**
- * Loads sentence data for the game.
- */
 async function loadSentences() {
     try {
-        const response = await fetch(`data/${currentLanguage_sb}_story.json`);
-        if (!response.ok) throw new Error(`Data file not found for ${currentLanguage_sb}`);
+        // For now, we only have a French data file for this new game type
+        const response = await fetch(`data/french_a2_sentence_sculptor.json`);
+        if (!response.ok) throw new Error(`Data file not found for french_a2_sentence_sculptor`);
         const data = await response.json();
         allSentences = data.sentences;
-        deckTitleEl.textContent = `${data.lang} ${data.level} - Story Builder`;
-
-        // Filter out completed sentences
+        deckTitleEl.textContent = `${data.lang} ${data.level} - Sentence Sculptor`;
         const { completedIds } = loadState();
         availableSentences = allSentences.filter(s => !completedIds.includes(s.id));
-
     } catch (error) {
-        console.error("Could not load story builder data:", error);
+        console.error("Could not load sentence sculptor data:", error);
         deckTitleEl.textContent = "Error loading data";
         allSentences = [];
         availableSentences = [];
     }
 }
 
-/**
- * Displays the next sentence for the user to build.
- */
 function displayNextSentence(puzzleState = null) {
     if (availableSentences.length === 0 && !puzzleState) {
         targetSentenceEl.innerHTML = "";
         sourceChunksEl.innerHTML = "You've completed all the sentences!";
+        promptImageEl.style.display = 'none';
         feedbackEl.textContent = "Great job! 🎉";
         checkBtn.disabled = true;
         nextBtn.textContent = "Play Again";
@@ -78,11 +73,17 @@ function displayNextSentence(puzzleState = null) {
     sourceChunksEl.innerHTML = "";
     feedbackEl.textContent = "";
     checkBtn.disabled = false;
+    promptImageEl.style.display = 'block';
+    promptImageEl.src = currentSentence.image_url;
+    promptImageEl.alt = currentSentence.chunks.map(c => c.text).join(' ');
 
-    const chunksToDisplay = puzzleState ? puzzleState.source : [...currentSentence.chunks].sort(() => Math.random() - 0.5);
+    let allChunksForDisplay = puzzleState ? puzzleState.source.map(id => {
+        return currentSentence.chunks.find(c => c.id === id) || (currentSentence.distractors || []).find(d => d.id === id);
+    }) : [...currentSentence.chunks, ...(currentSentence.distractors || [])];
 
-    chunksToDisplay.forEach(chunkData => {
-        const chunk = currentSentence.chunks.find(c => c.id === (chunkData.id || chunkData));
+    allChunksForDisplay = allChunksForDisplay.sort(() => Math.random() - 0.5);
+
+    allChunksForDisplay.forEach(chunk => {
         if (!chunk) return;
         const chunkEl = createChunkElement(chunk);
         sourceChunksEl.appendChild(chunkEl);
@@ -102,13 +103,10 @@ function displayNextSentence(puzzleState = null) {
     }
 }
 
-/**
- * Checks if the user's constructed sentence is correct.
- */
 function createChunkElement(chunk) {
     const chunkEl = document.createElement('div');
     chunkEl.textContent = chunk.text;
-    chunkEl.className = 'sb-chunk';
+    chunkEl.className = 'scs-chunk'; // Renamed class
     chunkEl.draggable = true;
     chunkEl.dataset.id = chunk.id;
     chunkEl.tabIndex = 0;
@@ -129,25 +127,21 @@ function savePuzzleState() {
 function checkAnswer() {
     const droppedChunks = [...targetSentenceEl.children];
     const droppedIds = droppedChunks.map(chunk => chunk.dataset.id);
-
     const isCorrect = JSON.stringify(droppedIds) === JSON.stringify(currentSentence.correctOrder);
 
     if (isCorrect) {
         feedbackEl.textContent = "Correct! Well done!";
         feedbackEl.style.color = 'green';
         checkBtn.disabled = true;
-
         const state = loadState();
         state.completedIds.push(currentSentence.id);
-        state.puzzle = null; // Clear puzzle state after completion
+        state.puzzle = null;
         saveState(state);
     } else {
         feedbackEl.textContent = "Not quite right. Try rearranging the words.";
         feedbackEl.style.color = 'red';
     }
 }
-
-// --- Drag and Drop Handlers ---
 
 function handleDragStart(e) {
     draggedChunk = e.target;
@@ -169,19 +163,15 @@ function handleDrop(e) {
     e.preventDefault();
     const dropzone = e.target.closest('.dropzone, .source-zone');
     if (dropzone) {
-        const afterElement = getDragAfterElement(dropzone, e.clientY);
-        if (afterElement == null) {
-            dropzone.appendChild(draggedChunk);
-        } else {
-            dropzone.insertBefore(draggedChunk, afterElement);
-        }
+        // Simplified logic: always append to the end of the dropzone.
+        // The complex reordering logic was buggy with horizontal layouts.
+        dropzone.appendChild(draggedChunk);
     }
     savePuzzleState();
 }
 
 function getDragAfterElement(container, y) {
-    const draggableElements = [...container.querySelectorAll('.sb-chunk:not(.dragging)')];
-
+    const draggableElements = [...container.querySelectorAll('.ss-chunk:not(.dragging)')];
     return draggableElements.reduce((closest, child) => {
         const box = child.getBoundingClientRect();
         const offset = y - box.top - box.height / 2;
@@ -193,15 +183,12 @@ function getDragAfterElement(container, y) {
     }, { offset: Number.NEGATIVE_INFINITY }).element;
 }
 
-// --- Keyboard Accessibility Handlers ---
-
 function handleChunkKeyDown(e) {
     if (e.key !== 'Enter' && e.key !== ' ') return;
     e.preventDefault();
-
     if (heldChunk) {
         const dropTarget = e.currentTarget;
-        if (dropTarget.classList.contains('sb-chunk')) {
+        if (dropTarget.classList.contains('ss-chunk')) {
             dropTarget.parentNode.insertBefore(heldChunk, dropTarget);
         }
         heldChunk.classList.remove('held');
@@ -216,7 +203,6 @@ function handleZoneKeyDown(e) {
     if (e.key !== 'Enter' && e.key !== ' ') return;
     if (!heldChunk) return;
     e.preventDefault();
-
     const dropzone = e.currentTarget;
     dropzone.appendChild(heldChunk);
     heldChunk.classList.remove('held');
@@ -224,30 +210,24 @@ function handleZoneKeyDown(e) {
     savePuzzleState();
 }
 
-
-/**
- * Initializes the Story Builder game.
- */
-export async function initStoryBuilder(lang, elements) {
-    currentLanguage_sb = lang;
-
+export async function initSentenceSculptor(lang, elements) {
+    currentLanguage_ss = lang;
     targetSentenceEl = elements.targetSentence;
     sourceChunksEl = elements.sourceChunks;
     checkBtn = elements.checkBtn;
     nextBtn = elements.nextBtn;
     feedbackEl = elements.feedback;
     deckTitleEl = elements.deckTitle;
+    promptImageEl = elements.promptImage;
 
     checkBtn.onclick = checkAnswer;
     nextBtn.onclick = () => displayNextSentence();
 
-    // Make zones focusable and add keyboard listeners
     targetSentenceEl.tabIndex = 0;
     sourceChunksEl.tabIndex = 0;
     targetSentenceEl.addEventListener('keydown', handleZoneKeyDown);
     sourceChunksEl.addEventListener('keydown', handleZoneKeyDown);
 
-    // Setup dropzone listeners for mouse
     targetSentenceEl.addEventListener('dragover', handleDragOver);
     targetSentenceEl.addEventListener('drop', handleDrop);
     sourceChunksEl.addEventListener('dragover', handleDragOver);
