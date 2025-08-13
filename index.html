@@ -33,6 +33,7 @@
             <button id="select-translate-the-mood" class="game-selector-btn">Translate the Mood</button>
             <button id="select-two-stage-guess" class="game-selector-btn">Two-Stage Guess</button>
             <button id="select-verb-builder-lab" class="game-selector-btn">Verb Builder Lab</button>
+            <button id="select-verb-snap" class="game-selector-btn">Verb Snap!</button>
         </div>
         <div class="language-selector-container">
             <label for="language-selector">Language:</label>
@@ -345,6 +346,23 @@
             </div>
             <p id="vbl-feedback"></p>
             <button id="vbl-next-btn" style="display: none;">Next Verb</button>
+        </div>
+
+        <div id="verb-snap-container" class="game-container">
+            <div id="vs-header">
+                <p>Score: <span id="vs-score">0</span></p>
+                <p>Time: <span id="vs-timer">60</span></p>
+            </div>
+            <div id="vs-prompt-media-container">
+                <img id="vs-prompt-media" src="" alt="Verb Snap! Prompt">
+            </div>
+            <p id="vs-prompt-text"></p>
+            <div id="vs-options-area">
+                <!-- Moving options will be spawned here by JS -->
+                <div id="vs-overlay">
+                    <button id="vs-start-btn">Start Game</button>
+                </div>
+            </div>
         </div>
     </main>
     <script type="module" src="js/main.js"></script>

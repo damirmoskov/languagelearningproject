@@ -371,3 +371,114 @@ header { text-align: center; margin-bottom: 20px; }
     font-size: 1em;
     margin-top: 10px;
 }
+
+/* Verb Snap! Styles */
+#verb-snap-container {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#vs-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+#vs-prompt-media-container {
+    width: 100%;
+    height: 200px;
+    margin: 15px 0;
+    background-color: #eee;
+    border-radius: 10px;
+}
+
+#vs-prompt-media {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+#vs-prompt-text {
+    font-size: 1.3em;
+    margin-bottom: 15px;
+    min-height: 1.5em;
+}
+
+#vs-options-area {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    border: 2px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #f8f9fa;
+}
+
+#vs-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 10;
+}
+
+.vs-game-over-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.vs-option-tile {
+    position: absolute;
+    padding: 10px 20px;
+    background-color: #4a90e2;
+    color: white;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1.1em;
+    white-space: nowrap;
+    animation-duration: 8s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+.vs-option-tile:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.vs-option-tile.correct {
+    background-color: #28a745 !important;
+    animation-play-state: paused;
+}
+
+.vs-option-tile.incorrect {
+    background-color: #dc3545 !important;
+    opacity: 0.6;
+    animation-play-state: paused;
+}
+
+/* Keyframe Animations */
+@keyframes vs-move-lr {
+    from { transform: translateX(-100%); }
+    to { transform: translateX(500px); } /* Assumes container width around 500px */
+}
+
+@keyframes vs-move-rl {
+    from { transform: translateX(100%); }
+    to { transform: translateX(-500px); } /* Assumes container width around 500px */
+}
