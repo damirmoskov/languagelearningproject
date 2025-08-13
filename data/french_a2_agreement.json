@@ -1,0 +1,58 @@
+{
+  "lang": "French",
+  "level": "A2",
+  "challenges": [
+    {
+      "id": "ag_001",
+      "subject": { "text": "le garçon", "gender": "masculine", "number": "singular" },
+      "target_word": "grand",
+      "context": "{subject} est ___.",
+      "forms": {
+        "masculine_singular": "grand",
+        "feminine_singular": "grande",
+        "masculine_plural": "grands",
+        "feminine_plural": "grandes"
+      },
+      "correct_form_key": "masculine_singular"
+    },
+    {
+      "id": "ag_002",
+      "subject": { "text": "la fille", "gender": "feminine", "number": "singular" },
+      "target_word": "petit",
+      "context": "{subject} est ___.",
+      "forms": {
+        "masculine_singular": "petit",
+        "feminine_singular": "petite",
+        "masculine_plural": "petits",
+        "feminine_plural": "petites"
+      },
+      "correct_form_key": "feminine_singular"
+    },
+    {
+      "id": "ag_003",
+      "subject": { "text": "les garçons", "gender": "masculine", "number": "plural" },
+      "target_word": "intelligent",
+      "context": "{subject} sont ___.",
+      "forms": {
+        "masculine_singular": "intelligent",
+        "feminine_singular": "intelligente",
+        "masculine_plural": "intelligents",
+        "feminine_plural": "intelligentes"
+      },
+      "correct_form_key": "masculine_plural"
+    },
+    {
+      "id": "ag_004",
+      "subject": { "text": "les filles", "gender": "feminine", "number": "plural" },
+      "target_word": "content",
+      "context": "{subject} sont ___.",
+      "forms": {
+        "masculine_singular": "content",
+        "feminine_singular": "contente",
+        "masculine_plural": "contents",
+        "feminine_plural": "contentes"
+      },
+      "correct_form_key": "feminine_plural"
+    }
+  ]
+}

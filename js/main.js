@@ -25,6 +25,8 @@ import { initVerbSnap } from './verb-snap.js';
 import { initGenderQuest } from './gender-quest.js';
 import { initPrepositionPath } from './preposition-path.js';
 import { initTimeMachineVerbs } from './time-machine-verbs.js';
+import { initAgreementArcade } from './agreement-arcade.js';
+import { initConjugationDuel } from './conjugation-duel.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     let activeGame = localStorage.getItem('cosy_activeGame') || 'memory-match';
@@ -60,6 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
         genderQuestContainer: document.getElementById('gender-quest-container'),
         prepositionPathContainer: document.getElementById('preposition-path-container'),
         timeMachineVerbsContainer: document.getElementById('time-machine-verbs-container'),
+        agreementArcadeContainer: document.getElementById('agreement-arcade-container'),
+        conjugationDuelContainer: document.getElementById('conjugation-duel-container'),
         selectMemoryMatchBtn: document.getElementById('select-memory-match'),
         selectClozeRaceBtn: document.getElementById('select-cloze-race'),
         selectSpotMistakeBtn: document.getElementById('select-spot-mistake'),
@@ -87,6 +91,8 @@ document.addEventListener('DOMContentLoaded', () => {
         selectGenderQuestBtn: document.getElementById('select-gender-quest'),
         selectPrepositionPathBtn: document.getElementById('select-preposition-path'),
         selectTimeMachineVerbsBtn: document.getElementById('select-time-machine-verbs'),
+        selectAgreementArcadeBtn: document.getElementById('select-agreement-arcade'),
+        selectConjugationDuelBtn: document.getElementById('select-conjugation-duel'),
         memoryMatchElements: {
             gameBoard: document.getElementById('game-board'),
             matchesCountSpan: document.getElementById('matches-count'),
@@ -329,6 +335,26 @@ document.addEventListener('DOMContentLoaded', () => {
             nextBtn: document.getElementById('tmv-next-btn'),
             feedback: document.getElementById('tmv-feedback'),
             deckTitle: document.getElementById('deck-title')
+        },
+        agreementArcadeElements: {
+            score: document.getElementById('aa-score'),
+            lives: document.getElementById('aa-lives'),
+            gameArea: document.getElementById('aa-game-area'),
+            landingZone: document.getElementById('aa-landing-zone'),
+            overlay: document.getElementById('aa-overlay'),
+            startBtn: document.getElementById('aa-start-btn'),
+            deckTitle: document.getElementById('deck-title')
+        },
+        conjugationDuelElements: {
+            playerScore: document.getElementById('cd-player-score'),
+            opponentScore: document.getElementById('cd-opponent-score'),
+            verb: document.getElementById('cd-verb'),
+            subject: document.getElementById('cd-subject'),
+            tense: document.getElementById('cd-tense'),
+            playerInput: document.getElementById('cd-player-input'),
+            opponentProgress: document.getElementById('cd-opponent-progress'),
+            feedback: document.getElementById('cd-feedback'),
+            deckTitle: document.getElementById('deck-title')
         }
     };
 
@@ -387,6 +413,10 @@ document.addEventListener('DOMContentLoaded', () => {
             initPrepositionPath(currentLanguage, dom.prepositionPathElements);
         } else if (activeGame === 'time-machine-verbs') {
             initTimeMachineVerbs(currentLanguage, dom.timeMachineVerbsElements);
+        } else if (activeGame === 'agreement-arcade') {
+            initAgreementArcade(currentLanguage, dom.agreementArcadeElements);
+        } else if (activeGame === 'conjugation-duel') {
+            initConjugationDuel(currentLanguage, dom.conjugationDuelElements);
         }
     }
 
@@ -420,6 +450,8 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.selectGenderQuestBtn.classList.toggle('active', gameName === 'gender-quest');
         dom.selectPrepositionPathBtn.classList.toggle('active', gameName === 'preposition-path');
         dom.selectTimeMachineVerbsBtn.classList.toggle('active', gameName === 'time-machine-verbs');
+        dom.selectAgreementArcadeBtn.classList.toggle('active', gameName === 'agreement-arcade');
+        dom.selectConjugationDuelBtn.classList.toggle('active', gameName === 'conjugation-duel');
 
         dom.memoryMatchContainer.classList.toggle('active', gameName === 'memory-match');
         dom.clozeRaceContainer.classList.toggle('active', gameName === 'cloze-race');
@@ -448,6 +480,8 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.genderQuestContainer.classList.toggle('active', gameName === 'gender-quest');
         dom.prepositionPathContainer.classList.toggle('active', gameName === 'preposition-path');
         dom.timeMachineVerbsContainer.classList.toggle('active', gameName === 'time-machine-verbs');
+        dom.agreementArcadeContainer.classList.toggle('active', gameName === 'agreement-arcade');
+        dom.conjugationDuelContainer.classList.toggle('active', gameName === 'conjugation-duel');
 
         initializeGame();
     }
@@ -487,6 +521,8 @@ document.addEventListener('DOMContentLoaded', () => {
     dom.selectGenderQuestBtn.addEventListener('click', () => switchGame('gender-quest'));
     dom.selectPrepositionPathBtn.addEventListener('click', () => switchGame('preposition-path'));
     dom.selectTimeMachineVerbsBtn.addEventListener('click', () => switchGame('time-machine-verbs'));
+    dom.selectAgreementArcadeBtn.addEventListener('click', () => switchGame('agreement-arcade'));
+    dom.selectConjugationDuelBtn.addEventListener('click', () => switchGame('conjugation-duel'));
 
     // Initialize the game based on the loaded state
     switchGame(activeGame);

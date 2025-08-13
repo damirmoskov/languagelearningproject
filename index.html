@@ -37,6 +37,8 @@
             <button id="select-gender-quest" class="game-selector-btn">Gender Quest</button>
             <button id="select-preposition-path" class="game-selector-btn">Preposition Path</button>
             <button id="select-time-machine-verbs" class="game-selector-btn">Time Machine Verbs</button>
+            <button id="select-agreement-arcade" class="game-selector-btn">Agreement Arcade</button>
+            <button id="select-conjugation-duel" class="game-selector-btn">Conjugation Duel</button>
         </div>
         <div class="language-selector-container">
             <label for="language-selector">Language:</label>
@@ -423,6 +425,44 @@
                 <button id="tmv-next-btn" style="display: none;">Next</button>
             </div>
             <p id="tmv-feedback"></p>
+        </div>
+
+        <div id="agreement-arcade-container" class="game-container">
+            <div id="aa-header">
+                <p>Score: <span id="aa-score">0</span></p>
+                <p>Lives: <span id="aa-lives">3</span></p>
+            </div>
+            <div id="aa-game-area">
+                <!-- Falling objects will be spawned here by JS -->
+            </div>
+            <div id="aa-landing-zone"></div>
+            <div id="aa-overlay" style="display: flex;">
+                <button id="aa-start-btn">Start Game</button>
+            </div>
+        </div>
+
+        <div id="conjugation-duel-container" class="game-container">
+            <h2>Conjugation Duel (vs AI)</h2>
+            <div id="cd-scores">
+                <span>Player: <span id="cd-player-score">0</span></span>
+                <span>Opponent: <span id="cd-opponent-score">0</span></span>
+            </div>
+            <div id="cd-prompt-area">
+                <p>Verb: <span id="cd-verb"></span></p>
+                <p>Subject: <span id="cd-subject"></span></p>
+                <p>Tense: <span id="cd-tense"></span></p>
+            </div>
+            <div id="cd-player-area">
+                <label for="cd-player-input">Your Answer:</label>
+                <input type="text" id="cd-player-input" autocomplete="off">
+            </div>
+            <div id="cd-opponent-area">
+                <p>Opponent's Progress:</p>
+                <div id="cd-opponent-progress-bar">
+                    <div id="cd-opponent-progress"></div>
+                </div>
+            </div>
+            <p id="cd-feedback"></p>
         </div>
     </main>
     <script type="module" src="js/main.js"></script>
