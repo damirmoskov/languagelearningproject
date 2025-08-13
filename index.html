@@ -35,6 +35,7 @@
             <button id="select-verb-builder-lab" class="game-selector-btn">Verb Builder Lab</button>
             <button id="select-verb-snap" class="game-selector-btn">Verb Snap!</button>
             <button id="select-gender-quest" class="game-selector-btn">Gender Quest</button>
+            <button id="select-preposition-path" class="game-selector-btn">Preposition Path</button>
         </div>
         <div class="language-selector-container">
             <label for="language-selector">Language:</label>
@@ -384,6 +385,20 @@
             <div id="gq-item-pool">
                 <!-- Draggable items will be spawned here by JS -->
             </div>
+        </div>
+
+        <div id="preposition-path-container" class="game-container">
+            <h2>Preposition Path</h2>
+            <p id="pp-instruction"></p>
+            <div id="pp-game-area">
+                <div id="pp-scene-container">
+                    <!-- Drop zones will be added here by JS -->
+                </div>
+                <div id="pp-item-holder">
+                    <!-- Draggable item will be added here by JS -->
+                </div>
+            </div>
+            <button id="pp-next-btn" style="display: none;">Next Scene</button>
         </div>
     </main>
     <script type="module" src="js/main.js"></script>

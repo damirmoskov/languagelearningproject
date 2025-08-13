@@ -23,6 +23,7 @@ import { initTwoStageGuess } from './two-stage-guess.js';
 import { initVerbBuilderLab } from './verb-builder-lab.js';
 import { initVerbSnap } from './verb-snap.js';
 import { initGenderQuest } from './gender-quest.js';
+import { initPrepositionPath } from './preposition-path.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     let activeGame = localStorage.getItem('cosy_activeGame') || 'memory-match';
@@ -56,6 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
         verbBuilderLabContainer: document.getElementById('verb-builder-lab-container'),
         verbSnapContainer: document.getElementById('verb-snap-container'),
         genderQuestContainer: document.getElementById('gender-quest-container'),
+        prepositionPathContainer: document.getElementById('preposition-path-container'),
         selectMemoryMatchBtn: document.getElementById('select-memory-match'),
         selectClozeRaceBtn: document.getElementById('select-cloze-race'),
         selectSpotMistakeBtn: document.getElementById('select-spot-mistake'),
@@ -81,6 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
         selectVerbBuilderLabBtn: document.getElementById('select-verb-builder-lab'),
         selectVerbSnapBtn: document.getElementById('select-verb-snap'),
         selectGenderQuestBtn: document.getElementById('select-gender-quest'),
+        selectPrepositionPathBtn: document.getElementById('select-preposition-path'),
         memoryMatchElements: {
             gameBoard: document.getElementById('game-board'),
             matchesCountSpan: document.getElementById('matches-count'),
@@ -304,6 +307,13 @@ document.addEventListener('DOMContentLoaded', () => {
             feedback: document.getElementById('gq-feedback'),
             itemPool: document.getElementById('gq-item-pool'),
             deckTitle: document.getElementById('deck-title')
+        },
+        prepositionPathElements: {
+            instruction: document.getElementById('pp-instruction'),
+            sceneContainer: document.getElementById('pp-scene-container'),
+            itemHolder: document.getElementById('pp-item-holder'),
+            nextBtn: document.getElementById('pp-next-btn'),
+            deckTitle: document.getElementById('deck-title')
         }
     };
 
@@ -358,6 +368,8 @@ document.addEventListener('DOMContentLoaded', () => {
             initVerbSnap(currentLanguage, dom.verbSnapElements);
         } else if (activeGame === 'gender-quest') {
             initGenderQuest(currentLanguage, dom.genderQuestElements);
+        } else if (activeGame === 'preposition-path') {
+            initPrepositionPath(currentLanguage, dom.prepositionPathElements);
         }
     }
 
@@ -389,6 +401,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.selectVerbBuilderLabBtn.classList.toggle('active', gameName === 'verb-builder-lab');
         dom.selectVerbSnapBtn.classList.toggle('active', gameName === 'verb-snap');
         dom.selectGenderQuestBtn.classList.toggle('active', gameName === 'gender-quest');
+        dom.selectPrepositionPathBtn.classList.toggle('active', gameName === 'preposition-path');
 
         dom.memoryMatchContainer.classList.toggle('active', gameName === 'memory-match');
         dom.clozeRaceContainer.classList.toggle('active', gameName === 'cloze-race');
@@ -415,6 +428,7 @@ document.addEventListener('DOMContentLoaded', () => {
         dom.verbBuilderLabContainer.classList.toggle('active', gameName === 'verb-builder-lab');
         dom.verbSnapContainer.classList.toggle('active', gameName === 'verb-snap');
         dom.genderQuestContainer.classList.toggle('active', gameName === 'gender-quest');
+        dom.prepositionPathContainer.classList.toggle('active', gameName === 'preposition-path');
 
         initializeGame();
     }
@@ -452,6 +466,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dom.selectVerbBuilderLabBtn.addEventListener('click', () => switchGame('verb-builder-lab'));
     dom.selectVerbSnapBtn.addEventListener('click', () => switchGame('verb-snap'));
     dom.selectGenderQuestBtn.addEventListener('click', () => switchGame('gender-quest'));
+    dom.selectPrepositionPathBtn.addEventListener('click', () => switchGame('preposition-path'));
 
     // Initialize the game based on the loaded state
     switchGame(activeGame);
